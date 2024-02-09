@@ -1,0 +1,62 @@
+[
+{
+"id": 0,
+"image": "/images/monsters/0-pink-monster.svg",
+  "name": "Harry",
+  "types": ["обычный", "волшебный"],
+  "extraProps": ["умный", "ленивый", "странный"],
+  "price": 400,
+  "category": 4,
+  "rating": 5
+},
+  {
+    "id": 1,
+    "image": "/images/monsters/1-cute-pink-monster.svg",
+    "name": "Candy",
+    "types": ["обычный", "волшебный"],
+    "extraProps": ["умный", "ленивый", "странный"],
+    "price": 300,
+    "category": 4,
+    "rating": 5
+  },
+  {
+    "id": 2,
+    "image": "/images/monsters/2-green-funny-monster.svg",
+    "name": "Billie",
+    "types": ["обычный", "волшебный"],
+    "extraProps": ["умный", "ленивый", "странный"],
+    "price": 500,
+    "category": 4,
+    "rating": 5
+  },
+  {
+    "id": 3,
+    "image": "/images/monsters/3-green-one-eye-monster.svg",
+    "name": "Happy",
+    "types": ["обычный", "волшебный"],
+    "extraProps": ["умный", "ленивый", "странный"],
+    "price": 560,
+    "category": 4,
+    "rating": 5
+  },
+  {
+    "id": 4,
+    "image": "/images/monsters/4-green-polka-dot-monster.svg",
+    "name": "Sunny",
+    "types": ["обычный", "волшебный"],
+    "extraProps": ["умный", "ленивый", "странный"],
+    "price": 560,
+    "category": 4,
+    "rating": 5
+  },
+  {
+    "id": 5,
+    "image": "/images/monsters/5-purple-monster-bet.svg",
+    "name": "Sleepy",
+    "types": ["обычный", "волшебный"],
+    "extraProps": ["умный", "ленивый", "странный"],
+    "price": 360,
+    "category": 4,
+    "rating": 5
+  }
+]
