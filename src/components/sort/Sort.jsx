@@ -1,56 +1,20 @@
-import React from 'react';
-import styled from "styled-components";
-
-const SortDiv = styled.div`
-  
-`
-
-const SortLabel = styled.div`
-    display: flex;
-    align-items: center;
-
-    svg {
-      margin-right: 8px;
-    }
-
-    b {
-      margin-right: 8px;
-    }
-
-    span {
-      color: orange;
-      border-bottom: 1px dashed orange;
-      cursor: pointer;
-    }
-`
-const SortPopUp = styled.div`
-    right: 0;
-    margin-top: 15px;
-    background: #ffffff;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
-    border-radius: 10px;
-    //overflow: hidden;
-    padding: 10px 0;
-    width: 200px;
-
-    ul {
-      //overflow: hidden;
-      li {
-        padding: 12px 20px;
-        cursor: pointer;
-        list-style-type: none;
-        
-        &:hover {
-          background: rgba(254, 95, 30, 0.05);
-        }
-      }
-    }
-`
+import React, {useState} from 'react';
+import StldSortArea, {StldSortLabel, StldSortPopUp} from "../styled/sort/StldSortArea";
 
 const Sort = () => {
+    const variables = ['популярности', 'цене', 'алфавиту']
+    const [visible, setVisible] = useState(false);
+    const [selected, setSelected] = useState(0);
+    const selectedVariable = variables[selected];
+
+    const onVariableClick = (index) => {
+        setSelected(index);
+        setVisible(false);
+    }
+
     return (
-        <SortDiv>
-            <SortLabel>
+        <StldSortArea>
+            <StldSortLabel>
                 <svg
                     width="10"
                     height="6"
@@ -64,16 +28,20 @@ const Sort = () => {
                     />
                 </svg>
                 <b>Сортировка по:</b>
-                <span>популярности</span>
-            </SortLabel>
-            <SortPopUp>
-                <ul>
-                    <li>популярности</li>
-                    <li>цене</li>
-                    <li>алфавиту</li>
-                </ul>
-            </SortPopUp>
-        </SortDiv>
+                <span onClick={() => setVisible(!visible)}>{selectedVariable}</span>
+            </StldSortLabel>
+            {visible && (
+                <StldSortPopUp>
+                    <ul>
+                        {variables.map((item, index) => {
+                           return <li onClick={() => onVariableClick(index)}
+                                className={index === selected && 'active'}
+                            >{item}</li>
+                        })}
+                    </ul>
+                </StldSortPopUp>
+            )}
+        </StldSortArea>
     );
 };
 
