@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import {Link} from "react-router-dom";
 import StldHeader, { StyledHeaderWrapper, Header_LogoDiv, HeaderText, HeaderDescription } from "../styled/header/StldHeader";
 import StldHeaderCartDiv from "../styled/header/StldHeaderCartDiv";
 
@@ -7,14 +8,16 @@ const Header = () => {
         <StldHeader>
             <StyledHeaderWrapper>
                 <Header_LogoDiv>
-                    <img width="60" height="60" src="/images/fluffy-monsters-shop-logo.svg" alt="logo"/>
+                    <Link to="/" style={{display: 'flex', justifyContent: 'center'}}>
+                        <img width="60" height="60" src="/images/fluffy-monsters-shop-logo.svg" alt="logo"/>
+                    </Link>
                     <div>
                         <HeaderText>Fluffy monsters shop</HeaderText>
-                        <HeaderDescription>cute monsters for every taste</HeaderDescription>
+                        <HeaderDescription>cutest monsters for every taste</HeaderDescription>
                     </div>
                 </Header_LogoDiv>
                 <StldHeaderCartDiv>
-                    <a href="#">
+                    <Link to="cart">
                         <span>520 ₽</span>
                         <div className="button__delimiter"></div>
                         <svg
@@ -47,7 +50,7 @@ const Header = () => {
                             />
                         </svg>
                         <span>3</span>
-                    </a>
+                    </Link>
                 </StldHeaderCartDiv>
             </StyledHeaderWrapper>
         </StldHeader>

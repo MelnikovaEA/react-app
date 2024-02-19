@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import StldSortArea, {StldSortLabel, StldSortPopUp} from "../styled/sort/StldSortArea";
+import {v4 as uuidv4} from "uuid";
 
 const Sort = () => {
     const variables = ['популярности', 'цене', 'алфавиту']
@@ -34,15 +35,17 @@ const Sort = () => {
                 <StldSortPopUp>
                     <ul>
                         {variables.map((item, index) => {
-                           return <li onClick={() => onVariableClick(index)}
-                                className={index === selected && 'active'}
-                            >{item}</li>
-                        })}
-                    </ul>
-                </StldSortPopUp>
-            )}
-        </StldSortArea>
-    );
-};
+                            return <li onClick={() => onVariableClick(index)}
+                                       className={index === selected ? 'active' : null}
+                                       key={uuidv4()}
+                                           > {item}</li>
+                                       })
+                        }
+                            </ul>
+                            </StldSortPopUp>
+                            )}
+                    </StldSortArea>
+                    );
+                    };
 
-export default Sort;
+                    export default Sort;

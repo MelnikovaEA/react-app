@@ -4,13 +4,14 @@ import styled from "styled-components";
 
 const CategoriesUl = styled.ul`
   display: flex;
+  flex-wrap: wrap;
 `
 
 const CategoriesLi = styled.li`
   background-color: #f9f9f9;
   padding: 13px 30px;
   border-radius: 30px;
-  margin-right: 10px;
+  margin: 5px;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.1s ease-in-out;
@@ -27,7 +28,7 @@ const CategoriesLi = styled.li`
 `
 
 const Categories = () => {
-    const categories = ['Все', 'Огнедышащие', 'Зеленые', 'С рожками', 'Хитрые', 'В горошек']
+    const categories = ['Все', 'Огнедышащие', 'Зеленые', `С\xa0рожками`, 'Хитрые', 'В\xa0горошек']
     const [activeItem, setActiveItem] = useState(0);
 
     const onItemClick = (index) => {

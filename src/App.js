@@ -1,7 +1,6 @@
 import Header from "./components/header/Header";
-import MonstersCardsContainer from "./components/monstersCards/MonstersCardsContainer";
-import CategoriesSortContainer from "./components/categories/CategoriesSortContainer";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
+import {Outlet} from "react-router-dom";
 
 function App() {
 
@@ -17,8 +16,9 @@ function App() {
     return (
         <div className="App">
             <Header/>
-            <CategoriesSortContainer />
-            <MonstersCardsContainer />
+            <>
+                <Outlet/>
+            </>
         </div>
     );
 }

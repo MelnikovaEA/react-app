@@ -10,6 +10,7 @@ export const StyledHeaderWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap-reverse;
 `
 
 export const Header_LogoDiv = styled.div`

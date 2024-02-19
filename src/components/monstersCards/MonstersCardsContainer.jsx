@@ -4,6 +4,7 @@ import MonsterCard from "./MonsterCard";
 //import monsters from "../../assets/monsters.json";
 import {v4 as uuidv4} from "uuid";
 import MonsterCardSkeleton from "./MonsterCardSkeleton";
+import CategoriesSortContainer from "../categories/CategoriesSortContainer";
 
 const MonstersCardsContainer = () => {
 
@@ -17,26 +18,30 @@ const MonstersCardsContainer = () => {
                 setItems(data);
                 setIsLoading(false);
             });
+        window.scroll(0, 0);
     }, []);
 
     return (
-        <StldCardsContainer>
-            {isLoading
-                ? [...new Array(8)].map((_, index) => {
-                    return <MonsterCardSkeleton key={index}/>
-                })
-                : items.map(monster => (
-                    <MonsterCard key={uuidv4()}
-                                 name={monster.name}
-                                 image={monster.image}
-                                 price={monster.price}
-                                 types={monster.types}
-                                 extraProps={monster.extraProps}
-                        //это можно написать короче через spread, но я не буду
-                        // {...monster}
-                    />)
-                )}
-        </StldCardsContainer>
+        <>
+            <CategoriesSortContainer/>
+            <StldCardsContainer>
+                {isLoading
+                    ? [...new Array(8)].map((_, index) => {
+                        return <MonsterCardSkeleton key={index}/>
+                    })
+                    : items.map(monster => (
+                        <MonsterCard key={uuidv4()}
+                                     name={monster.name}
+                                     image={monster.image}
+                                     price={monster.price}
+                                     types={monster.types}
+                                     extraProps={monster.extraProps}
+                            //это можно написать короче через spread, но я не буду
+                            // {...monster}
+                        />)
+                    )}
+            </StldCardsContainer>
+        </>
     );
 };
 
