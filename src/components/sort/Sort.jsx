@@ -2,14 +2,17 @@ import React, {useState} from 'react';
 import StldSortArea, {StldSortLabel, StldSortPopUp} from "../styled/sort/StldSortArea";
 import {v4 as uuidv4} from "uuid";
 
-const Sort = () => {
-    const variables = ['популярности', 'цене', 'алфавиту']
-    const [visible, setVisible] = useState(false);
-    const [selected, setSelected] = useState(0);
-    const selectedVariable = variables[selected];
+const Sort = ({selectedType, setSelectedType, setOrderType}) => {
+    const variables = [
+        {name: 'популярности', sortProp: 'rating'},
+        {name: 'цене', sortProp: 'price'},
+        {name: 'алфавиту', sortProp: 'name'},
+    ];
 
-    const onVariableClick = (index) => {
-        setSelected(index);
+    const [visible, setVisible] = useState(false);
+
+    const onVariableClick = (obj) => {
+        setSelectedType(obj);
         setVisible(false);
     }
 
@@ -29,23 +32,25 @@ const Sort = () => {
                     />
                 </svg>
                 <b>Сортировка по:</b>
-                <span onClick={() => setVisible(!visible)}>{selectedVariable}</span>
+                <span onClick={() => setVisible(!visible)}>{selectedType.name}</span>
+                <span onClick={() => setOrderType('asc')}> ↑</span>
+                <span onClick={() => setOrderType('desc')}> ↓</span>
             </StldSortLabel>
             {visible && (
                 <StldSortPopUp>
                     <ul>
-                        {variables.map((item, index) => {
-                            return <li onClick={() => onVariableClick(index)}
-                                       className={index === selected ? 'active' : null}
+                        {variables.map((obj) => {
+                            return <li onClick={() => onVariableClick(obj)}
+                                       className={obj.name === selectedType.name ? 'active' : null}
                                        key={uuidv4()}
-                                           > {item}</li>
-                                       })
+                            > {obj.name}</li>
+                        })
                         }
-                            </ul>
-                            </StldSortPopUp>
-                            )}
-                    </StldSortArea>
-                    );
-                    };
+                    </ul>
+                </StldSortPopUp>
+            )}
+        </StldSortArea>
+    );
+}
 
-                    export default Sort;
+export default Sort;

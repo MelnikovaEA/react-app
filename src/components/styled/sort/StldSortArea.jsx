@@ -21,6 +21,7 @@ export const StldSortLabel = styled.div`
     color: orange;
     border-bottom: 1px dashed orange;
     cursor: pointer;
+    margin: 0 5px;
   }
 `
 export const StldSortPopUp = styled.div`

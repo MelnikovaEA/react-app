@@ -11,19 +11,29 @@ const MonstersCardsContainer = () => {
     const [items, setItems] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
+    const [activeCategory, setActiveCategory] = useState(0);
+    const [selectedType, setSelectedType] = useState( {name: 'популярности', sortProp: 'rating'});
+    const [orderType, setOrderType] = useState("asc");
+
     useEffect(() => {
-        fetch('https://65ca191b3b05d29307dfae09.mockapi.io/items')
+        setIsLoading(true);
+        fetch(`https://65ca191b3b05d29307dfae09.mockapi.io/items?category=${activeCategory || ''}&sortBy=${selectedType.sortProp}&order=${orderType}`)
             .then(response => response.json())
             .then(data => {
                 setItems(data);
                 setIsLoading(false);
             });
         window.scroll(0, 0);
-    }, []);
+    }, [activeCategory, selectedType, orderType]);
 
     return (
         <>
-            <CategoriesSortContainer/>
+            <CategoriesSortContainer activeCategory={activeCategory}
+                                     onClickAtCategory={(i)=>setActiveCategory(i)}
+                                     selectedType={selectedType}
+                                     setSelectedType={(i)=> setSelectedType(i)}
+                                     setOrderType={(type)=>setOrderType(type)}
+            />
             <StldCardsContainer>
                 {isLoading
                     ? [...new Array(8)].map((_, index) => {

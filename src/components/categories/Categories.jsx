@@ -1,4 +1,3 @@
-import React, {useState} from 'react';
 import {darken} from "polished";
 import styled from "styled-components";
 
@@ -27,20 +26,15 @@ const CategoriesLi = styled.li`
   }
 `
 
-const Categories = () => {
+const Categories = ({activeCategory, onClickAtCategory}) => {
     const categories = ['Все', 'Огнедышащие', 'Зеленые', `С\xa0рожками`, 'Хитрые', 'В\xa0горошек']
-    const [activeItem, setActiveItem] = useState(0);
-
-    const onItemClick = (index) => {
-        setActiveItem(index)
-    }
 
     return (
         <CategoriesUl>
             {categories.map((item, index) => (
                 <CategoriesLi key={index + 1}
-                              onClick={() => onItemClick(index)}
-                              className={activeItem === index && 'active'}
+                              onClick={() => onClickAtCategory(index)}
+                              className={activeCategory === index && 'active'}
                 >{item}</CategoriesLi>))}
         </CategoriesUl>
     );

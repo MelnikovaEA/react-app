@@ -7,6 +7,7 @@ const StldCardsContainer = styled.div`
   grid-row-gap: 15px;
   justify-items: center;
   padding: 0 15px;
+  margin-bottom: 15px;
   
   @media(max-width: 400px){
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
