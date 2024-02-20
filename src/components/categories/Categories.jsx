@@ -27,15 +27,19 @@ const CategoriesLi = styled.li`
 `
 
 const Categories = ({activeCategory, onClickAtCategory}) => {
-    const categories = ['Все', 'Огнедышащие', 'Зеленые', `С\xa0рожками`, 'Хитрые', 'В\xa0горошек']
+    const categories = [
+        { category: '', text: 'Все' },  { category: 'Огнедышащие', text: 'Огнедышащие' },
+        { category: 'Зеленые', text: 'Зеленые' }, { category: `С рожками`, text: `С\xa0рожками` },
+        { category: `Хитрые`, text: `Хитрые` }, { category: `В горошек`, text: `В\xa0горошек` },
+      ]
 
     return (
         <CategoriesUl>
-            {categories.map((item, index) => (
+            {categories.map((obj, index) => (
                 <CategoriesLi key={index + 1}
-                              onClick={() => onClickAtCategory(index)}
-                              className={activeCategory === index && 'active'}
-                >{item}</CategoriesLi>))}
+                              onClick={() => onClickAtCategory(obj.category)}
+                              className={activeCategory === obj.category && 'active'}
+                >{obj.text}</CategoriesLi>))}
         </CategoriesUl>
     );
 };

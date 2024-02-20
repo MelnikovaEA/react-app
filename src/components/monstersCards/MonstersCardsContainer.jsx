@@ -11,7 +11,7 @@ const MonstersCardsContainer = () => {
     const [items, setItems] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
-    const [activeCategory, setActiveCategory] = useState(0);
+    const [activeCategory, setActiveCategory] = useState("");
     const [selectedType, setSelectedType] = useState( {name: 'популярности', sortProp: 'rating'});
     const [orderType, setOrderType] = useState("asc");
 

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const StldHeaderCartDiv = styled.div`
   display: flex;
-  margin-right: 10px;
+  margin: 10px 10px 10px 30px;
 
   span {
     color: #fff;
@@ -31,6 +31,12 @@ const StldHeaderCartDiv = styled.div`
     border: 1px solid transparent;
     text-decoration: none;
   }
+`
+
+export const StldHeaterCartWrapper = styled.div`
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
 `
 
 export default StldHeaderCartDiv;
