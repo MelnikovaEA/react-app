@@ -1,0 +1,191 @@
+{
+  "monsters": [
+    {
+      "id": 0,
+      "image": "/images/monsters/0-pink-monster.svg",
+      "name": "Harry",
+      "types": [
+        "обычный",
+        "волшебный"
+      ],
+      "extraProps": [
+        "умный",
+        "ленивый",
+        "странный"
+      ],
+      "price": 400,
+      "category": "fire",
+      "rating": 5
+    },
+    {
+      "id": 1,
+      "image": "/images/monsters/1-cute-pink-monster.svg",
+      "name": "Candy",
+      "types": [
+        "обычный",
+        "волшебный"
+      ],
+      "extraProps": [
+        "умный",
+        "ленивый",
+        "странный"
+      ],
+      "price": 300,
+      "category": "Хитрые",
+      "rating": 5
+    },
+    {
+      "id": 2,
+      "image": "/images/monsters/2-green-funny-monster.svg",
+      "name": "Billie",
+      "types": [
+        "обычный",
+        "волшебный"
+      ],
+      "extraProps": [
+        "умный",
+        "ленивый",
+        "странный"
+      ],
+      "price": 500,
+      "category": "Огнедышащие",
+      "rating": 5
+    },
+    {
+      "id": 3,
+      "image": "/images/monsters/3-green-one-eye-monster.svg",
+      "name": "Happy",
+      "types": [
+        "обычный",
+        "волшебный"
+      ],
+      "extraProps": [
+        "умный",
+        "ленивый",
+        "странный"
+      ],
+      "price": 560,
+      "category": "В горошек",
+      "rating": 5
+    },
+    {
+      "id": 4,
+      "image": "/images/monsters/4-green-polka-dot-monster.svg",
+      "name": "Sunny",
+      "types": [
+        "обычный",
+        "волшебный"
+      ],
+      "extraProps": [
+        "умный",
+        "ленивый",
+        "странный"
+      ],
+      "price": 560,
+      "category": "В горошек",
+      "rating": 5
+    },
+    {
+      "id": 5,
+      "image": "/images/monsters/5-purple-monster-bet.svg",
+      "name": "Sleepy",
+      "types": [
+        "обычный",
+        "волшебный"
+      ],
+      "extraProps": [
+        "умный",
+        "ленивый",
+        "странный"
+      ],
+      "price": 360,
+      "category": "Хитрые",
+      "rating": 5
+    },
+    {
+      "id": 6,
+      "image": "/images/monsters/6-green-monster.svg",
+      "name": "Grass",
+      "types": [
+        "обычный",
+        "волшебный"
+      ],
+      "extraProps": [
+        "умный",
+        "ленивый",
+        "странный"
+      ],
+      "price": 360,
+      "category": "Зеленые",
+      "rating": 8
+    },
+    {
+      "id": 7,
+      "image": "/images/monsters/7-wolfy-monster.svg",
+      "name": "Wolfy",
+      "types": [
+        "обычный",
+        "волшебный"
+      ],
+      "extraProps": [
+        "умный",
+        "ленивый",
+        "странный"
+      ],
+      "price": 340,
+      "category": "Хитрые",
+      "rating": 3
+    },
+    {
+      "id": 8,
+      "image": "/images/monsters/8-cloudy-monster.svg",
+      "name": "Cloudy",
+      "types": [
+        "обычный",
+        "волшебный"
+      ],
+      "extraProps": [
+        "умный",
+        "ленивый",
+        "странный"
+      ],
+      "price": 410,
+      "category": "Хитрые",
+      "rating": 10
+    },
+    {
+      "id": 9,
+      "image": "/images/monsters/9-piggy-monster.svg",
+      "name": "Pinky",
+      "types": [
+        "обычный",
+        "волшебный"
+      ],
+      "extraProps": [
+        "умный",
+        "ленивый",
+        "странный"
+      ],
+      "price": 415,
+      "category": "С рожками",
+      "rating": 2
+    },
+    {
+      "id": 10,
+      "image": "/images/monsters/10-fatty-monster.svg",
+      "name": "Violet",
+      "types": [
+        "обычный",
+        "волшебный"
+      ],
+      "extraProps": [
+        "умный",
+        "ленивый",
+        "странный"
+      ],
+      "price": 315,
+      "category": "С рожками",
+      "rating": 8
+    }
+  ]
+}

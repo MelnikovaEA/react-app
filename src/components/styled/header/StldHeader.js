@@ -13,7 +13,7 @@ export const StyledHeaderWrapper = styled.div`
   flex-wrap: wrap;
 `
 
-export const Header_LogoDiv = styled.div`
+export const HeaderLogoDiv = styled.div`
   display: flex;
 `
 

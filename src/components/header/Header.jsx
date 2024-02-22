@@ -1,19 +1,23 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Link} from "react-router-dom";
 import StldHeader, {
     StyledHeaderWrapper,
-    Header_LogoDiv,
+    HeaderLogoDiv,
     HeaderText,
     HeaderDescription
 } from "../styled/header/StldHeader";
 import StldHeaderCartDiv, {StldHeaterCartWrapper} from "../styled/header/StldHeaderCartDiv";
 import Search from "./Search";
+import {InputDataContext} from "../../App";
 
 const Header = () => {
+
+    const { inputData, setInputData } = useContext(InputDataContext);
+    console.log('Header', inputData)
     return (
         <StldHeader>
             <StyledHeaderWrapper>
-                <Header_LogoDiv>
+                <HeaderLogoDiv>
                     <Link to="/" style={{display: 'flex', justifyContent: 'center'}}>
                         <img width="60" height="60" src="/images/fluffy-monsters-shop-logo.svg" alt="logo"/>
                     </Link>
@@ -21,8 +25,10 @@ const Header = () => {
                         <HeaderText>Fluffy monsters shop</HeaderText>
                         <HeaderDescription>cutest monsters for every taste</HeaderDescription>
                     </div>
-                </Header_LogoDiv>
-                <Search/>
+                </HeaderLogoDiv>
+                <Search inputData={inputData}
+                        setInputData={setInputData}
+                />
                 <StldHeaterCartWrapper>
                     <StldHeaderCartDiv>
                         <Link to="cart">

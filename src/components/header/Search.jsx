@@ -1,8 +1,6 @@
-import React, {useState} from 'react';
 import SearchInput, {SearchCloseIcon, SearchInputWrapper} from "../styled/header/StldSearch";
 
-const Search = () => {
-    const [inputData, setInputData] = useState('');
+const Search = ({inputData, setInputData}) => {
 
     return (
         <SearchInputWrapper>
