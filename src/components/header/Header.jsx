@@ -8,11 +8,12 @@ import StldHeader, {
 } from "../styled/header/StldHeader";
 import StldHeaderCartDiv, {StldHeaterCartWrapper} from "../styled/header/StldHeaderCartDiv";
 import Search from "./Search";
-import {InputDataContext} from "../../App";
+import {CurPageNumContext, InputDataContext} from "../../App";
 
 const Header = () => {
 
-    const { inputData, setInputData, setCurPageNum } = useContext(InputDataContext);
+    const { inputData, setInputData } = useContext(InputDataContext);
+    const { setCurPageNum } = useContext(CurPageNumContext);
     console.log('Header', inputData)
     return (
         <StldHeader>

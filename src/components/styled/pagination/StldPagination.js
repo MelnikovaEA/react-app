@@ -35,9 +35,6 @@ const StldPagination = styled.div`
       color: white;
       background-color: orange;
     }
-    
-    
-    
   }
 
   span {
@@ -47,6 +44,10 @@ const StldPagination = styled.div`
     color: orange;
     width: 20px;
     cursor: pointer;
+    
+    &:hover {
+      transform: scale(1.1, 1.1);;
+    }
   }
 
 `
