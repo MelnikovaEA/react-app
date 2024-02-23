@@ -12,7 +12,7 @@ import {InputDataContext} from "../../App";
 
 const Header = () => {
 
-    const { inputData, setInputData } = useContext(InputDataContext);
+    const { inputData, setInputData, setCurPageNum } = useContext(InputDataContext);
     console.log('Header', inputData)
     return (
         <StldHeader>
@@ -28,6 +28,7 @@ const Header = () => {
                 </HeaderLogoDiv>
                 <Search inputData={inputData}
                         setInputData={setInputData}
+                        setCurPageNum={setCurPageNum}
                 />
                 <StldHeaterCartWrapper>
                     <StldHeaderCartDiv>

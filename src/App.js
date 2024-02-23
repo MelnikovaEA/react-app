@@ -7,9 +7,10 @@ export const InputDataContext = createContext();
 function App() {
 
     const [inputData, setInputData] = useState('');
+    const [curPageNum, setCurPageNum] = useState(1);
 
     return (
-        <InputDataContext.Provider value={{inputData, setInputData}}>
+        <InputDataContext.Provider value={{inputData, setInputData, curPageNum, setCurPageNum}}>
             <div className="App">
                 <Header/>
                 <Outlet />

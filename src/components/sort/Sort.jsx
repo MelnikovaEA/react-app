@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import StldSortArea, {StldSortLabel, StldSortPopUp} from "../styled/sort/StldSortArea";
 import {v4 as uuidv4} from "uuid";
 
-const Sort = ({selectedType, setSelectedType, setOrderType}) => {
+const Sort = ({selectedType, setSelectedType, setOrderType }) => {
     const variables = [
         {name: 'популярности', sortProp: 'rating'},
         {name: 'цене', sortProp: 'price'},
