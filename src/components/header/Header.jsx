@@ -8,18 +8,22 @@ import StldHeader, {
 } from "../styled/header/StldHeader";
 import StldHeaderCartDiv, {StldHeaterCartWrapper} from "../styled/header/StldHeaderCartDiv";
 import Search from "./Search";
-import {CurPageNumContext, InputDataContext} from "../../App";
+import {ActiveCategoryContext, CurPageNumContext, InputDataContext} from "../../App";
 
 const Header = () => {
 
     const { inputData, setInputData } = useContext(InputDataContext);
     const { setCurPageNum } = useContext(CurPageNumContext);
+    const { setActiveCategory } = useContext(ActiveCategoryContext);
+
     console.log('Header', inputData)
     return (
         <StldHeader>
             <StyledHeaderWrapper>
                 <HeaderLogoDiv>
-                    <Link to="/" style={{display: 'flex', justifyContent: 'center'}}>
+                    <Link to="/" style={{display: 'flex', justifyContent: 'center'}}
+                          onClick={()=> setActiveCategory("")}
+                    >
                         <img width="60" height="60" src="/images/fluffy-monsters-shop-logo.svg" alt="logo"/>
                     </Link>
                     <div>

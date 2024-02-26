@@ -5,18 +5,18 @@ import MonsterCard from "./MonsterCard";
 import {v4 as uuidv4} from "uuid";
 import MonsterCardSkeleton from "./MonsterCardSkeleton";
 import CategoriesSortContainer from "../categories/CategoriesSortContainer";
-import { InputDataContext, CurPageNumContext } from "../../App";
+import {InputDataContext, CurPageNumContext, ActiveCategoryContext} from "../../App";
 import Pagination from "../pagination/Pagination";
 
 const MonstersCardsContainer = () => {
 
     const {inputData } = useContext(InputDataContext);
     const { curPageNum, setCurPageNum } = useContext(CurPageNumContext);
+    const { activeCategory, setActiveCategory } = useContext(ActiveCategoryContext);
 
     const [items, setItems] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [pagesQty, setPagesQty] = useState(2);
-    const [activeCategory, setActiveCategory] = useState("");
     const [selectedType, setSelectedType] = useState({name: 'популярности', sortProp: "rating"});
     const [orderType, setOrderType] = useState("asc");
     const searchData = inputData ? inputData : '';
