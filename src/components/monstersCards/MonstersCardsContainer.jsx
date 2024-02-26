@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useContext} from "react";
 import {useDispatch, useSelector} from "react-redux";
+import axios from "axios";
 import {v4 as uuidv4} from "uuid";
 import StldCardsContainer from "../styled/cards/StldCardsContainer";
 import MonsterCard from "./MonsterCard";
@@ -37,16 +38,33 @@ const MonstersCardsContainer = () => {
         setIsLoading(true);
         //запрос для мокапи, не работает поиск через search
         //`https://65ca191b3b05d29307dfae09.mockapi.io/items?category=${activeCategory || ''}&sortBy=${selectedType.sortProp}&order=${orderType}&search=${searchData}`
-        fetch(url)
+
+        // fetch(url)
+        //     .then(response => {
+        //         // Получаем заголовок X-Total-Count
+        //         const totalCount = response.headers.get('X-Total-Count');
+        //         setPagesQty(Math.ceil(totalCount / 8)); // Предполагается, что на каждой странице 8 элементов
+        //         return response.json();
+        //     })
+        //     .then(data => {
+        //         console.log(data);
+        //         setItems(data);
+        //         setIsLoading(false);
+        //     });
+
+        axios.get(url)
             .then(response => {
                 // Получаем заголовок X-Total-Count
-                const totalCount = response.headers.get('X-Total-Count');
+                const totalCount = response.headers['x-total-count'];
                 setPagesQty(Math.ceil(totalCount / 8)); // Предполагается, что на каждой странице 8 элементов
-                return response.json();
+                return response.data;
             })
             .then(data => {
-                console.log(data);
                 setItems(data);
+                setIsLoading(false);
+            })
+            .catch(error => {
+                console.error('Ошибка при получении данных:', error.message);
                 setIsLoading(false);
             });
         //window.scroll(0, 0);

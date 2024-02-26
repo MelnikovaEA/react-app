@@ -3,7 +3,7 @@ import styled from "styled-components";
 import {useSelector, useDispatch} from "react-redux";
 import {setActiveCategory} from "../../redux/slices/categorySlice";
 import {useContext} from "react";
-import {CurPageNumContext} from "../../App";
+import {CurPageNumContext, InputDataContext, LocalInputDataContext} from "../../App";
 
 const categories = [
     {category: '', text: 'Все'}, {category: 'Огнедышащие', text: 'Огнедышащие'},
@@ -39,6 +39,8 @@ const CategoriesLi = styled.li`
 const Categories = () => {
 
     const {setCurPageNum} = useContext(CurPageNumContext);
+    const {setInputData} = useContext(InputDataContext);
+    const {setLocalInputData} = useContext(LocalInputDataContext);
 
     const activeCategory = useSelector((store) => store.category.activeCategory);
     const dispatch = useDispatch();
@@ -46,6 +48,8 @@ const Categories = () => {
     const onCategoryClick = (value) => {
         dispatch(setActiveCategory(value));
         setCurPageNum(1);
+        setInputData('');
+        setLocalInputData('');
     }
 
     return (

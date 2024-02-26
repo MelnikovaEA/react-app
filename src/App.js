@@ -7,23 +7,27 @@ import ErrorBoundary from "./components/ErrorBoundary";
 
 export const InputDataContext = createContext({});
 export const CurPageNumContext = createContext({});
+export const LocalInputDataContext = createContext({});
 
 function App() {
 
     const [inputData, setInputData] = useState('');
+    const [localInputData, setLocalInputData] = useState('')
     const [curPageNum, setCurPageNum] = useState(1);
 
     return (
         <ErrorBoundary>
             <InputDataContext.Provider value={{inputData, setInputData}}>
-                <CurPageNumContext.Provider value={{curPageNum, setCurPageNum}}>
+                <LocalInputDataContext.Provider value={{localInputData, setLocalInputData}}>
+                    <CurPageNumContext.Provider value={{curPageNum, setCurPageNum}}>
                         <div className="App">
                             <Header/>
                             <Profiler id="myProfiler" onRender={onRenderCallback}>
                                 <Outlet/>
                             </Profiler>
                         </div>
-                </CurPageNumContext.Provider>
+                    </CurPageNumContext.Provider>
+                </LocalInputDataContext.Provider>
             </InputDataContext.Provider>
         </ErrorBoundary>
     );
