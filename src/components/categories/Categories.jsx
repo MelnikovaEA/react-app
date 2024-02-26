@@ -5,6 +5,12 @@ import {setActiveCategory} from "../../redux/slices/categorySlice";
 import {useContext} from "react";
 import {CurPageNumContext} from "../../App";
 
+const categories = [
+    {category: '', text: 'Все'}, {category: 'Огнедышащие', text: 'Огнедышащие'},
+    {category: 'Зеленые', text: 'Зеленые'}, {category: `С рожками`, text: `С\xa0рожками`},
+    {category: `Хитрые`, text: `Хитрые`}, {category: `В горошек`, text: `В\xa0горошек`},
+]
+
 const CategoriesUl = styled.ul`
   display: flex;
   flex-wrap: wrap;
@@ -37,24 +43,18 @@ const Categories = () => {
     const activeCategory = useSelector((store) => store.category.activeCategory);
     const dispatch = useDispatch();
 
-    const categories = [
-        {category: '', text: 'Все'}, {category: 'Огнедышащие', text: 'Огнедышащие'},
-        {category: 'Зеленые', text: 'Зеленые'}, {category: `С рожками`, text: `С\xa0рожками`},
-        {category: `Хитрые`, text: `Хитрые`}, {category: `В горошек`, text: `В\xa0горошек`},
-    ]
+    const onCategoryClick = (value) => {
+        dispatch(setActiveCategory(value));
+        setCurPageNum(1);
+    }
 
     return (
         <CategoriesUl>
             {categories.map((obj, index) => (
-                    <CategoriesLi key={index + 1}
-                                  onClick={() => {
-                                      dispatch(setActiveCategory(obj.category));
-                                      setCurPageNum(1);
-                                  }
-                    }
-                                  className={activeCategory === obj.category && 'active'}
-                    >{obj.text}</CategoriesLi>
-                )
+                <CategoriesLi key={index + 1}
+                              onClick={() => onCategoryClick(obj.category)}
+                              className={activeCategory === obj.category && 'active'}
+                >{obj.text}</CategoriesLi>)
             )}
         </CategoriesUl>
     );
