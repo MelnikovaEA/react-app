@@ -1,24 +1,28 @@
 import React, {useEffect, useState} from 'react';
 import {useContext} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {v4 as uuidv4} from "uuid";
 import StldCardsContainer from "../styled/cards/StldCardsContainer";
 import MonsterCard from "./MonsterCard";
-import {v4 as uuidv4} from "uuid";
 import MonsterCardSkeleton from "./MonsterCardSkeleton";
 import CategoriesSortContainer from "../categories/CategoriesSortContainer";
-import {InputDataContext, CurPageNumContext, ActiveCategoryContext} from "../../App";
+import {InputDataContext, CurPageNumContext } from "../../App";
 import Pagination from "../pagination/Pagination";
 
 const MonstersCardsContainer = () => {
 
-    const {inputData } = useContext(InputDataContext);
-    const { curPageNum, setCurPageNum } = useContext(CurPageNumContext);
-    const { activeCategory, setActiveCategory } = useContext(ActiveCategoryContext);
+    const activeCategory = useSelector((store) => store.category.activeCategory);
+    const selectedType = useSelector((store) => store.sort.selectedType);
+    const orderType = useSelector((store) => store.sort.orderType);
+
+    const dispatch = useDispatch();
+
+    const {inputData} = useContext(InputDataContext);
+    const {curPageNum, setCurPageNum} = useContext(CurPageNumContext);
 
     const [items, setItems] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [pagesQty, setPagesQty] = useState(2);
-    const [selectedType, setSelectedType] = useState({name: 'популярности', sortProp: "rating"});
-    const [orderType, setOrderType] = useState("asc");
     const searchData = inputData ? inputData : '';
 
     const categoryParam = activeCategory ? `category=${encodeURIComponent(activeCategory)}` : '';
@@ -57,18 +61,7 @@ const MonstersCardsContainer = () => {
 
     return (
         <>
-            <CategoriesSortContainer activeCategory={activeCategory}
-                                     onClickAtCategory={(i) => {
-                                         setActiveCategory(i);
-                                         setCurPageNum(1);
-                                     }}
-                                     selectedType={selectedType}
-                                     setSelectedType={(i) => {
-                                         setSelectedType(i);
-                                         setCurPageNum(curPageNum);
-                                     }}
-                                     setOrderType={(type) => setOrderType(type)}
-            />
+            <CategoriesSortContainer />
             <StldCardsContainer>
                 {isLoading ? skeletons : items.map((monster) => (
                     <MonsterCard key={uuidv4()}
@@ -82,8 +75,8 @@ const MonstersCardsContainer = () => {
                     />)
                 )}
             </StldCardsContainer>
-            <Pagination pagesQty={ pagesQty }
-                        curPageNum={ curPageNum }
+            <Pagination pagesQty={pagesQty}
+                        curPageNum={curPageNum}
                         setCurPageNum={setCurPageNum}
             />
         </>

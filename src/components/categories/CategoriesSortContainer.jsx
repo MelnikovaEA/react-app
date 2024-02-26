@@ -9,14 +9,11 @@ const Wrapper = styled.div`
   justify-content: space-between;
 `
 
-const CategoriesSortContainer = ({activeCategory, onClickAtCategory, selectedType, setSelectedType,
-                                     orderType, setOrderType}) => {
+const CategoriesSortContainer = () => {
     return (
         <Wrapper>
-            <Categories activeCategory={activeCategory} onClickAtCategory={onClickAtCategory}/>
-            <Sort selectedType={selectedType} setSelectedType={setSelectedType}
-                  setOrderType={setOrderType}
-            />
+            <Categories />
+            <Sort />
         </Wrapper>
     );
 };

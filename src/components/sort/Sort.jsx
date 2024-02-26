@@ -1,19 +1,28 @@
-import React, {useState} from 'react';
+import React, {useContext } from 'react';
 import StldSortArea, {StldSortLabel, StldSortPopUp} from "../styled/sort/StldSortArea";
 import {v4 as uuidv4} from "uuid";
+import { setSelectedType, setOrderType, setVisible } from "../../redux/slices/sortSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {CurPageNumContext} from "../../App";
 
-const Sort = ({selectedType, setSelectedType, setOrderType }) => {
+const Sort = () => {
+
+    const { curPageNum, setCurPageNum } = useContext(CurPageNumContext);
+
+    const visible = useSelector((store) => store.sort.visible);
+    const selectedType = useSelector((store) => store.sort.selectedType);
+    const dispatch = useDispatch();
+
     const variables = [
         {name: 'популярности', sortProp: 'rating'},
         {name: 'цене', sortProp: 'price'},
         {name: 'алфавиту', sortProp: 'name'},
     ];
 
-    const [visible, setVisible] = useState(false);
-
     const onVariableClick = (obj) => {
-        setSelectedType(obj);
-        setVisible(false);
+        dispatch(setSelectedType(obj));
+        setCurPageNum(curPageNum);
+        dispatch(setVisible(false));
     }
 
     return (
@@ -32,9 +41,9 @@ const Sort = ({selectedType, setSelectedType, setOrderType }) => {
                     />
                 </svg>
                 <b>Сортировка по:</b>
-                <span onClick={() => setVisible(!visible)}>{selectedType.name}</span>
-                <span onClick={() => setOrderType('asc')}> ↑</span>
-                <span onClick={() => setOrderType('desc')}> ↓</span>
+                <span onClick={() => dispatch(setVisible(!visible))}>{selectedType.name}</span>
+                <span onClick={() => dispatch(setOrderType('asc'))}> ↑</span>
+                <span onClick={() => dispatch(setOrderType('desc'))}> ↓</span>
             </StldSortLabel>
             {visible && (
                 <StldSortPopUp>

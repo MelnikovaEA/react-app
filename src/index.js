@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import store from "./redux/store";
+import { Provider } from "react-redux";
 import './index.css';
 import App from './App';
 import GlobalStyles from "./components/styled/GlobalStyles";
@@ -10,27 +12,28 @@ import Cart from "./components/cart/Cart";
 import EmptyCart from "./components/cart/EmptyCart";
 import NotFoundPage from "./components/NotFoundPage";
 
+
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <App />,
-        errorElement: <ErrorPage />,
+        element: <App/>,
+        errorElement: <ErrorPage/>,
         children: [
             {
                 path: "/",
-                element: <MonstersCardsContainer />,
+                element: <MonstersCardsContainer/>,
             },
             {
                 path: "cart",
-                element: <Cart />,
+                element: <Cart/>,
             },
             {
                 path: "empty-cart",
-                element: <EmptyCart />
+                element: <EmptyCart/>
             },
             {
                 path: "*",
-                element: <NotFoundPage />,
+                element: <NotFoundPage/>,
             },
         ]
     },
@@ -40,8 +43,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
     <React.StrictMode>
-        <GlobalStyles />
-        <RouterProvider router={router} />
+        <Provider store={store}>
+            <GlobalStyles/>
+            <RouterProvider router={router}/>
+        </Provider>
     </React.StrictMode>
 );
 

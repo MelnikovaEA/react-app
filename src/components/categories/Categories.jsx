@@ -1,5 +1,9 @@
 import {darken} from "polished";
 import styled from "styled-components";
+import {useSelector, useDispatch} from "react-redux";
+import {setActiveCategory} from "../../redux/slices/categorySlice";
+import {useContext} from "react";
+import {CurPageNumContext} from "../../App";
 
 const CategoriesUl = styled.ul`
   display: flex;
@@ -26,20 +30,32 @@ const CategoriesLi = styled.li`
   }
 `
 
-const Categories = ({activeCategory, onClickAtCategory}) => {
+const Categories = () => {
+
+    const {setCurPageNum} = useContext(CurPageNumContext);
+
+    const activeCategory = useSelector((store) => store.category.activeCategory);
+    const dispatch = useDispatch();
+
     const categories = [
-        { category: '', text: 'Все' },  { category: 'Огнедышащие', text: 'Огнедышащие' },
-        { category: 'Зеленые', text: 'Зеленые' }, { category: `С рожками`, text: `С\xa0рожками` },
-        { category: `Хитрые`, text: `Хитрые` }, { category: `В горошек`, text: `В\xa0горошек` },
-      ]
+        {category: '', text: 'Все'}, {category: 'Огнедышащие', text: 'Огнедышащие'},
+        {category: 'Зеленые', text: 'Зеленые'}, {category: `С рожками`, text: `С\xa0рожками`},
+        {category: `Хитрые`, text: `Хитрые`}, {category: `В горошек`, text: `В\xa0горошек`},
+    ]
 
     return (
         <CategoriesUl>
             {categories.map((obj, index) => (
-                <CategoriesLi key={index + 1}
-                              onClick={() => onClickAtCategory(obj.category)}
-                              className={activeCategory === obj.category && 'active'}
-                >{obj.text}</CategoriesLi>))}
+                    <CategoriesLi key={index + 1}
+                                  onClick={() => {
+                                      dispatch(setActiveCategory(obj.category));
+                                      setCurPageNum(1);
+                                  }
+                    }
+                                  className={activeCategory === obj.category && 'active'}
+                    >{obj.text}</CategoriesLi>
+                )
+            )}
         </CategoriesUl>
     );
 };

@@ -1,20 +1,18 @@
 import React, {useContext} from 'react';
 import {Link} from "react-router-dom";
-import StldHeader, {
-    StyledHeaderWrapper,
-    HeaderLogoDiv,
-    HeaderText,
-    HeaderDescription
-} from "../styled/header/StldHeader";
+import StldHeader, { StyledHeaderWrapper, HeaderLogoDiv, HeaderText, HeaderDescription } from "../styled/header/StldHeader";
 import StldHeaderCartDiv, {StldHeaterCartWrapper} from "../styled/header/StldHeaderCartDiv";
 import Search from "./Search";
-import {ActiveCategoryContext, CurPageNumContext, InputDataContext} from "../../App";
+import { CurPageNumContext, InputDataContext} from "../../App";
+import { setActiveCategory } from "../../redux/slices/categorySlice";
+import { useDispatch } from "react-redux";
 
 const Header = () => {
 
+    const dispatch = useDispatch();
+
     const { inputData, setInputData } = useContext(InputDataContext);
     const { setCurPageNum } = useContext(CurPageNumContext);
-    const { setActiveCategory } = useContext(ActiveCategoryContext);
 
     console.log('Header', inputData)
     return (
@@ -22,7 +20,7 @@ const Header = () => {
             <StyledHeaderWrapper>
                 <HeaderLogoDiv>
                     <Link to="/" style={{display: 'flex', justifyContent: 'center'}}
-                          onClick={()=> setActiveCategory("")}
+                          onClick={()=> dispatch(setActiveCategory(""))}
                     >
                         <img width="60" height="60" src="/images/fluffy-monsters-shop-logo.svg" alt="logo"/>
                     </Link>
