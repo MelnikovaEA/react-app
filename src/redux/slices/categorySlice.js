@@ -1,4 +1,4 @@
-import {createSlice} from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     activeCategory: ''
@@ -15,4 +15,4 @@ const categorySlice = createSlice({
 });
 
 export default categorySlice.reducer;
-export const { setActiveCategory } = categorySlice.actions;
+export const {setActiveCategory} = categorySlice.actions;

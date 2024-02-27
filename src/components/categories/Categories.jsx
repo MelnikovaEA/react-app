@@ -2,8 +2,8 @@ import {darken} from "polished";
 import styled from "styled-components";
 import {useSelector, useDispatch} from "react-redux";
 import {setActiveCategory} from "../../redux/slices/categorySlice";
-import {useContext} from "react";
-import {CurPageNumContext, InputDataContext, LocalInputDataContext} from "../../App";
+import { setCurPageNum } from "../../redux/slices/mainSlice";
+import { setInputData, setLocalInputData } from "../../redux/slices/searchSlice";
 
 const categories = [
     {category: '', text: 'Все'}, {category: 'Огнедышащие', text: 'Огнедышащие'},
@@ -38,18 +38,15 @@ const CategoriesLi = styled.li`
 
 const Categories = () => {
 
-    const {setCurPageNum} = useContext(CurPageNumContext);
-    const {setInputData} = useContext(InputDataContext);
-    const {setLocalInputData} = useContext(LocalInputDataContext);
+    const dispatch = useDispatch();
 
     const activeCategory = useSelector((store) => store.category.activeCategory);
-    const dispatch = useDispatch();
 
     const onCategoryClick = (value) => {
         dispatch(setActiveCategory(value));
-        setCurPageNum(1);
-        setInputData('');
-        setLocalInputData('');
+        dispatch(setCurPageNum(1));
+        dispatch(setInputData(''));
+        dispatch(setLocalInputData(''));
     }
 
     return (

@@ -1,27 +1,28 @@
-import SearchInput, {SearchCloseIcon, SearchInputWrapper} from "../styled/header/StldSearch";
-import {useRef, useEffect, useContext} from "react";
+import { useRef, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import SearchInput, { SearchCloseIcon, SearchInputWrapper } from "../styled/header/StldSearch";
 import useDebounce from "../../utils/hooks/useDebounce";
-import {LocalInputDataContext} from "../../App";
+import { setInputData, setLocalInputData } from "../../redux/slices/searchSlice";
+import { setCurPageNum } from "../../redux/slices/mainSlice";
 
-const Search = ({inputData, setInputData, setCurPageNum}) => {
-    console.log('Search input value', inputData);
+const Search = () => {
 
-    const {localInputData, setLocalInputData} = useContext(LocalInputDataContext);
+    const dispatch = useDispatch();
+    const inputRef = useRef(null);
+    const localInputData = useSelector(store => store.search.localInputData);
     const debouncedInputData = useDebounce(localInputData, 500);
 
     useEffect(() => {
-        setInputData(debouncedInputData); // Обновляем inputData через пропс
-        setCurPageNum(1);
-    }, [debouncedInputData, setInputData, setCurPageNum])
-
-    const inputRef = useRef(null);
+        dispatch(setInputData(debouncedInputData));
+        dispatch(setCurPageNum(1));
+    }, [debouncedInputData]);
 
     const onInputChange = (e) => {
-        setLocalInputData(e.target.value);
+        dispatch(setLocalInputData(e.target.value));
     }
 
     const onCloseIconClick = () => {
-        setLocalInputData('');
+        dispatch(setLocalInputData(''));
         inputRef.current.focus();
     }
 

@@ -1,4 +1,3 @@
-import React, {useState} from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import StldMonsterCardSelectorBlock from "../styled/cards/card/StldMonsterCardSelectorBlock";
 import StldMonsterCardDiv from "../styled/cards/card/StldMonsterCardDiv";
@@ -6,24 +5,27 @@ import StldMonsterCardImg from "../styled/cards/card/StldMonsterCardImg";
 import StldMonsterCardPriceAndButtonDiv from "../styled/cards/card/StldMonsterCardPriceAndButtonDiv";
 import StldMonsterCardPriceBlock from "../styled/cards/card/StldMonsterCardPriceBlock";
 import StldMonsterCardAddButton from "../styled/cards/card/StldMonsterCardAddButton";
+import { useDispatch, useSelector } from "react-redux";
+import { setItemCount, setSelectedType, setExtraProp } from "../../redux/slices/itemCardSlice";
 
 
 const MonsterCard = ({image, name, price, types, extraProps }) => {
-    const [monsterCount, setMonsterCount] = useState(0);
+    const dispatch = useDispatch();
 
-    const [selectedType, setSelectedType] = useState(0);
-    const [extraProp, setExtraProp] = useState([]);
+    const itemCount = useSelector(store=>store.itemCard.itemCount);
+    const selectedType = useSelector(store=>store.itemCard.selectedType);
+    const extraProp = useSelector(store=>store.itemCard.extraProp);
 
     const selectType = (index) => {
-        setSelectedType(index)
+        dispatch(setSelectedType(index));
     }
 
     const selectExtraProp = (index) => {
-        setExtraProp(extraProp => extraProp.includes(index) ? extraProp.filter(i => i !== index) : [...extraProp, index])
+        dispatch(setExtraProp(extraProp => extraProp.includes(index) ? extraProp.filter(i => i !== index) : [...extraProp, index]));
     }
 
     const onButtonClick = () => {
-        setMonsterCount(monsterCount+1)
+        dispatch(setItemCount(itemCount+1));
     }
 
     return (
@@ -62,7 +64,7 @@ const MonsterCard = ({image, name, price, types, extraProps }) => {
                     />
                 </svg>
                 <span>Добавить</span>
-                <i>{monsterCount}</i>
+                <i>{itemCount}</i>
             </StldMonsterCardAddButton>
         </StldMonsterCardPriceAndButtonDiv>
     </StldMonsterCardDiv>

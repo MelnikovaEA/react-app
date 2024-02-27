@@ -1,5 +1,4 @@
-import React, {useEffect, useState} from 'react';
-import {useContext} from "react";
+import React, { useEffect } from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import axios from "axios";
 import {v4 as uuidv4} from "uuid";
@@ -7,23 +6,22 @@ import StldCardsContainer from "../styled/cards/StldCardsContainer";
 import MonsterCard from "./MonsterCard";
 import MonsterCardSkeleton from "./MonsterCardSkeleton";
 import CategoriesSortContainer from "../categories/CategoriesSortContainer";
-import {InputDataContext, CurPageNumContext } from "../../App";
 import Pagination from "../pagination/Pagination";
+import { setItems, setCurPageNum, setPagesQty, setIsLoading } from "../../redux/slices/mainSlice";
 
 const MonstersCardsContainer = () => {
 
+    const dispatch = useDispatch();
+
+    const items = useSelector((store) => store.main.items);
+    const pagesQty = useSelector((store) => store.main.pagesQty);
+    const curPageNum = useSelector((store) => store.main.curPageNum);
+    const isLoading = useSelector((store) => store.main.isLoading);
     const activeCategory = useSelector((store) => store.category.activeCategory);
     const selectedType = useSelector((store) => store.sort.selectedType);
     const orderType = useSelector((store) => store.sort.orderType);
+    const inputData = useSelector((store) => store.search.inputData);
 
-    const dispatch = useDispatch();
-
-    const {inputData} = useContext(InputDataContext);
-    const {curPageNum, setCurPageNum} = useContext(CurPageNumContext);
-
-    const [items, setItems] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const [pagesQty, setPagesQty] = useState(2);
     const searchData = inputData ? inputData : '';
 
     const categoryParam = activeCategory ? `category=${encodeURIComponent(activeCategory)}` : '';
@@ -35,7 +33,7 @@ const MonstersCardsContainer = () => {
 
     useEffect(() => {
         console.log(items);
-        setIsLoading(true);
+        dispatch(setIsLoading(true));
         //запрос для мокапи, не работает поиск через search
         //`https://65ca191b3b05d29307dfae09.mockapi.io/items?category=${activeCategory || ''}&sortBy=${selectedType.sortProp}&order=${orderType}&search=${searchData}`
 
@@ -56,16 +54,16 @@ const MonstersCardsContainer = () => {
             .then(response => {
                 // Получаем заголовок X-Total-Count
                 const totalCount = response.headers['x-total-count'];
-                setPagesQty(Math.ceil(totalCount / 8)); // Предполагается, что на каждой странице 8 элементов
+                dispatch(setPagesQty(Math.ceil(totalCount / 8))); // Предполагается, что на каждой странице 8 элементов
                 return response.data;
             })
             .then(data => {
-                setItems(data);
-                setIsLoading(false);
+                dispatch(setItems(data));
+                dispatch(setIsLoading(false));
             })
             .catch(error => {
                 console.error('Ошибка при получении данных:', error.message);
-                setIsLoading(false);
+                dispatch(setIsLoading(false));
             });
         //window.scroll(0, 0);
     }, [activeCategory, selectedType, orderType, searchData, curPageNum]);

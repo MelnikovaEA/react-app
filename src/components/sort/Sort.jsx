@@ -1,9 +1,8 @@
-import React, {useContext } from 'react';
 import StldSortArea, {StldSortLabel, StldSortPopUp} from "../styled/sort/StldSortArea";
 import {v4 as uuidv4} from "uuid";
-import { setSelectedType, setOrderType, setVisible } from "../../redux/slices/sortSlice";
 import {useDispatch, useSelector} from "react-redux";
-import {CurPageNumContext} from "../../App";
+import { setSelectedType, setOrderType, setVisible } from "../../redux/slices/sortSlice";
+import { setCurPageNum } from "../../redux/slices/mainSlice";
 
 const variables = [
     {name: 'популярности', sortProp: 'rating'},
@@ -13,15 +12,16 @@ const variables = [
 
 const Sort = () => {
 
-    const { curPageNum, setCurPageNum } = useContext(CurPageNumContext);
+    const dispatch = useDispatch();
 
     const visible = useSelector((store) => store.sort.visible);
     const selectedType = useSelector((store) => store.sort.selectedType);
-    const dispatch = useDispatch();
+    const curPageNum = useSelector((store) => store.main.curPageNum);
+
 
     const onVariableClick = (obj) => {
         dispatch(setSelectedType(obj));
-        setCurPageNum(curPageNum);
+        dispatch(setCurPageNum(curPageNum));
         dispatch(setVisible(false));
     }
 

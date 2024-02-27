@@ -1,20 +1,17 @@
-import React, {useContext} from 'react';
 import {Link} from "react-router-dom";
 import StldHeader, { StyledHeaderWrapper, HeaderLogoDiv, HeaderText, HeaderDescription } from "../styled/header/StldHeader";
 import StldHeaderCartDiv, {StldHeaterCartWrapper} from "../styled/header/StldHeaderCartDiv";
 import Search from "./Search";
-import { CurPageNumContext, InputDataContext} from "../../App";
 import { setActiveCategory } from "../../redux/slices/categorySlice";
-import { useDispatch } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 const Header = () => {
 
     const dispatch = useDispatch();
-
-    const { inputData, setInputData } = useContext(InputDataContext);
-    const { setCurPageNum } = useContext(CurPageNumContext);
+    const inputData = useSelector(store => store.search.inputData);
 
     console.log('Header', inputData)
+
     return (
         <StldHeader>
             <StyledHeaderWrapper>
@@ -29,10 +26,7 @@ const Header = () => {
                         <HeaderDescription>cutest monsters for every taste</HeaderDescription>
                     </div>
                 </HeaderLogoDiv>
-                <Search inputData={inputData}
-                        setInputData={setInputData}
-                        setCurPageNum={setCurPageNum}
-                />
+                <Search />
                 <StldHeaterCartWrapper>
                     <StldHeaderCartDiv>
                         <Link to="cart">
