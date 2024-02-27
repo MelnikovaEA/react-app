@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    itemCount: 0,
     selectedType: 0,
     extraProp: [],
 }
@@ -10,9 +9,6 @@ const itemCardSlice = createSlice({
     name: 'itemCard',
     initialState,
     reducers: {
-        setItemCount: (state, action) => {
-            state.itemCount = action.payload;
-        },
         setSelectedType: (state, action) => {
             state.selectedType = action.payload;
         },
@@ -23,4 +19,4 @@ const itemCardSlice = createSlice({
 });
 
 export default itemCardSlice.reducer;
-export const { setItemCount, setSelectedType, setExtraProp } = itemCardSlice.actions;
+export const { setSelectedType, setExtraProp } = itemCardSlice.actions;

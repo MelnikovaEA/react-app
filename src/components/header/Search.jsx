@@ -9,6 +9,7 @@ const Search = () => {
 
     const dispatch = useDispatch();
     const inputRef = useRef(null);
+
     const localInputData = useSelector(store => store.search.localInputData);
     const debouncedInputData = useDebounce(localInputData, 500);
 

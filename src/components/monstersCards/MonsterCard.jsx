@@ -6,13 +6,16 @@ import StldMonsterCardPriceAndButtonDiv from "../styled/cards/card/StldMonsterCa
 import StldMonsterCardPriceBlock from "../styled/cards/card/StldMonsterCardPriceBlock";
 import StldMonsterCardAddButton from "../styled/cards/card/StldMonsterCardAddButton";
 import { useDispatch, useSelector } from "react-redux";
-import { setItemCount, setSelectedType, setExtraProp } from "../../redux/slices/itemCardSlice";
+import { setSelectedType, setExtraProp } from "../../redux/slices/itemCardSlice";
+import {useState} from "react";
 
 
-const MonsterCard = ({image, name, price, types, extraProps }) => {
+const MonsterCard = ({ image, name, price, types, extraProps }) => {
+
+    const [itemCount, setItemCount] = useState(1);
+
     const dispatch = useDispatch();
 
-    const itemCount = useSelector(store=>store.itemCard.itemCount);
     const selectedType = useSelector(store=>store.itemCard.selectedType);
     const extraProp = useSelector(store=>store.itemCard.extraProp);
 
@@ -21,11 +24,12 @@ const MonsterCard = ({image, name, price, types, extraProps }) => {
     }
 
     const selectExtraProp = (index) => {
-        dispatch(setExtraProp(extraProp => extraProp.includes(index) ? extraProp.filter(i => i !== index) : [...extraProp, index]));
+        let curProp = extraProp.includes(index) ? extraProp.filter(i => i !== index) : [...extraProp, index];
+        dispatch(setExtraProp(curProp));
     }
 
     const onButtonClick = () => {
-        dispatch(setItemCount(itemCount+1));
+       setItemCount(itemCount+1);
     }
 
     return (

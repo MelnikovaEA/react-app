@@ -13,10 +13,7 @@ const MonstersCardsContainer = () => {
 
     const dispatch = useDispatch();
 
-    const items = useSelector((store) => store.main.items);
-    const pagesQty = useSelector((store) => store.main.pagesQty);
-    const curPageNum = useSelector((store) => store.main.curPageNum);
-    const isLoading = useSelector((store) => store.main.isLoading);
+    const { items, pagesQty, curPageNum, isLoading }= useSelector((store) => store.main);
     const activeCategory = useSelector((store) => store.category.activeCategory);
     const selectedType = useSelector((store) => store.sort.selectedType);
     const orderType = useSelector((store) => store.sort.orderType);
@@ -34,21 +31,6 @@ const MonstersCardsContainer = () => {
     useEffect(() => {
         console.log(items);
         dispatch(setIsLoading(true));
-        //запрос для мокапи, не работает поиск через search
-        //`https://65ca191b3b05d29307dfae09.mockapi.io/items?category=${activeCategory || ''}&sortBy=${selectedType.sortProp}&order=${orderType}&search=${searchData}`
-
-        // fetch(url)
-        //     .then(response => {
-        //         // Получаем заголовок X-Total-Count
-        //         const totalCount = response.headers.get('X-Total-Count');
-        //         setPagesQty(Math.ceil(totalCount / 8)); // Предполагается, что на каждой странице 8 элементов
-        //         return response.json();
-        //     })
-        //     .then(data => {
-        //         console.log(data);
-        //         setItems(data);
-        //         setIsLoading(false);
-        //     });
 
         axios.get(url)
             .then(response => {
