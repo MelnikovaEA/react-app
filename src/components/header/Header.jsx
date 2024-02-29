@@ -2,13 +2,13 @@ import {Link} from "react-router-dom";
 import StldHeader, { StyledHeaderWrapper, HeaderLogoDiv, HeaderText, HeaderDescription } from "../styled/header/StldHeader";
 import StldHeaderCartDiv, {StldHeaterCartWrapper} from "../styled/header/StldHeaderCartDiv";
 import Search from "./Search";
-import { setActiveCategory } from "../../redux/slices/categorySlice";
+import { setActiveCategory, setSelectedType } from "../../redux/slices/filterSlice";
 import {useDispatch, useSelector} from "react-redux";
 
 const Header = () => {
 
     const dispatch = useDispatch();
-    const inputData = useSelector(store => store.search.inputData);
+    const inputData = useSelector(store => store.filter.inputData);
 
     console.log('Header', inputData)
 
@@ -17,7 +17,11 @@ const Header = () => {
             <StyledHeaderWrapper>
                 <HeaderLogoDiv>
                     <Link to="/" style={{display: 'flex', justifyContent: 'center'}}
-                          onClick={()=> dispatch(setActiveCategory(""))}
+                          onClick={()=> {
+                              dispatch(setActiveCategory(''));
+                              dispatch(setSelectedType('rating'));
+                          }
+                    }
                     >
                         <img width="60" height="60" src="/images/fluffy-monsters-shop-logo.svg" alt="logo"/>
                     </Link>
@@ -31,7 +35,7 @@ const Header = () => {
                     <StldHeaderCartDiv>
                         <Link to="cart">
                             <span>520 ₽</span>
-                            <div className="button__delimiter"></div>
+                            <div className="button__delimiter">-</div>
                             <svg
                                 width="18"
                                 height="18"

@@ -2,15 +2,14 @@ import { useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import SearchInput, { SearchCloseIcon, SearchInputWrapper } from "../styled/header/StldSearch";
 import useDebounce from "../../utils/hooks/useDebounce";
-import { setInputData, setLocalInputData } from "../../redux/slices/searchSlice";
-import { setCurPageNum } from "../../redux/slices/mainSlice";
+import { setCurPageNum, setInputData, setLocalInputData } from "../../redux/slices/filterSlice";
 
 const Search = () => {
 
     const dispatch = useDispatch();
     const inputRef = useRef(null);
 
-    const localInputData = useSelector(store => store.search.localInputData);
+    const localInputData = useSelector(store => store.filter.localInputData);
     const debouncedInputData = useDebounce(localInputData, 500);
 
     useEffect(() => {

@@ -1,13 +1,13 @@
 import StldPagination from "../styled/pagination/StldPagination";
 import { useDispatch, useSelector } from "react-redux";
-import { setCurPageNum } from "../../redux/slices/mainSlice";
+import { setCurPageNum } from "../../redux/slices/filterSlice";
 
 const Pagination = () => {
 
     const dispatch = useDispatch();
 
     const pagesQty = useSelector((store) => store.main.pagesQty);
-    const curPageNum = useSelector((store) => store.main.curPageNum);
+    const curPageNum = useSelector((store) => store.filter.curPageNum);
 
     console.log(pagesQty, curPageNum);
 
