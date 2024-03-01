@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StldMonsterCardAddButton = styled.button`
+const StldItemCardAddButton = styled.button`
   display: inline-block;
   background-color: orange;
   border-radius: 30px;
@@ -52,4 +52,4 @@ const StldMonsterCardAddButton = styled.button`
   }
 `
 
-export default StldMonsterCardAddButton;
+export default StldItemCardAddButton;

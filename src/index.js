@@ -7,10 +7,10 @@ import './index.css';
 import App from './App';
 import GlobalStyles from "./components/styled/GlobalStyles";
 import ErrorPage from "./components/ErrorPage";
-import MonstersCardsContainer from "./components/monstersCards/MonstersCardsContainer";
 import Cart from "./components/cart/Cart";
 import EmptyCart from "./components/cart/EmptyCart";
 import NotFoundPage from "./components/NotFoundPage";
+import AppBody from "./components/body/AppBody";
 
 
 const router = createBrowserRouter([
@@ -21,7 +21,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <MonstersCardsContainer/>,
+                element: <AppBody/>,
             },
             {
                 path: "cart",

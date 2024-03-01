@@ -3,7 +3,6 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     selectedType: "rating",
     orderType: "asc",
-    visible: false,
     activeCategory: '',
     curPageNum: 1,
     inputData: '',
@@ -19,9 +18,6 @@ const filterSlice = createSlice({
         },
         setOrderType: (state, action) => {
             state.orderType = action.payload
-        },
-        setVisible: (state, action) => {
-            state.visible = action.payload
         },
         setActiveCategory: (state, action) => {
             state.activeCategory = action.payload;
@@ -44,4 +40,4 @@ const filterSlice = createSlice({
 });
 
 export default filterSlice.reducer;
-export const { setActiveCategory, setSelectedType, setOrderType, setVisible, setCurPageNum, setInputData, setLocalInputData, setQueryData  } = filterSlice.actions;
+export const { setActiveCategory, setSelectedType, setOrderType, setCurPageNum, setInputData, setLocalInputData, setQueryData  } = filterSlice.actions;

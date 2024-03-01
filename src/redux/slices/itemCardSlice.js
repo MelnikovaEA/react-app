@@ -1,11 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    selectedType: 0,
-    extraProp: [],
+    id: undefined,
+    image: "",
+    name: "",
+    price: 0,
+    magic: false,
+    clever: false,
+    lazy: false,
+    strange: false,
 }
 
-const itemCardSlice = createSlice({
+const cartItemSlice = createSlice({
     name: 'itemCard',
     initialState,
     reducers: {
@@ -18,5 +24,5 @@ const itemCardSlice = createSlice({
     }
 });
 
-export default itemCardSlice.reducer;
-export const { setSelectedType, setExtraProp } = itemCardSlice.actions;
+export default cartItemSlice.reducer;
+export const { setSelectedType, setExtraProp } = cartItemSlice.actions;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StldMonsterCardSelectorBlock = styled.div`
+const StldItemCardSelectorBlock = styled.div`
   display: flex;
   background-color: #f3f3f3;
   border-radius: 10px;
@@ -35,7 +35,7 @@ const StldMonsterCardSelectorBlock = styled.div`
       &:hover {
         //background: #ffffff;
         border: 3px solid white;
-        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
         border-radius: 5px;
         cursor: auto;
       }
@@ -43,4 +43,4 @@ const StldMonsterCardSelectorBlock = styled.div`
   }
 `
 
-export default StldMonsterCardSelectorBlock;
+export default StldItemCardSelectorBlock;

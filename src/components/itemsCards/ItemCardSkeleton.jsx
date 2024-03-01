@@ -2,7 +2,7 @@ import React from 'react';
 import Skeleton from 'react-loading-skeleton';
 import "react-loading-skeleton/dist/skeleton.css";
 
-const MonsterCardSkeleton = () => {
+const ItemCardSkeleton = () => {
     return (
         <div style={{width: '370px', margin:'15px 10px', boxShadow: '0px 5px 15px rgba(0, 0, 0, 0.09)',
             borderRadius: '30px', boxSizing: 'border-box'}}>
@@ -24,4 +24,4 @@ const MonsterCardSkeleton = () => {
     );
 };
 
-export default MonsterCardSkeleton;
+export default ItemCardSkeleton;
