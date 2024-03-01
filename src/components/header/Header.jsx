@@ -8,14 +8,12 @@ import {useDispatch, useSelector} from "react-redux";
 const Header = () => {
 
     const dispatch = useDispatch();
-    const inputData = useSelector(store => store.filter.inputData);
+    const {order, price, total } = useSelector(store => store.cart);
 
     const onLogoClick = () => {
         dispatch(setActiveCategory(''));
         dispatch(setSelectedType('rating'));
     }
-
-    console.log('Header', inputData)
 
     return (
         <StldHeader>
@@ -35,10 +33,10 @@ const Header = () => {
                 <StldHeaterCartWrapper>
                     <StldHeaderCartDiv>
                         <Link to="cart">
-                            <span>520 ₽</span>
+                            <span>{price} ₽</span>
                             <div className="button__delimiter">-</div>
                             <img src="/images/cart/cart-on-button.svg" alt="img"/>
-                            <span>3</span>
+                            <span>{total}</span>
                         </Link>
                     </StldHeaderCartDiv>
                 </StldHeaterCartWrapper>

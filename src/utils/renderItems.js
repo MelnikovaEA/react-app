@@ -7,15 +7,16 @@ import NotFoundPage from "../components/NotFoundPage";
 
 export const renderItems = (items) => {
     if (items.length>0) {
-        return items.map((monster) => (
+        return items.map((item) => (
             <ItemCard key={uuidv4()}
-                      name={monster.name}
-                      image={monster.image}
-                      price={monster.price}
-                      types={monster.types}
-                      extraProps={monster.extraProps}
+                      id={item.id}
+                      name={item.name}
+                      image={item.image}
+                      price={item.price}
+                      types={item.types}
+                      extraProps={item.extraProps}
                 //это можно написать короче через spread, но я не буду
-                // {...monster}
+                // {...item}
             />))
     } else {
         return <NotFoundPage />

@@ -9,24 +9,25 @@ import CartDiv, {
 } from "../styled/cart/StldCart";
 import CartItem from "./CartItem";
 import {Link} from "react-router-dom";
+import {renderCart} from "../../utils/renderCart";
+import {useSelector} from "react-redux";
 
 const Cart = () => {
+
+    const order = useSelector(store=> store.cart.order);
+
     return (<CartWrapperDiv>
             <CartDiv>
                 <CartTopDiv>
                     <CartHeader className="content__title">
-                        <CartIcon src="/images/cart/cart.svg" alt="Trash Icon"/>
-                        Корзина
-                    </CartHeader>
+                        <CartIcon src="/images/cart/cart.svg" alt="Trash Icon"/>Корзина</CartHeader>
                     <h3>
                         <img src="/images/cart/cart.svg" alt="Trash Icon" style={{width: '20px', height: '20px'}}/>
                         Очистить корзину
                     </h3>
                 </CartTopDiv>
                 <div className="content__items">
-                    <CartItem/>
-                    <CartItem/>
-                    <CartItem/>
+                    {renderCart(order)}
                 </div>
                 <div className="cart__bottom">
                     <CartOrderDetails>

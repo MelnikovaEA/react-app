@@ -13,7 +13,8 @@ const StldItemCardSelectorBlock = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-left: 0;
+    padding: 0;
+    margin: 3px;
 
     &:first-of-type {
       margin-bottom: 6px;
@@ -27,11 +28,24 @@ const StldItemCardSelectorBlock = styled.div`
       font-size: 14px;
       border-radius: 5px;
       border: 3px solid transparent;
-      
-      &.active{
+
+      &span {
+        margin: 0;
+        padding: 2px;
+        font-size: 14px;
+      }
+
+      &.active {
         background: #ffffff;
       }
-      
+
+      &.active.select {
+        &::before {
+          content: '\\2713'; /* код символа для галочки */
+          margin-right: 0.5em;
+        }
+      }
+
       &:hover {
         //background: #ffffff;
         border: 3px solid white;
@@ -40,6 +54,17 @@ const StldItemCardSelectorBlock = styled.div`
         cursor: auto;
       }
     }
+
+    .prop {
+      padding: 4px 10px;
+    }
+
+    .prop-span {
+      display: block;
+      color: darkgrey;
+      font-size: 10px;
+    }
+    
   }
 `
 

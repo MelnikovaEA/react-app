@@ -5,28 +5,29 @@ import CartItemDiv, {
     CartItemInfo, CartItemSmallButton, CartItemSum
 } from "../styled/cart/StldCartItem";
 
-const CartItem = () => {
+const CartItem = ({img, name, extProps, type, qty, price}) => {
+    console.log(img, name, extProps, type, qty, price)
     return (
         <CartItemDiv>
                 <CartItemImg
-                    src="/images/cart/cart.svg"
-                    alt="Monster"
+                    src={img}
+                    alt="img"
                 />
             <CartItemInfo>
-                <h3>Sunny</h3>
-                <p>волшебный, хитрый</p>
+                <h3>{name}</h3>
+                <p>{`${type}, ${extProps && extProps}`}</p>
             </CartItemInfo>
             <CartItemCount>
                 <CartItemSmallButton>
                   -
                 </CartItemSmallButton>
-                <b>2</b>
+                <b>{qty}</b>
                 <CartItemSmallButton>
                     +
                 </CartItemSmallButton>
             </CartItemCount>
             <CartItemSum>
-                <b>770 ₽</b>
+                <b>{price} ₽</b>
             </CartItemSum>
             <CartItemSmallButton className={'delete'}>
                 x
