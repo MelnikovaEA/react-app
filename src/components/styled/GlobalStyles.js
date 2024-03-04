@@ -13,6 +13,10 @@ const GlobalStyles = createGlobalStyle`
     list-style-type: none;
   }
   
+  h1, h2, h3, p {
+    margin: 0;
+  }
+  
   button {
     display: inline-block;
     background-color: orange;

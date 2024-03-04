@@ -5,12 +5,12 @@ import CartItemDiv, {
     CartItemInfo, CartItemSmallButton, CartItemSum
 } from "../styled/cart/StldCartItem";
 
-const CartItem = ({img, name, extProps, type, qty, price}) => {
-    console.log(img, name, extProps, type, qty, price)
+const CartItem = ({image, name, extProps, type, qty, price}) => {
+    console.log(image, name, extProps, type, qty, price)
     return (
         <CartItemDiv>
                 <CartItemImg
-                    src={img}
+                    src={image}
                     alt="img"
                 />
             <CartItemInfo>

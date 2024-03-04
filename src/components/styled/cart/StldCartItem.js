@@ -1,8 +1,14 @@
 import styled from "styled-components";
 
 const CartItemDiv = styled.div`
-  display: flex;
+  width: 80%;
+  margin: 0 auto;
+  display: grid;
+  justify-items: center;
   align-items: center;
+  grid-template-columns: 1fr 2.5fr 3fr 1fr 0.7fr;
+  grid-template-rows: 1fr;
+  gap: 0 0;
   border-bottom: 1px solid darkgrey;
 `
 
@@ -10,17 +16,18 @@ const CartItemDiv = styled.div`
 export const CartItemImg = styled.img`
   width: 120px;
   height: 120px;
-  align-self: center;
 `
 
 export const CartItemInfo = styled.div`
- 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `
 
 export const CartItemCount = styled.div`
   display: flex;
-  align-items: baseline;
-  margin-left: 150px;
+  align-items: center;
+  margin: 0 auto;
 
   b {
     margin: 0 15px;
@@ -28,7 +35,7 @@ export const CartItemCount = styled.div`
 `
 
 export const CartItemSum = styled.div`
-  margin: 0 50px 0 100px;
+  
 `
 
 export const CartItemSmallButton = styled.button`
