@@ -3,6 +3,7 @@ import styled from "styled-components";
 const EmptyCartContainer = styled.div`
   align-items: center;
   text-align: center;
+  padding: 10vh;
 `
 
 export const EmptyCardButton = styled.button`
@@ -11,7 +12,8 @@ export const EmptyCardButton = styled.button`
 `
 
 export const EmptyCartImg = styled.img`
-width: 130px;
+  width: 130px;
+  padding: 100px;
 `
 
 export default EmptyCartContainer;

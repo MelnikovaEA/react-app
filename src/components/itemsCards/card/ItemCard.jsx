@@ -63,6 +63,7 @@ const ItemCard = ({id, image, name, price, types, extraProps}) => {
             ...addedItem,
             extraProps: selectedExtraProps,
             price: totalPrice,
+            totPrice: totalPrice
         });
     }, [selectedExtraProps, totalPrice]);
 

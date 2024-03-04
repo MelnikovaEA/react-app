@@ -5,8 +5,23 @@ import CartItemDiv, {
     CartItemInfo, CartItemSmallButton, CartItemSum
 } from "../styled/cart/StldCartItem";
 
-const CartItem = ({image, name, extProps, type, qty, price}) => {
-    console.log(image, name, extProps, type, qty, price)
+const CartItem = ({image, name, extProps, type, qty, totPrice}) => {
+
+
+
+    // const onClearBtnHandleClick = (arr, obj) => {
+    //
+    // }
+    //
+    // const onAddBtnHandleClick = (arr) => {
+    //
+    // }
+    //
+    // const onDeleteBtnHandleClick = (arr) => {
+    //
+    // }
+
+
     return (
         <CartItemDiv>
                 <CartItemImg
@@ -27,7 +42,7 @@ const CartItem = ({image, name, extProps, type, qty, price}) => {
                 </CartItemSmallButton>
             </CartItemCount>
             <CartItemSum>
-                <b>{price} ₽</b>
+                <b>{totPrice} ₽</b>
             </CartItemSum>
             <CartItemSmallButton className={'delete'}>
                 x

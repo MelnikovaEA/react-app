@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const CartDiv = styled.div`
-  
+  width: 80%;
 `
 
 export const CartTopDiv = styled.div`
@@ -28,7 +28,7 @@ export const CartIcon = styled.img`
 
 export const CartOrderDetails = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   span {
     font-size: 20px;
     margin: 5px;
@@ -37,7 +37,7 @@ export const CartOrderDetails = styled.div`
 
 export const CartButtonsDiv = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   padding-top: 30px;
 `
 
