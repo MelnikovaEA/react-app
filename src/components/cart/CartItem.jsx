@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import CartItemDiv, {
     CartItemCount,
     CartItemImg,
@@ -8,26 +8,37 @@ import CartItemDiv, {
 } from "../styled/cart/StldCartItem";
 import _ from 'lodash'
 import {useDispatch, useSelector} from "react-redux";
-import {setOrder} from "../../redux/slices/cartSlice";
+import {setOrder, setPrice, setTotal} from "../../redux/slices/cartSlice";
 
-const CartItem = ({image, name, extProps, type, qty, totPrice}) => {
+const CartItem = ({hashId, image, name, extProps, type, qty, totPrice}) => {
 
     const dispatch = useDispatch();
-    const order = useSelector(store => store.cart.order)
+    const order = useSelector(store => store.cart.order);
 
-    const onClearBtnHandleClick = (arr) => {
-        const newArr = arr.filter(item => item.name !== name && item.extProps !== extProps
-            && item.totPrice !== totPrice);
-        console.log('УДАЛИТЬ ТОВАР', newArr);
+    useEffect(()=>{
+        dispatch(setPrice());
+        dispatch(setTotal());
+    }, [order]);
+
+    const handleDelete = (arr) => {
+        const newArr = arr.filter(item => item.hashId !== hashId);
         dispatch(setOrder(newArr));
-    }//ВОТ ТУТ ЗАКОНЧИЛА
-
-    const onAddBtnHandleClick = (arr) => {
-
     }
 
-    const onDeleteBtnHandleClick = (arr) => {
+    const handleAdd = (arr) => {
+        const index = arr.findIndex(item => item.hashId === hashId);
+        const newObj = {...arr[index], qty: arr[index].qty + 1, totPrice: arr[index].totPrice + arr[index].price};
+        const newArr = [...arr.slice(0, index), newObj, ...arr.slice(index + 1)];
+        dispatch(setOrder(newArr));
+    }
 
+    const handleSubtract = (arr) => {
+        const index = arr.findIndex(item => item.hashId === hashId);
+        if (arr[index].qty > 1) {
+            const newObj = {...arr[index], qty: arr[index].qty - 1, totPrice: arr[index].totPrice - arr[index].price};
+            const newArr = [...arr.slice(0, index), newObj, ...arr.slice(index + 1)];
+            dispatch(setOrder(newArr));
+        }
     }
 
     return (
@@ -41,11 +52,11 @@ const CartItem = ({image, name, extProps, type, qty, totPrice}) => {
                 <p>{`${type}, ${extProps && extProps}`}</p>
             </CartItemInfo>
             <CartItemCount>
-                <CartItemSmallButton>
+                <CartItemSmallButton onClick={() => handleSubtract(order)}>
                     -
                 </CartItemSmallButton>
                 <b>{qty}</b>
-                <CartItemSmallButton>
+                <CartItemSmallButton onClick={() => handleAdd(order)}>
                     +
                 </CartItemSmallButton>
             </CartItemCount>
@@ -53,7 +64,7 @@ const CartItem = ({image, name, extProps, type, qty, totPrice}) => {
                 <b>{totPrice} ₽</b>
             </CartItemSum>
             <CartItemSmallButton className={'delete'}
-                                 onClick={() => onClearBtnHandleClick(order)}
+                                 onClick={() => handleDelete(order)}
             >
                 x
             </CartItemSmallButton>

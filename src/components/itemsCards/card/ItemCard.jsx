@@ -6,14 +6,14 @@ import StldItemCardImg from "../../styled/cards/card/StldItemCardImg";
 import StldItemCardPriceAndButtonDiv from "../../styled/cards/card/StldItemCardPriceAndButtonDiv";
 import StldItemCardPriceBlock from "../../styled/cards/card/StldItemCardPriceBlock";
 import StldItemCardAddButton from "../../styled/cards/card/StldItemCardAddButton";
-import { setOrder, setPrice, setTotal  } from "../../../redux/slices/cartSlice";
+import {setOrder, setPrice, setTotal} from "../../../redux/slices/cartSlice";
 import {useDispatch, useSelector} from "react-redux";
-import { checkCart, } from "../../../utils/renderCart";
+import {checkCart, createCartItemId} from "../../../utils/renderCart";
 
 const ItemCard = ({id, image, name, price, types, extraProps}) => {
 
     const dispatch = useDispatch();
-    const order = useSelector(store=> store.cart.order);
+    const order = useSelector(store => store.cart.order);
 
     const prices = {plain: price, magic: 500, clever: 1000, lazy: 99, strange: 350};
 
@@ -21,16 +21,11 @@ const ItemCard = ({id, image, name, price, types, extraProps}) => {
     const [selectedType, setSelectedType] = useState('plain');
     const [selectedBtn, setSelectedBtn] = useState(null);
     const [selectedExtraProps, setSelectedExtraProps] = useState([]);
-
+    const [hashId, setHashId] = useState('');
     const [totalPrice, setTotalPrice] = useState(price);
 
-    const createCartItemId = (id) => {
-        return `${id}_${uuidv4()}`;
-    };
-    const hashId = createCartItemId(id);
-
     const [addedItem, setAddedItem] = useState({
-        hashId,
+        hashId: hashId,
         id,
         image,
         name,
@@ -57,17 +52,22 @@ const ItemCard = ({id, image, name, price, types, extraProps}) => {
         setAddedProps({...addedProps, [propKey]: !addedProps[propKey]});
         addedProps[propKey]
             ? setTotalPrice(totalPrice - prices[propKey])
-            : setTotalPrice(totalPrice + prices[propKey])
+            : setTotalPrice(totalPrice + prices[propKey]);
     }
+
+    useEffect(() => {
+        setHashId(createCartItemId(id, selectedType, addedProps));
+    }, [selectedType, addedProps]);
 
     useEffect(() => {
         setAddedItem({
             ...addedItem,
             extraProps: selectedExtraProps,
             price: totalPrice,
-            totPrice: totalPrice
+            totPrice: totalPrice,
+            hashId: hashId
         });
-    }, [selectedExtraProps, totalPrice]);
+    }, [selectedExtraProps, totalPrice, hashId]);
 
     const typesItems = (arr) => {
         return arr.map((obj) => {
@@ -99,10 +99,9 @@ const ItemCard = ({id, image, name, price, types, extraProps}) => {
     }
 
     const onAddButtonClick = (arr, obj) => {
-       dispatch(setOrder(checkCart(arr, obj)));
-       dispatch(setPrice(obj.price));
-       dispatch(setTotal());
-        console.log(arr, obj);
+        dispatch(setOrder(checkCart(arr, obj)));
+        dispatch(setPrice(obj.price));
+        dispatch(setTotal());
     }
 
     return (
@@ -119,7 +118,7 @@ const ItemCard = ({id, image, name, price, types, extraProps}) => {
             </StldItemCardSelectorBlock>
             <StldItemCardPriceAndButtonDiv>
                 <StldItemCardPriceBlock>{totalPrice} ₽</StldItemCardPriceBlock>
-                <StldItemCardAddButton onClick={()=>onAddButtonClick(order, addedItem)}>
+                <StldItemCardAddButton onClick={() => onAddButtonClick(order, addedItem)}>
                     <img src="/images/add-icon.svg" alt="img"/>
                     <span>Добавить</span>
                 </StldItemCardAddButton>

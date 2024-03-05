@@ -38,7 +38,7 @@ export const CartOrderDetails = styled.div`
 export const CartButtonsDiv = styled.div`
   display: flex;
   justify-content: space-around;
-  padding-top: 30px;
+  padding: 30px 0 30px 0;
 `
 
 export default CartDiv;

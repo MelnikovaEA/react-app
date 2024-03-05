@@ -12,7 +12,7 @@ const Cart = () => {
 
     useEffect(()=>{
         renderCart(order);
-    }, [order])
+    }, [order]);
 
     return (<CartWrapperDiv>
             {order.length > 0 ?
