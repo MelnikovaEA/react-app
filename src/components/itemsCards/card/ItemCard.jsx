@@ -24,7 +24,13 @@ const ItemCard = ({id, image, name, price, types, extraProps}) => {
 
     const [totalPrice, setTotalPrice] = useState(price);
 
+    const createCartItemId = (id) => {
+        return `${id}_${uuidv4()}`;
+    };
+    const hashId = createCartItemId(id);
+
     const [addedItem, setAddedItem] = useState({
+        hashId,
         id,
         image,
         name,
@@ -34,10 +40,6 @@ const ItemCard = ({id, image, name, price, types, extraProps}) => {
         qty: 1,
         totPrice: totalPrice
     });
-
-    useEffect(()=>{
-
-    }, [order])
 
     const onTypeHandleClick = (typeKey) => {
         setSelectedType(typeKey);

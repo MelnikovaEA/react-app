@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import CartDiv, { CartButtonsDiv, CartHeader, CartIcon, CartOrderDetails, CartTopDiv, CartWrapperDiv } from "../styled/cart/StldCart";
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
@@ -9,6 +9,10 @@ import EmptyCart from "./EmptyCart";
 const Cart = () => {
     const dispatch = useDispatch();
     const {order, total, price} = useSelector(store=> store.cart);
+
+    useEffect(()=>{
+        renderCart(order);
+    }, [order])
 
     return (<CartWrapperDiv>
             {order.length > 0 ?

@@ -1,5 +1,5 @@
-
 import CartItem from "../components/cart/CartItem";
+import {v4 as uuidv4} from 'uuid';
 
 const checkExtraProps = (arr1, arr2) => {
     return arr1.length === arr2.length && arr1.every(value => arr2.some(item => item === value));
@@ -31,6 +31,7 @@ export const renderCart = (items) =>{
      return items.map(item=> {
         let extProps = item.extraProps ? item.extraProps.join(', ') : '';
         let type = item.magic ? 'волшебный' : 'обычный';
-        return <CartItem {...item} extProps={extProps} type={type}/>
+        return <CartItem key={uuidv4()}
+                         {...item} extProps={extProps} type={type}/>
     })
 }
