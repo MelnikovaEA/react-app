@@ -34,7 +34,7 @@ const Cart = () => {
                         <span> Сумма заказа: <b>{price} ₽</b> </span>
                     </CartOrderDetails>
                     <CartButtonsDiv>
-                        <Link to={'/'}>
+                        <Link to='/'>
                             <button>
                                 <span>Вернуться назад</span>
                             </button>

@@ -11,7 +11,11 @@ const StldItemCardAddButton = styled.button`
   /*transition: background-color duration ease-in-out, border-color duration ease-in-out;*/
   border: 1px solid transparent;
 
-
+  &:active {
+    background-color: #f0a535;
+    transform: translateY(1px);
+  }
+  
   span {
     color: #fff;
     padding: 0 10px;
@@ -20,15 +24,6 @@ const StldItemCardAddButton = styled.button`
     &:hover {
       color: crimson;
     }
-  }
-
-  //:hover {
-  //  background-color: #f0a535;
-  //}
-  
-  :active {
-    background-color: #f0a535;
-    transform: translateY(1px);
   }
   
   i {

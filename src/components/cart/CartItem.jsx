@@ -8,14 +8,14 @@ import CartItemDiv, {
 } from "../styled/cart/StldCartItem";
 import _ from 'lodash'
 import {useDispatch, useSelector} from "react-redux";
-import { setPrice, setTotal, removeFromCart, incrementQty, decrementQty} from "../../redux/slices/cartSlice";
+import {setPrice, setTotal, removeFromCart, incrementQty, decrementQty} from "../../redux/slices/cartSlice";
 
 const CartItem = ({hashId, image, name, extProps, type, qty, totPrice}) => {
 
     const dispatch = useDispatch();
     const order = useSelector(store => store.cart.order);
 
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(setPrice());
         dispatch(setTotal());
     }, [order]);
@@ -34,10 +34,13 @@ const CartItem = ({hashId, image, name, extProps, type, qty, totPrice}) => {
 
     return (
         <CartItemDiv>
-            <CartItemImg src={image} alt="img" />
+            <CartItemImg src={image} alt="img"/>
             <CartItemInfo>
                 <h3>{name}</h3>
-                <p>{`${type} ${extProps && extProps}`}</p>
+                <div>
+                    <span>{type}</span>
+                    <span>{extProps && extProps}</span>
+                </div>
             </CartItemInfo>
             <CartItemCount>
                 <CartItemSmallButton onClick={handleSubtract}> - </CartItemSmallButton>

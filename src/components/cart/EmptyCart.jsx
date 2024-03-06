@@ -11,7 +11,7 @@ const EmptyCart = () => {
                 </p>
                 <EmptyCartImg src="/images/cart/empty-cart.svg" alt="Empty cart"/>
 
-                <Link to="/" style={{display: 'flex', justifyContent: 'center'}}>
+                <Link to='/' style={{display: 'flex', justifyContent: 'center'}}>
                     <EmptyCardButton><span>На&nbsp;главную</span></EmptyCardButton>
                 </Link>
 

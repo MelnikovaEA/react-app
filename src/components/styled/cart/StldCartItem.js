@@ -22,6 +22,11 @@ export const CartItemInfo = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  
+ span{
+    justify-content: center;
+    display: flex;
+  }
 `
 
 export const CartItemCount = styled.div`

@@ -22,7 +22,7 @@ const ItemCard = ({id, image, name, price, types, extraProps}) => {
     const [selectedType, setSelectedType] = useState('plain');
     const [selectedBtn, setSelectedBtn] = useState(null);
     const [hashId, setHashId] = useState('');
-    const [totalPrice, setTotalPrice] = useState(price);
+    const [totalItemPrice, setTotalItemPrice] = useState(price);
 
     const [addedItem, setAddedItem] = useState({
         hashId: hashId,
@@ -31,29 +31,10 @@ const ItemCard = ({id, image, name, price, types, extraProps}) => {
         name,
         magic: false,
         extraProps: selectedExtraProps,
-        price: totalPrice,
+        price: totalItemPrice,
         qty: 1,
-        totPrice: totalPrice
+        totPrice: totalItemPrice
     });
-
-    const onTypeHandleClick = (typeKey) => {
-        setSelectedType(typeKey);
-        if (selectedBtn !== typeKey) {
-            setAddedItem({...addedItem, magic: !addedItem.magic});
-            addedItem.magic
-                ? setTotalPrice(totalPrice - prices.magic)
-                : setTotalPrice(totalPrice + prices.magic)
-        }
-        setSelectedBtn(typeKey);
-    }
-
-    const onPropHandleClick = (propKey, propValue) => {
-        selectExtraProp(propValue);
-        setAddedProps({...addedProps, [propKey]: !addedProps[propKey]});
-        addedProps[propKey]
-            ? setTotalPrice(totalPrice - prices[propKey])
-            : setTotalPrice(totalPrice + prices[propKey]);
-    }
 
     useEffect(() => {
         setHashId(createCartItemId(id, selectedType, addedProps));
@@ -63,11 +44,11 @@ const ItemCard = ({id, image, name, price, types, extraProps}) => {
         setAddedItem({
             ...addedItem,
             extraProps: selectedExtraProps,
-            price: totalPrice,
-            totPrice: totalPrice,
+            price: totalItemPrice,
+            totPrice: totalItemPrice,
             hashId: hashId
         });
-    }, [selectedExtraProps, totalPrice, hashId]);
+    }, [selectedExtraProps, totalItemPrice, hashId]);
 
     const typesItems = (arr) => {
         return arr.map((obj) => {
@@ -79,17 +60,35 @@ const ItemCard = ({id, image, name, price, types, extraProps}) => {
         })
     }
 
+    const onTypeHandleClick = (typeKey) => {
+        setSelectedType(typeKey);
+        if (selectedBtn !== typeKey) {
+            setAddedItem({...addedItem, magic: !addedItem.magic});
+            addedItem.magic
+                ? setTotalItemPrice(totalItemPrice - prices.magic)
+                : setTotalItemPrice(totalItemPrice + prices.magic)
+        }
+        setSelectedBtn(typeKey);
+    }
+
     const extraPropsItems = (arr) => {
         return arr.map((obj) => {
             const [key, value] = Object.entries(obj)[0];
             return <li key={uuidv4()}
                        className={selectedExtraProps.includes(value) ? 'active prop' : 'prop'}
-                       onClick={() => onPropHandleClick(key, value)}
-            >
+                       onClick={() => onPropHandleClick(key, value)}>
                 <span>{value}</span>
                 <span className='prop-span'>+ {prices[key]} ₽</span>
             </li>
         })
+    }
+
+    const onPropHandleClick = (propKey, propValue) => {
+        selectExtraProp(propValue);
+        setAddedProps({...addedProps, [propKey]: !addedProps[propKey]});
+        addedProps[propKey]
+            ? setTotalItemPrice(totalItemPrice - prices[propKey])
+            : setTotalItemPrice(totalItemPrice + prices[propKey]);
     }
 
     const selectExtraProp = (item) => {
@@ -117,10 +116,10 @@ const ItemCard = ({id, image, name, price, types, extraProps}) => {
                 </ul>
             </StldItemCardSelectorBlock>
             <StldItemCardPriceAndButtonDiv>
-                <StldItemCardPriceBlock>{totalPrice} ₽</StldItemCardPriceBlock>
+                <StldItemCardPriceBlock>{totalItemPrice} ₽</StldItemCardPriceBlock>
                 <StldItemCardAddButton onClick={() => onAddButtonClick(addedItem)}>
-                    <img src="/images/add-icon.svg" alt="img"/>
-                    <span>Добавить</span>
+                    {/*<img src="/images/add-icon.svg" alt="img"/>*/}
+                    <span>В корзину</span>
                 </StldItemCardAddButton>
             </StldItemCardPriceAndButtonDiv>
         </StldItemCardDiv>
