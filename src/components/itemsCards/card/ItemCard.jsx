@@ -6,21 +6,21 @@ import StldItemCardImg from "../../styled/cards/card/StldItemCardImg";
 import StldItemCardPriceAndButtonDiv from "../../styled/cards/card/StldItemCardPriceAndButtonDiv";
 import StldItemCardPriceBlock from "../../styled/cards/card/StldItemCardPriceBlock";
 import StldItemCardAddButton from "../../styled/cards/card/StldItemCardAddButton";
-import {setOrder, setPrice, setTotal} from "../../../redux/slices/cartSlice";
-import {useDispatch, useSelector} from "react-redux";
-import {checkCart, createCartItemId} from "../../../utils/renderCart";
+import {setPrice, setTotal} from "../../../redux/slices/cartSlice";
+import {useDispatch} from "react-redux";
+import {addToCart} from "../../../redux/slices/cartSlice";
+import {createCartItemId} from "../../../utils/createCartItemId";
 
 const ItemCard = ({id, image, name, price, types, extraProps}) => {
 
     const dispatch = useDispatch();
-    const order = useSelector(store => store.cart.order);
 
     const prices = {plain: price, magic: 500, clever: 1000, lazy: 99, strange: 350};
 
     const [addedProps, setAddedProps] = useState({clever: false, lazy: false, strange: false});
+    const [selectedExtraProps, setSelectedExtraProps] = useState([]);
     const [selectedType, setSelectedType] = useState('plain');
     const [selectedBtn, setSelectedBtn] = useState(null);
-    const [selectedExtraProps, setSelectedExtraProps] = useState([]);
     const [hashId, setHashId] = useState('');
     const [totalPrice, setTotalPrice] = useState(price);
 
@@ -98,9 +98,9 @@ const ItemCard = ({id, image, name, price, types, extraProps}) => {
             : setSelectedExtraProps([...selectedExtraProps, item]);
     }
 
-    const onAddButtonClick = (arr, obj) => {
-        dispatch(setOrder(checkCart(arr, obj)));
-        dispatch(setPrice(obj.price));
+    const onAddButtonClick = (obj) => {
+        dispatch(addToCart(obj));
+        dispatch(setPrice());
         dispatch(setTotal());
     }
 
@@ -118,7 +118,7 @@ const ItemCard = ({id, image, name, price, types, extraProps}) => {
             </StldItemCardSelectorBlock>
             <StldItemCardPriceAndButtonDiv>
                 <StldItemCardPriceBlock>{totalPrice} ₽</StldItemCardPriceBlock>
-                <StldItemCardAddButton onClick={() => onAddButtonClick(order, addedItem)}>
+                <StldItemCardAddButton onClick={() => onAddButtonClick(addedItem)}>
                     <img src="/images/add-icon.svg" alt="img"/>
                     <span>Добавить</span>
                 </StldItemCardAddButton>

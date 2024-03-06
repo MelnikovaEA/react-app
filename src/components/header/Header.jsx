@@ -1,14 +1,22 @@
-import {Link} from "react-router-dom";
+import {Link, useLocation } from "react-router-dom";
 import StldHeader, { StyledHeaderWrapper, HeaderLogoDiv, HeaderText, HeaderDescription } from "../styled/header/StldHeader";
 import StldHeaderCartDiv, {StldHeaterCartWrapper} from "../styled/header/StldHeaderCartDiv";
 import Search from "./Search";
 import { setActiveCategory, setSelectedType } from "../../redux/slices/filterSlice";
 import {useDispatch, useSelector} from "react-redux";
+import {useEffect, useState} from "react";
 
 const Header = () => {
 
     const dispatch = useDispatch();
-    const {order, price, total } = useSelector(store => store.cart);
+    const { price, total } = useSelector(store => store.cart);
+
+    const location = useLocation();
+    const [isCartPage, setIsCartPage] = useState('');
+
+    useEffect(()=>{
+        setIsCartPage(location.pathname);
+    }, [location]);
 
     const onLogoClick = () => {
         dispatch(setActiveCategory(''));
@@ -29,7 +37,7 @@ const Header = () => {
                         <HeaderDescription>cutest monsters for every taste</HeaderDescription>
                     </div>
                 </HeaderLogoDiv>
-                <Search />
+                { isCartPage !== '/cart' && <Search/>}
                 <StldHeaterCartWrapper>
                     <StldHeaderCartDiv>
                         <Link to="cart">
