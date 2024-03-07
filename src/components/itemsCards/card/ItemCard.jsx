@@ -18,40 +18,41 @@ const ItemCard = ({id, image, name, price, types, extraProps}) => {
     const prices = {plain: price, magic: 500, clever: 1000, lazy: 99, strange: 350};
 
     const [addedProps, setAddedProps] = useState({clever: false, lazy: false, strange: false});
-    const [selectedExtraProps, setSelectedExtraProps] = useState([]);
+    const [extraPropsList, setExtraPropsList] = useState([]);
     const [selectedType, setSelectedType] = useState('plain');
-    const [selectedBtn, setSelectedBtn] = useState(null);
-    const [hashId, setHashId] = useState('');
     const [totalItemPrice, setTotalItemPrice] = useState(price);
 
-    const [addedItem, setAddedItem] = useState({
-        hashId: hashId,
-        id,
-        image,
-        name,
-        magic: false,
-        extraProps: selectedExtraProps,
-        price: totalItemPrice,
-        qty: 1,
-        totPrice: totalItemPrice
-    });
+    const getTotalItemPrice = () => {
+        let totalPrice = price + (selectedType === 'magic' ? prices.magic : null);
+        for (let key in addedProps) {
+            if (addedProps[key]) {
+                totalPrice += prices[key];
+            }
+        }
+        setTotalItemPrice(totalPrice);
+    }
 
     useEffect(() => {
-        setHashId(createCartItemId(id, selectedType, addedProps));
+        getTotalItemPrice()
     }, [selectedType, addedProps]);
 
-    useEffect(() => {
-        setAddedItem({
-            ...addedItem,
-            extraProps: selectedExtraProps,
-            price: totalItemPrice,
-            totPrice: totalItemPrice,
-            hashId: hashId
-        });
-    }, [selectedExtraProps, totalItemPrice, hashId]);
+    const onTypeHandleClick = (typeKey) => {
+        setSelectedType(typeKey);
+    }
 
-    const typesItems = (arr) => {
-        return arr.map((obj) => {
+    const onPropHandleClick = (propKey, propValue) => {
+        selectExtraProp(propValue);
+        setAddedProps({...addedProps, [propKey]: !addedProps[propKey]});
+    }
+
+    const selectExtraProp = (item) => {
+        extraPropsList.includes(item)
+            ? setExtraPropsList(extraPropsList.filter(i => i !== item))
+            : setExtraPropsList([...extraPropsList, item]);
+    }
+
+    const typesItems = (types) => {
+        return types.map((obj) => {
             const [key, value] = Object.entries(obj)[0];
             return <li key={uuidv4()}
                        className={selectedType === key ? 'active select' : 'select'}
@@ -60,22 +61,11 @@ const ItemCard = ({id, image, name, price, types, extraProps}) => {
         })
     }
 
-    const onTypeHandleClick = (typeKey) => {
-        setSelectedType(typeKey);
-        if (selectedBtn !== typeKey) {
-            setAddedItem({...addedItem, magic: !addedItem.magic});
-            addedItem.magic
-                ? setTotalItemPrice(totalItemPrice - prices.magic)
-                : setTotalItemPrice(totalItemPrice + prices.magic)
-        }
-        setSelectedBtn(typeKey);
-    }
-
     const extraPropsItems = (arr) => {
         return arr.map((obj) => {
             const [key, value] = Object.entries(obj)[0];
             return <li key={uuidv4()}
-                       className={selectedExtraProps.includes(value) ? 'active prop' : 'prop'}
+                       className={extraPropsList.includes(value) ? 'active prop' : 'prop'}
                        onClick={() => onPropHandleClick(key, value)}>
                 <span>{value}</span>
                 <span className='prop-span'>+ {prices[key]} ₽</span>
@@ -83,22 +73,20 @@ const ItemCard = ({id, image, name, price, types, extraProps}) => {
         })
     }
 
-    const onPropHandleClick = (propKey, propValue) => {
-        selectExtraProp(propValue);
-        setAddedProps({...addedProps, [propKey]: !addedProps[propKey]});
-        addedProps[propKey]
-            ? setTotalItemPrice(totalItemPrice - prices[propKey])
-            : setTotalItemPrice(totalItemPrice + prices[propKey]);
-    }
-
-    const selectExtraProp = (item) => {
-        selectedExtraProps.includes(item)
-            ? setSelectedExtraProps(selectedExtraProps.filter(i => i !== item))
-            : setSelectedExtraProps([...selectedExtraProps, item]);
-    }
-
-    const onAddButtonClick = (obj) => {
-        dispatch(addToCart(obj));
+    const onAddButtonClick = () => {
+        const hashId = createCartItemId(id, selectedType, addedProps);
+        const addedItem = {
+            hashId,
+            id,
+            image,
+            name,
+            type: selectedType,
+            extraProps: extraPropsList,
+            price: totalItemPrice,
+            qty: 1,
+            totPrice: totalItemPrice
+        }
+        dispatch(addToCart(addedItem));
         dispatch(setPrice());
         dispatch(setTotal());
     }
@@ -117,8 +105,7 @@ const ItemCard = ({id, image, name, price, types, extraProps}) => {
             </StldItemCardSelectorBlock>
             <StldItemCardPriceAndButtonDiv>
                 <StldItemCardPriceBlock>{totalItemPrice} ₽</StldItemCardPriceBlock>
-                <StldItemCardAddButton onClick={() => onAddButtonClick(addedItem)}>
-                    {/*<img src="/images/add-icon.svg" alt="img"/>*/}
+                <StldItemCardAddButton onClick={() => onAddButtonClick()}>
                     <span>В корзину</span>
                 </StldItemCardAddButton>
             </StldItemCardPriceAndButtonDiv>
