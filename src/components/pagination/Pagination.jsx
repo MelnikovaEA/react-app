@@ -1,9 +1,9 @@
 import StldPagination from "../styled/pagination/StldPagination";
-import { useDispatch, useSelector } from "react-redux";
-import { Profiler } from "react";
-import { setCurPageNum } from "../../redux/slices/filterSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {Profiler} from "react";
+import {setCurPageNum} from "../../redux/slices/filterSlice";
 import onRenderCallback from "../../utils/profilerUtils";
-import { renderPagination } from "../../utils/renderPagination";
+import {renderPagination} from "../../utils/renderPagination";
 
 const Pagination = () => {
 

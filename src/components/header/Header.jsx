@@ -1,10 +1,10 @@
+import React, { useMemo } from "react";
 import {Link, useLocation } from "react-router-dom";
 import StldHeader, { StyledHeaderWrapper, HeaderLogoDiv, HeaderText, HeaderDescription } from "../styled/header/StldHeader";
 import StldHeaderCartDiv, {StldHeaterCartWrapper} from "../styled/header/StldHeaderCartDiv";
 import Search from "./Search";
 import { setActiveCategory, setSelectedType } from "../../redux/slices/filterSlice";
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect, useState} from "react";
 
 const Header = () => {
 
@@ -12,11 +12,7 @@ const Header = () => {
     const { price, total } = useSelector(store => store.cart);
 
     const location = useLocation();
-    const [isCartPage, setIsCartPage] = useState('');
-
-    useEffect(()=>{
-        setIsCartPage(location.pathname);
-    }, [location]);
+    const isCartPage = useMemo(() => location.pathname === '/cart', [location]);
 
     const onLogoClick = () => {
         dispatch(setActiveCategory(''));
@@ -37,7 +33,7 @@ const Header = () => {
                         <HeaderDescription>cutest monsters for every taste</HeaderDescription>
                     </div>
                 </HeaderLogoDiv>
-                { isCartPage !== '/cart' && <Search/>}
+                { !isCartPage && <Search/>}
                 <StldHeaterCartWrapper>
                     <StldHeaderCartDiv>
                         <Link to="cart">
@@ -53,4 +49,4 @@ const Header = () => {
     );
 };
 
-export default Header;
+export default React.memo(Header);

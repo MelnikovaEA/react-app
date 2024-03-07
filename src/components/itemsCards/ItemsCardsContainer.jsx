@@ -3,18 +3,18 @@ import {useDispatch, useSelector} from "react-redux";
 import {useSearchParams} from "react-router-dom";
 import StldCardsContainer from "../styled/cards/StldCardsContainer";
 import ItemCardSkeleton from "./ItemCardSkeleton";
-import {setItems, setPagesQty, setIsLoading} from "../../redux/slices/mainSlice";
+import {fetchDataAction} from "../../redux/slices/mainSlice";
 import {setQueryData} from "../../redux/slices/filterSlice";
-import {fetchData} from "../../utils/fetchData";
 import {renderItems} from "../../utils/renderItems";
+import ErrorPage from "../ErrorPage";
 
 const ItemsCardsContainer = () => {
 
     const dispatch = useDispatch();
     const [searchParams, setSearchParams] = useSearchParams();
 
-    const {items, isLoading} = useSelector((store) => store.main);
-    const {activeCategory, selectedType, orderType, curPageNum, inputData} = useSelector((store) => store.filter);
+    const { items, status } = useSelector((store) => store.main);
+    const { activeCategory, selectedType, orderType, curPageNum, inputData } = useSelector((store) => store.filter);
 
     const isSearchParams = useRef(false);
     const searchData = inputData ? inputData : '';
@@ -40,10 +40,9 @@ const ItemsCardsContainer = () => {
     }, []);
 
     useEffect(() => {
-        dispatch(setIsLoading(true));
 
         if (!isSearchParams.current) {
-            fetchData(url, dispatch, setIsLoading, setItems, setPagesQty);
+            dispatch(fetchDataAction(url));
         }
 
         isSearchParams.current = false;
@@ -62,10 +61,12 @@ const ItemsCardsContainer = () => {
     }, [activeCategory, selectedType, searchData]);
 
     return (
-        <StldCardsContainer>
-            {isLoading ? skeletons : renderItems(items)}
-        </StldCardsContainer>
-    );
+        status === 'error' ?
+            <ErrorPage /> :
+            <StldCardsContainer>
+                {status === 'loading' ? skeletons : renderItems(items)}
+            </StldCardsContainer>
+    )
 };
 
 export default ItemsCardsContainer;

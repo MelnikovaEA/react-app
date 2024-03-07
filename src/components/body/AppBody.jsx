@@ -6,9 +6,9 @@ import ItemsCardsContainer from "../itemsCards/ItemsCardsContainer";
 const AppBody = () => {
     return (
         <>
-            <CategoriesSortContainer />
-            <ItemsCardsContainer />
-            <Pagination />
+            <CategoriesSortContainer/>
+            <ItemsCardsContainer/>
+            <Pagination/>
         </>
     );
 };
