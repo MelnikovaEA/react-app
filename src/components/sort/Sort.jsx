@@ -2,7 +2,7 @@ import {useEffect, useRef, useState} from "react";
 import {v4 as uuidv4} from "uuid";
 import {useDispatch, useSelector} from "react-redux";
 import StldSortArea, {StldSortLabel, StldSortPopUp} from "../styled/sort/StldSortArea";
-import {setSelectedType, setOrderType,  setCurPageNum} from "../../redux/slices/filterSlice";
+import {setSelectedType, setOrderType, setCurPageNum, selectFilter} from "../../redux/slices/filterSlice";
 
 const variables = {rating: 'популярности', price: 'цене', name: 'алфавиту'};
 
@@ -11,7 +11,7 @@ const Sort = () => {
     const dispatch = useDispatch();
     const sortRef = useRef(null);
 
-    const { curPageNum, selectedType } = useSelector((store) => store.filter);
+    const { curPageNum, selectedType } = useSelector(selectFilter);
     const [visible, setVisible] = useState(false);
 
     useEffect(() => {

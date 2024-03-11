@@ -4,6 +4,11 @@ import {darken} from "polished";
 const CategoriesUl = styled.ul`
   display: flex;
   flex-wrap: wrap;
+
+  @media(max-width: 400px){
+    justify-content: center;
+    padding-inline-start: 0;
+  }
 `
 
 export const CategoriesLi = styled.li`
@@ -23,6 +28,11 @@ export const CategoriesLi = styled.li`
 
   &:hover {
     background-color: ${darken(0.2, '#f9f9f9')};
+  }
+
+  @media(max-width: 400px){
+    padding: 8px 20px;
+    font-size: 12px;
   }
 `
 

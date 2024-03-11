@@ -6,10 +6,10 @@ import {Provider} from "react-redux";
 import './index.css';
 import App from './App';
 import GlobalStyles from "./components/styled/GlobalStyles";
-import ErrorPage from "./components/ErrorPage";
+import ErrorRoutePage from "./components/errors/ErrorRoutePage";
 import Cart from "./components/cart/Cart";
 import EmptyCart from "./components/cart/EmptyCart";
-import NotFoundPage from "./components/NotFoundPage";
+import NotFoundPage from "./components/errors/NotFoundPage";
 import AppBody from "./components/body/AppBody";
 
 
@@ -17,7 +17,7 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <App/>,
-        errorElement: <ErrorPage/>,
+        errorElement: <ErrorRoutePage/>,
         children: [
             {
                 path: "/",

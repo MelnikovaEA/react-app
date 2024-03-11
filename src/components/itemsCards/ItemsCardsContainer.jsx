@@ -2,19 +2,18 @@ import React, {useEffect, useRef} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {useSearchParams} from "react-router-dom";
 import StldCardsContainer from "../styled/cards/StldCardsContainer";
-import ItemCardSkeleton from "./ItemCardSkeleton";
-import {fetchDataAction} from "../../redux/slices/mainSlice";
-import {setQueryData} from "../../redux/slices/filterSlice";
+import ItemCardSkeleton from "./card/ItemCardSkeleton";
+import {fetchDataAction, selectMain} from "../../redux/slices/mainSlice";
+import {selectFilter, setQueryData} from "../../redux/slices/filterSlice";
 import {renderItems} from "../../utils/renderItems";
-import ErrorPage from "../ErrorPage";
 
 const ItemsCardsContainer = () => {
 
     const dispatch = useDispatch();
     const [searchParams, setSearchParams] = useSearchParams();
 
-    const { items, status } = useSelector((store) => store.main);
-    const { activeCategory, selectedType, orderType, curPageNum, inputData } = useSelector((store) => store.filter);
+    const {items, status} = useSelector(selectMain);
+    const {activeCategory, selectedType, orderType, curPageNum, inputData} = useSelector(selectFilter);
 
     const isSearchParams = useRef(false);
     const searchData = inputData ? inputData : '';
@@ -61,11 +60,9 @@ const ItemsCardsContainer = () => {
     }, [activeCategory, selectedType, searchData]);
 
     return (
-        status === 'error' ?
-            <ErrorPage /> :
-            <StldCardsContainer>
-                {status === 'loading' ? skeletons : renderItems(items)}
-            </StldCardsContainer>
+        <StldCardsContainer>
+            {status === 'loading' ? skeletons : renderItems(items)}
+        </StldCardsContainer>
     )
 };
 

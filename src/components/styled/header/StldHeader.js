@@ -11,6 +11,10 @@ export const StyledHeaderWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
+
+  @media(max-width: 400px){
+    justify-content: center;
+  }
 `
 
 export const HeaderLogoDiv = styled.div`

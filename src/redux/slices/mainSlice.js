@@ -1,18 +1,26 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import axios from "axios";
+import store from "../store";
 
 const initialState = {
     items: [],
     pagesQty: 0,
     status: 'loading',
-    error: ''
+    error: '',
+    errorStatus: ''
 }
 
-export const fetchDataAction = createAsyncThunk('main/fetchDataFromDB', async (x) => {
-    const res =  await axios.get(x);
-    const data = res.data;
-    const header = res.headers['x-total-count']; // Получаем заголовок X-Total-Count
-    return { data, header}
+export const fetchDataAction = createAsyncThunk('main/fetchDataFromDB', async (x, {rejectWithValue}) => {
+    try {
+        const res = await axios.get(x);
+        const data = res.data;
+        const header = res.headers['x-total-count']; // Получаем заголовок X-Total-Count
+        return {data, header}
+    } catch (error) {
+        const message = error.message;
+        const errorStatus = error.response.status;
+        return rejectWithValue({message, errorStatus})
+    }
 })
 
 const mainSlice = createSlice({
@@ -41,12 +49,15 @@ const mainSlice = createSlice({
         builder.addCase(fetchDataAction.rejected, (state, action) => {
             console.log(action.payload)
             state.status = 'error'
-            state.error = action.payload
+            state.error = action.payload.message;
+            state.errorStatus = action.payload.errorStatus;
             state.items = []
-            console.log('ЭТО ОШИБКА!!!!', state.error)
+            console.log('ЭТО ОШИБКА!!!!', state.status, state.error)
         })
     }
 });
+
+export const selectMain = (store) => store.main;
 
 export default mainSlice.reducer;
 export const {setItems, setPagesQty} = mainSlice.actions;

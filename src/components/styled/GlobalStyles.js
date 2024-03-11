@@ -13,7 +13,7 @@ const GlobalStyles = createGlobalStyle`
     list-style-type: none;
   }
   
-  h1, h2, h3, p {
+  h1, h2, h3, p, button {
     margin: 0;
   }
   

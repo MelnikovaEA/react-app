@@ -24,6 +24,10 @@ const StldItemCardAddButton = styled.button`
     &:hover {
       color: crimson;
     }
+
+    @media(max-width: 400px){
+      font-size: 12px;
+    }
   }
   
   i {
@@ -38,12 +42,15 @@ const StldItemCardAddButton = styled.button`
     font-size: 17px;
     line-height: 25px;
     position: relative;
-    //top: -1px;
-    //left: 3px;
     
     &:hover {
       color: crimson;
     }
+  }
+
+  @media(max-width: 400px){
+    padding: 10px 15px;
+    min-width: 70px;
   }
 `
 

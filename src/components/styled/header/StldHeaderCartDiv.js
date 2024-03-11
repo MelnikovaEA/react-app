@@ -27,9 +27,13 @@ const StldHeaderCartDiv = styled.div`
     min-width: 100px;
     text-align: center;
     cursor: pointer;
-    /*transition: background-color duration ease-in-out, border-color duration ease-in-out;*/
     border: 1px solid transparent;
     text-decoration: none;
+
+    @media(max-width: 400px){
+      padding: 4px 20px;
+      min-width: 70px;
+    }
   }
 `
 
@@ -37,6 +41,10 @@ export const StldHeaterCartWrapper = styled.div`
   flex-grow: 1;
   display: flex;
   justify-content: flex-end;
+
+  @media(max-width: 400px){
+    justify-content: flex-start;
+  }
 `
 
 export default StldHeaderCartDiv;

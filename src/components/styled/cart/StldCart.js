@@ -7,7 +7,16 @@ const CartDiv = styled.div`
 export const CartTopDiv = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  cursor: pointer;
+
+  @media (max-width: 400px) {
+
+    h3 {
+      display: flex;
+      align-items: center;
+      font-size: 13px;
+    }
+  }
 `
 
 export const CartWrapperDiv = styled.div`
@@ -19,6 +28,10 @@ export const CartHeader = styled.h2`
   display: flex;
   align-items: center;
   font-size: 30px;
+
+  @media (max-width: 400px) {
+    font-size: 13px;
+  }
 `
 
 export const CartIcon = styled.img`
@@ -29,9 +42,14 @@ export const CartIcon = styled.img`
 export const CartOrderDetails = styled.div`
   display: flex;
   justify-content: space-around;
+
   span {
     font-size: 20px;
-    margin: 5px;
+    margin: 10px 5px 5px 5px;
+
+    @media (max-width: 400px) {
+      font-size: 13px;
+    }
   }
 `
 
@@ -39,6 +57,19 @@ export const CartButtonsDiv = styled.div`
   display: flex;
   justify-content: space-around;
   padding: 30px 0 30px 0;
+
+  @media (max-width: 400px) {
+    padding-top: 10px;
+    justify-content: space-between;
+
+    button {
+      padding: 5px;
+
+      span {
+        font-size: 12px;
+      }
+    }
+  }
 `
 
 export default CartDiv;

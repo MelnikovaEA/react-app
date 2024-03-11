@@ -53,6 +53,11 @@ const StldItemCardSelectorBlock = styled.div`
         border-radius: 5px;
         cursor: auto;
       }
+
+      @media(max-width: 400px){
+        padding: 6px;
+        font-size: 12px;
+      }
     }
 
     .prop {

@@ -23,6 +23,11 @@ export const StldSortLabel = styled.div`
     cursor: pointer;
     margin: 0 5px;
   }
+
+  @media (max-width: 400px) {
+    font-size: 12px;
+    padding: 10px;
+  }
 `
 export const StldSortPopUp = styled.div`
   position: absolute;

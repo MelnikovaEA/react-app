@@ -34,25 +34,26 @@ const CartItem = ({hashId, image, name, extProps, type, qty, totPrice}) => {
 
     return (
         <CartItemDiv>
-            <CartItemImg src={image} alt="img"/>
-            <CartItemInfo>
+            <CartItemImg src={image} alt="img" id='item-0'/>
+            <CartItemInfo id='item-1'>
                 <h3>{name}</h3>
                 <div>
                     <span>{type}</span>
                     <span>{extProps && extProps}</span>
                 </div>
             </CartItemInfo>
-            <CartItemCount>
+            <CartItemCount id='item-2'>
                 <CartItemSmallButton onClick={handleSubtract}> - </CartItemSmallButton>
                 <b>{qty}</b>
                 <CartItemSmallButton onClick={handleAdd}> + </CartItemSmallButton>
             </CartItemCount>
-            <CartItemSum>
+            <CartItemSum id='item-3'>
                 <b>{totPrice} ₽</b>
             </CartItemSum>
             <CartItemSmallButton className={'delete'}
                                  onClick={handleDelete}
-            > x </CartItemSmallButton>
+                                 id='item-4'
+            >x</CartItemSmallButton>
         </CartItemDiv>
     );
 };

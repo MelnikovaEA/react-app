@@ -5,11 +5,12 @@ import StldHeaderCartDiv, {StldHeaterCartWrapper} from "../styled/header/StldHea
 import Search from "./Search";
 import { setActiveCategory, setSelectedType } from "../../redux/slices/filterSlice";
 import {useDispatch, useSelector} from "react-redux";
+import {selectCart} from "../../redux/slices/cartSlice";
 
 const Header = () => {
 
     const dispatch = useDispatch();
-    const { price, total } = useSelector(store => store.cart);
+    const { price, total } = useSelector(selectCart);
 
     const location = useLocation();
     const isCartPage = useMemo(() => location.pathname === '/cart', [location]);

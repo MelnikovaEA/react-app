@@ -21,8 +21,7 @@ const Cart = () => {
                     <CartHeader className="content__title">
                         <CartIcon src="/images/cart/cart.svg" alt="Trash Icon"/>Корзина</CartHeader>
                     <h3 onClick={()=>dispatch(clearCart())}>
-                        <img src="/images/cart/cart.svg" alt="Trash Icon" style={{width: '20px', height: '20px'}}/>
-                        Очистить корзину
+                        &#128465; Очистить корзину
                     </h3>
                 </CartTopDiv>
                 <div className="content__items">

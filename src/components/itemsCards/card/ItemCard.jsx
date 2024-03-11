@@ -1,10 +1,12 @@
 import {useEffect, useState} from "react";
 import {v4 as uuidv4} from 'uuid';
 import StldItemCardSelectorBlock from "../../styled/cards/card/StldItemCardSelectorBlock";
-import StldItemCardDiv from "../../styled/cards/card/StldItemCardDiv";
-import StldItemCardImg from "../../styled/cards/card/StldItemCardImg";
-import StldItemCardPriceAndButtonDiv from "../../styled/cards/card/StldItemCardPriceAndButtonDiv";
-import StldItemCardPriceBlock from "../../styled/cards/card/StldItemCardPriceBlock";
+import StldItemCardDiv, {
+    StldItemCardImg,
+    StldItemCardPriceBlock,
+    StldItemCardPriceAndButtonDiv,
+    StldItemName
+} from "../../styled/cards/card/StldItemCardDiv";
 import StldItemCardAddButton from "../../styled/cards/card/StldItemCardAddButton";
 import {setPrice, setTotal} from "../../../redux/slices/cartSlice";
 import {useDispatch} from "react-redux";
@@ -94,7 +96,7 @@ const ItemCard = ({id, image, name, price, types, extraProps}) => {
     return (
         <StldItemCardDiv>
             <StldItemCardImg src={image} alt="monster"/>
-            <h4>{name}</h4>
+            <StldItemName>{name}</StldItemName>
             <StldItemCardSelectorBlock>
                 <ul>
                     {typesItems(types)}

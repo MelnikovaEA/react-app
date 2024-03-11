@@ -39,5 +39,7 @@ const filterSlice = createSlice({
     }
 });
 
+export const selectFilter = (store) => store.filter;
+
 export default filterSlice.reducer;
 export const { setActiveCategory, setSelectedType, setOrderType, setCurPageNum, setInputData, setLocalInputData, setQueryData  } = filterSlice.actions;

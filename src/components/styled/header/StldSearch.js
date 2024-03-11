@@ -3,6 +3,11 @@ import styled from "styled-components";
 export const SearchInputWrapper = styled.div`
   position: relative;
   padding-left: 30px;
+  
+  @media(max-width: 400px){
+    margin: 0 auto;
+    padding: 0;
+  }
 `
 const SearchInput = styled.input`
   width: 300px;
@@ -18,6 +23,12 @@ const SearchInput = styled.input`
 
   &:focus {
     outline-color: darkseagreen;
+  }
+
+  @media(max-width: 400px){
+    max-height: 30px;
+    padding: 10px 20px;
+    font-size: 14px;
   }
 `
 export const SearchCloseIcon = styled.img`
