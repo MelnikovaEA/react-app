@@ -2,6 +2,10 @@ import styled from "styled-components";
 
 const CartDiv = styled.div`
   width: 80%;
+
+  @media (min-width: 320px) and (max-width: 480px) {
+    width: 94%;
+  }
 `
 
 export const CartTopDiv = styled.div`
@@ -9,8 +13,8 @@ export const CartTopDiv = styled.div`
   justify-content: space-between;
   cursor: pointer;
 
-  @media (max-width: 400px) {
-
+  @media (min-width: 320px) and (max-width: 480px) {
+    justify-content: space-around;
     h3 {
       display: flex;
       align-items: center;
@@ -29,7 +33,7 @@ export const CartHeader = styled.h2`
   align-items: center;
   font-size: 30px;
 
-  @media (max-width: 400px) {
+  @media (min-width: 320px) and (max-width: 480px) {
     font-size: 13px;
   }
 `
@@ -47,7 +51,7 @@ export const CartOrderDetails = styled.div`
     font-size: 20px;
     margin: 10px 5px 5px 5px;
 
-    @media (max-width: 400px) {
+    @media (min-width: 320px) and (max-width: 480px) {
       font-size: 13px;
     }
   }
@@ -58,7 +62,7 @@ export const CartButtonsDiv = styled.div`
   justify-content: space-around;
   padding: 30px 0 30px 0;
 
-  @media (max-width: 400px) {
+  @media (min-width: 320px) and (max-width: 480px) {
     padding-top: 10px;
     justify-content: space-between;
 

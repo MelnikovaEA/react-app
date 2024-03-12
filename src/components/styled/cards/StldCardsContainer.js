@@ -9,7 +9,7 @@ const StldCardsContainer = styled.div`
   padding: 0 15px;
   margin-bottom: 15px;
   
-  @media(max-width: 400px){
+  @media(min-width: 320px) and (max-width: 480px){
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   }
 `

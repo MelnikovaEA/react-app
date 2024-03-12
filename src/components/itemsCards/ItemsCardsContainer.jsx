@@ -1,11 +1,11 @@
 import React, {useEffect, useRef} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {useSearchParams} from "react-router-dom";
-import StldCardsContainer from "../styled/cards/StldCardsContainer";
-import ItemCardSkeleton from "./card/ItemCardSkeleton";
 import {fetchDataAction, selectMain} from "../../redux/slices/mainSlice";
 import {selectFilter, setQueryData} from "../../redux/slices/filterSlice";
 import {renderItems} from "../../utils/renderItems";
+import StldCardsContainer from "../styled/cards/StldCardsContainer";
+import ItemCardSkeleton from "./card/ItemCardSkeleton";
 
 const ItemsCardsContainer = () => {
 
@@ -64,6 +64,6 @@ const ItemsCardsContainer = () => {
             {status === 'loading' ? skeletons : renderItems(items)}
         </StldCardsContainer>
     )
-};
+}
 
 export default ItemsCardsContainer;

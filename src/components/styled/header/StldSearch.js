@@ -4,9 +4,8 @@ export const SearchInputWrapper = styled.div`
   position: relative;
   padding-left: 30px;
   
-  @media(max-width: 400px){
-    margin: 0 auto;
-    padding: 0;
+  @media(min-width: 320px) and (max-width: 480px){
+    padding-left: 20px;
   }
 `
 const SearchInput = styled.input`
@@ -25,7 +24,8 @@ const SearchInput = styled.input`
     outline-color: darkseagreen;
   }
 
-  @media(max-width: 400px){
+  @media(min-width: 320px) and (max-width: 480px){
+    max-width: 280px;
     max-height: 30px;
     padding: 10px 20px;
     font-size: 14px;

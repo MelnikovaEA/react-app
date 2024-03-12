@@ -11,7 +11,7 @@ const CartItemDiv = styled.div`
   gap: 0 0;
   border-bottom: 1px solid darkgrey;
 
-  @media(max-width: 400px){
+  @media(min-width: 320px) and (max-width: 480px){
     grid-template-rows: 1fr 0.5fr;
     grid-template-columns: 1fr 1.3fr 0.7fr;
     
@@ -61,7 +61,7 @@ export const CartItemImg = styled.img`
   width: 120px;
   height: 120px;
 
-  @media(max-width: 400px) {
+  @media(min-width: 320px) and (max-width: 480px) {
     width: 100px;
     height: 100px;
   }
@@ -72,7 +72,7 @@ export const CartItemInfo = styled.div`
   flex-direction: column;
   align-items: center;
 
-  @media(max-width: 400px) {
+  @media(min-width: 320px) and (max-width: 480px) {
     font-size: 12px;
     max-width: 30px;
   }
@@ -92,15 +92,15 @@ export const CartItemCount = styled.div`
     margin: 0 15px;
   }
 
-  @media(max-width: 400px){
+  @media(min-width: 320px) and (max-width: 480px){
     font-size: 12px;
   }
 `
 
 export const CartItemSum = styled.div`
-  @media(max-width: 400px) {
+  @media(min-width: 320px) and (max-width: 480px) {
     font-size: 12px;
-    justify-self: end;
+    justify-self: center;
   }
 `
 
@@ -124,7 +124,7 @@ export const CartItemSmallButton = styled.button`
     color: white;
   }
 
-  @media(max-width: 400px) {
+  @media(min-width: 320px) and (max-width: 480px) {
     width: 25px;
     height: 25px;
     border: 1px solid orange;
@@ -141,7 +141,7 @@ export const CartItemSmallButton = styled.button`
       color: white;
     }
 
-    @media(max-width: 400px) {
+    @media(min-width: 320px) and (max-width: 480px) {
       width: 20px;
       height: 20px;
       text-align: center;
@@ -151,7 +151,7 @@ export const CartItemSmallButton = styled.button`
     }
   }
 
-  @media(max-width: 400px) {
+  @media(min-width: 320px) and (max-width: 480px) {
     font-size: 10px;
   }
 `

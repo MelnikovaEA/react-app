@@ -8,7 +8,7 @@ const StldItemCardDiv = styled.div`
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.09);
   border-radius: 30px;
 
-  @media (max-width: 400px) {
+  @media (min-width: 320px) and (max-width: 480px) {
     width: 300px;
     max-width: 300px;
   }
@@ -17,14 +17,14 @@ const StldItemCardDiv = styled.div`
 export const StldItemCardImg = styled.img`
   width: 260px;
 
-  @media (max-width: 400px) {
+  @media (min-width: 320px) and (max-width: 480px) {
     width: 210px;
   }
 `
 
 export const StldItemName = styled.h4`
 
-  @media (max-width: 400px) {
+  @media (min-width: 320px) and (max-width: 480px) {
     font-size: 14px;
     margin-top: 0;
   }
@@ -37,7 +37,7 @@ export const StldItemCardPriceBlock = styled.div`
   letter-spacing: 0.015em;
   width: 40%;
 
-  @media (max-width: 400px) {
+  @media (min-width: 320px) and (max-width: 480px) {
     font-size: 18px;
     line-height: 17px;
   }

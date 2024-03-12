@@ -5,7 +5,7 @@ const CategoriesUl = styled.ul`
   display: flex;
   flex-wrap: wrap;
 
-  @media(max-width: 400px){
+  @media(min-width: 320px) and (max-width: 480px){
     justify-content: center;
     padding-inline-start: 0;
   }
@@ -22,17 +22,17 @@ export const CategoriesLi = styled.li`
   list-style-type: none;
   height: fit-content;
 
+  @media(min-width: 320px) and (max-width: 480px){
+    padding: 8px 20px;
+    font-size: 12px;
+  }
+
   &.active {
     background-color: ${darken(0.5, '#f9f9f9')}
   }
 
   &:hover {
     background-color: ${darken(0.2, '#f9f9f9')};
-  }
-
-  @media(max-width: 400px){
-    padding: 8px 20px;
-    font-size: 12px;
   }
 `
 

@@ -13,8 +13,9 @@ const GlobalStyles = createGlobalStyle`
     list-style-type: none;
   }
   
-  h1, h2, h3, p, button {
+  h1, h2, h3, p, a, button {
     margin: 0;
+    padding: 0;
   }
   
   button {

@@ -1,4 +1,6 @@
 import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from "react-redux";
+import {setPrice, setTotal, removeFromCart, incrementQty, decrementQty} from "../../redux/slices/cartSlice";
 import CartItemDiv, {
     CartItemCount,
     CartItemImg,
@@ -6,9 +8,6 @@ import CartItemDiv, {
     CartItemSmallButton,
     CartItemSum
 } from "../styled/cart/StldCartItem";
-import _ from 'lodash'
-import {useDispatch, useSelector} from "react-redux";
-import {setPrice, setTotal, removeFromCart, incrementQty, decrementQty} from "../../redux/slices/cartSlice";
 
 const CartItem = ({hashId, image, name, extProps, type, qty, totPrice}) => {
 

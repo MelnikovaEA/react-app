@@ -11,6 +11,11 @@ const StldItemCardAddButton = styled.button`
   /*transition: background-color duration ease-in-out, border-color duration ease-in-out;*/
   border: 1px solid transparent;
 
+  @media(min-width: 320px) and (max-width: 480px){
+    padding: 10px 15px;
+    min-width: 70px;
+  }
+
   &:active {
     background-color: #f0a535;
     transform: translateY(1px);
@@ -20,13 +25,13 @@ const StldItemCardAddButton = styled.button`
     color: #fff;
     padding: 0 10px;
     font-size: 17px;
+
+    @media(min-width: 320px) and (max-width: 480px){
+      font-size: 12px;
+    }
     
     &:hover {
       color: crimson;
-    }
-
-    @media(max-width: 400px){
-      font-size: 12px;
     }
   }
   
@@ -46,11 +51,6 @@ const StldItemCardAddButton = styled.button`
     &:hover {
       color: crimson;
     }
-  }
-
-  @media(max-width: 400px){
-    padding: 10px 15px;
-    min-width: 70px;
   }
 `
 

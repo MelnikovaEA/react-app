@@ -4,6 +4,10 @@ const StldHeaderCartDiv = styled.div`
   display: flex;
   margin: 10px 10px 10px 30px;
 
+  @media(min-width: 320px) and (max-width: 480px){
+    margin: 5px 0;
+  }
+
   span {
     color: #fff;
     font-weight: 600;
@@ -11,9 +15,9 @@ const StldHeaderCartDiv = styled.div`
   }
 
   svg {
+    margin-bottom: 1px;
     padding-left: 8px;
     padding-right: 4px;
-    margin-bottom: 1px;
   }
   
   a {
@@ -30,21 +34,18 @@ const StldHeaderCartDiv = styled.div`
     border: 1px solid transparent;
     text-decoration: none;
 
-    @media(max-width: 400px){
+    @media(min-width: 320px) and (max-width: 480px){
       padding: 4px 20px;
       min-width: 70px;
+      margin-left: 20px;
     }
   }
 `
 
-export const StldHeaterCartWrapper = styled.div`
+export const StldHeaderCartWrapper = styled.div`
   flex-grow: 1;
   display: flex;
   justify-content: flex-end;
-
-  @media(max-width: 400px){
-    justify-content: flex-start;
-  }
 `
 
 export default StldHeaderCartDiv;

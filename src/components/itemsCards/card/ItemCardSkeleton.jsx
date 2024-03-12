@@ -19,9 +19,8 @@ const ItemCardSkeleton = () => {
                 <Skeleton height={20} width={80} />
                 <Skeleton height={50} width={200} />
             </div>
-
         </div>
     );
-};
+}
 
 export default ItemCardSkeleton;

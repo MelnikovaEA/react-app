@@ -1,6 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import axios from "axios";
-import store from "../store";
 
 const initialState = {
     items: [],
@@ -27,12 +26,12 @@ const mainSlice = createSlice({
     name: 'main',
     initialState,
     reducers: {
-        setItems: (state, action) => {
-            state.items = action.payload;
-        },
-        setPagesQty: (state, action) => {
-            state.pagesQty = action.payload;
-        },
+        // setItems: (state, action) => {
+        //     state.items = action.payload;
+        // },
+        // setPagesQty: (state, action) => {
+        //     state.pagesQty = action.payload;
+        // },
     },
 
     extraReducers: (builder) => {
@@ -60,4 +59,4 @@ const mainSlice = createSlice({
 export const selectMain = (store) => store.main;
 
 export default mainSlice.reducer;
-export const {setItems, setPagesQty} = mainSlice.actions;
+//export const {setItems, setPagesQty} = mainSlice.actions;

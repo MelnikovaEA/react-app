@@ -1,8 +1,8 @@
 import {useEffect, useRef, useState} from "react";
-import {v4 as uuidv4} from "uuid";
 import {useDispatch, useSelector} from "react-redux";
-import StldSortArea, {StldSortLabel, StldSortPopUp} from "../styled/sort/StldSortArea";
 import {setSelectedType, setOrderType, setCurPageNum, selectFilter} from "../../redux/slices/filterSlice";
+import {v4 as uuidv4} from "uuid";
+import StldSortArea, {StldSortLabel, StldSortPopUp} from "../styled/sort/StldSortArea";
 
 const variables = {rating: 'популярности', price: 'цене', name: 'алфавиту'};
 

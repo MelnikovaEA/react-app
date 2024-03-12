@@ -29,6 +29,11 @@ const StldItemCardSelectorBlock = styled.div`
       border-radius: 5px;
       border: 3px solid transparent;
 
+      @media(min-width: 320px) and (max-width: 480px){
+        padding: 6px;
+        font-size: 12px;
+      }
+
       &span {
         margin: 0;
         padding: 2px;
@@ -47,16 +52,10 @@ const StldItemCardSelectorBlock = styled.div`
       }
 
       &:hover {
-        //background: #ffffff;
         border: 3px solid white;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
         border-radius: 5px;
         cursor: auto;
-      }
-
-      @media(max-width: 400px){
-        padding: 6px;
-        font-size: 12px;
       }
     }
 

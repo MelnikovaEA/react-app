@@ -24,7 +24,7 @@ export const StldSortLabel = styled.div`
     margin: 0 5px;
   }
 
-  @media (max-width: 400px) {
+  @media (min-width: 320px) and (max-width: 480px) {
     font-size: 12px;
     padding: 10px;
   }

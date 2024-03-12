@@ -1,7 +1,7 @@
 import React from 'react';
 import CategoriesSortContainer from "../categories/CategoriesSortContainer";
-import Pagination from "../pagination/Pagination";
 import ItemsCardsContainer from "../itemsCards/ItemsCardsContainer";
+import Pagination from "../pagination/Pagination";
 
 const AppBody = () => {
     return (

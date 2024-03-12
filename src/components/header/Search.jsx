@@ -1,8 +1,8 @@
 import {useRef, useEffect } from "react";
 import {useDispatch, useSelector} from "react-redux";
+import {setCurPageNum, setInputData, setLocalInputData} from "../../redux/slices/filterSlice";
 import SearchInput, {SearchCloseIcon, SearchInputWrapper} from "../styled/header/StldSearch";
 import useDebounce from "../../utils/hooks/useDebounce";
-import {setCurPageNum, setInputData, setLocalInputData} from "../../redux/slices/filterSlice";
 
 const Search = () => {
 
@@ -37,6 +37,6 @@ const Search = () => {
                                                     src="/images/close_icon.svg"/>}
         </SearchInputWrapper>
     );
-};
+}
 
 export default Search;

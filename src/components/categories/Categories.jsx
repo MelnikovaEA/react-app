@@ -1,6 +1,12 @@
-import CategoriesUl, {CategoriesLi} from "../styled/categories/StldCategories";
 import {useSelector, useDispatch} from "react-redux";
-import {setActiveCategory, setCurPageNum, setInputData, setLocalInputData } from "../../redux/slices/filterSlice";
+import {
+    selectFilter,
+    setActiveCategory,
+    setCurPageNum,
+    setInputData,
+    setLocalInputData
+} from "../../redux/slices/filterSlice";
+import CategoriesUl, {CategoriesLi} from "../styled/categories/StldCategories";
 
 const categories = [
     {category: '', text: 'Все'}, {category: 'Огнедышащие', text: 'Огнедышащие'},
@@ -12,7 +18,7 @@ const Categories = () => {
 
     const dispatch = useDispatch();
 
-    const activeCategory = useSelector((store) => store.filter.activeCategory);
+    const activeCategory = useSelector(selectFilter).activeCategory;
 
     const onCategoryClick = (value) => {
         dispatch(setActiveCategory(value));
@@ -31,6 +37,6 @@ const Categories = () => {
             )}
         </CategoriesUl>
     );
-};
+}
 
 export default Categories;

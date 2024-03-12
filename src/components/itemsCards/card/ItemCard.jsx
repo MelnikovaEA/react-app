@@ -1,4 +1,8 @@
 import {useEffect, useState} from "react";
+import {useDispatch} from "react-redux";
+import {setPrice, setTotal} from "../../../redux/slices/cartSlice";
+import {addToCart} from "../../../redux/slices/cartSlice";
+import {createCartItemId} from "../../../utils/createCartItemId";
 import {v4 as uuidv4} from 'uuid';
 import StldItemCardSelectorBlock from "../../styled/cards/card/StldItemCardSelectorBlock";
 import StldItemCardDiv, {
@@ -8,10 +12,6 @@ import StldItemCardDiv, {
     StldItemName
 } from "../../styled/cards/card/StldItemCardDiv";
 import StldItemCardAddButton from "../../styled/cards/card/StldItemCardAddButton";
-import {setPrice, setTotal} from "../../../redux/slices/cartSlice";
-import {useDispatch} from "react-redux";
-import {addToCart} from "../../../redux/slices/cartSlice";
-import {createCartItemId} from "../../../utils/createCartItemId";
 
 const ItemCard = ({id, image, name, price, types, extraProps}) => {
 
@@ -39,7 +39,9 @@ const ItemCard = ({id, image, name, price, types, extraProps}) => {
     }, [selectedType, addedProps]);
 
     const onTypeHandleClick = (typeKey) => {
+        {console.log(typeKey)}
         setSelectedType(typeKey);
+        {console.log(selectedType)}
     }
 
     const onPropHandleClick = (propKey, propValue) => {
@@ -53,7 +55,7 @@ const ItemCard = ({id, image, name, price, types, extraProps}) => {
             : setExtraPropsList([...extraPropsList, item]);
     }
 
-    const typesItems = (types) => {
+    const renderTypesItems = (types) => {
         return types.map((obj) => {
             const [key, value] = Object.entries(obj)[0];
             return <li key={uuidv4()}
@@ -63,7 +65,7 @@ const ItemCard = ({id, image, name, price, types, extraProps}) => {
         })
     }
 
-    const extraPropsItems = (arr) => {
+    const renderExtraPropsItems = (arr) => {
         return arr.map((obj) => {
             const [key, value] = Object.entries(obj)[0];
             return <li key={uuidv4()}
@@ -99,10 +101,10 @@ const ItemCard = ({id, image, name, price, types, extraProps}) => {
             <StldItemName>{name}</StldItemName>
             <StldItemCardSelectorBlock>
                 <ul>
-                    {typesItems(types)}
+                    {renderTypesItems(types)}
                 </ul>
                 <ul>
-                    {extraPropsItems(extraProps)}
+                    {renderExtraPropsItems(extraProps)}
                 </ul>
             </StldItemCardSelectorBlock>
             <StldItemCardPriceAndButtonDiv>
@@ -113,6 +115,6 @@ const ItemCard = ({id, image, name, price, types, extraProps}) => {
             </StldItemCardPriceAndButtonDiv>
         </StldItemCardDiv>
     );
-};
+}
 
 export default ItemCard;
