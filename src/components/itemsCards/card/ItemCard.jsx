@@ -3,7 +3,6 @@ import {useDispatch} from "react-redux";
 import {setPrice, setTotal} from "../../../redux/slices/cartSlice";
 import {addToCart} from "../../../redux/slices/cartSlice";
 import {createCartItemId} from "../../../utils/createCartItemId";
-import {v4 as uuidv4} from 'uuid';
 import StldItemCardSelectorBlock from "../../styled/cards/card/StldItemCardSelectorBlock";
 import StldItemCardDiv, {
     StldItemCardImg,
@@ -13,6 +12,8 @@ import StldItemCardDiv, {
 } from "../../styled/cards/card/StldItemCardDiv";
 import StldItemCardAddButton from "../../styled/cards/card/StldItemCardAddButton";
 import {useNavigate} from "react-router-dom";
+import TypeSelectorItemCard from "./TypeSelectorItemCard";
+import PropSelectorItemCard from "./PropSelectorItemCard";
 
 const ItemCard = ({id, image, name, price, types, extraProps}) => {
 
@@ -26,6 +27,7 @@ const ItemCard = ({id, image, name, price, types, extraProps}) => {
     const [selectedType, setSelectedType] = useState('plain');
     const [totalItemPrice, setTotalItemPrice] = useState(price);
 
+    // вычисляет общую сумму товара со всеми выбранными свойствами
     const getTotalItemPrice = () => {
         let totalPrice = price + (selectedType === 'magic' ? prices.magic : null);
         for (let key in addedProps) {
@@ -55,27 +57,12 @@ const ItemCard = ({id, image, name, price, types, extraProps}) => {
             : setExtraPropsList([...extraPropsList, item]);
     }
 
-    const renderTypesItems = (types) => {
-        return types.map((obj) => {
-            const [key, value] = Object.entries(obj)[0];
-            return <li key={uuidv4()}
-                       className={selectedType === key ? 'active select' : 'select'}
-                       onClick={() => onTypeHandleClick(key)}
-            ><span>{value}</span></li>
-        })
-    }
-
-    const renderExtraPropsItems = (arr) => {
-        return arr.map((obj) => {
-            const [key, value] = Object.entries(obj)[0];
-            return <li key={uuidv4()}
-                       className={extraPropsList.includes(value) ? 'active prop' : 'prop'}
-                       onClick={() => onPropHandleClick(key, value)}>
-                <span>{value}</span>
-                <span className='prop-span'>+ {prices[key]} ₽</span>
-            </li>
-        })
-    }
+    const renderSelectors = (items, Component, additionalProps) => {
+        return items.map((obj) => {
+            const [objKey, value] = Object.entries(obj)[0];
+            return <Component objKey={objKey} value={value} {...additionalProps} />;
+        });
+    };
 
     const showDetailsPage = () => {
         navigate(`/${id}`)
@@ -101,14 +88,14 @@ const ItemCard = ({id, image, name, price, types, extraProps}) => {
 
     return (
         <StldItemCardDiv>
-            <StldItemCardImg src={image} alt="monster" onClick={()=>showDetailsPage()}/>
-            <StldItemName onClick={()=>showDetailsPage()}>{name}</StldItemName>
+            <StldItemCardImg src={image} alt="monster" onClick={() => showDetailsPage()}/>
+            <StldItemName onClick={() => showDetailsPage()}>{name}</StldItemName>
             <StldItemCardSelectorBlock>
                 <ul>
-                    {renderTypesItems(types)}
+                    {renderSelectors(types, TypeSelectorItemCard, {selectedType, onTypeHandleClick})}
                 </ul>
                 <ul>
-                    {renderExtraPropsItems(extraProps)}
+                    {renderSelectors(extraProps, PropSelectorItemCard, {prices, extraPropsList, onPropHandleClick})}
                 </ul>
             </StldItemCardSelectorBlock>
             <StldItemCardPriceAndButtonDiv>
