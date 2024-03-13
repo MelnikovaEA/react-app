@@ -27,6 +27,11 @@ export const CategoriesLi = styled.li`
     font-size: 12px;
   }
 
+  @media (min-width: 481px) and (max-width: 820px) {
+    padding: 10px 25px;
+    font-size: 14px;
+  }
+
   &.active {
     background-color: ${darken(0.5, '#f9f9f9')}
   }

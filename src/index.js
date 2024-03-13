@@ -11,6 +11,7 @@ import Cart from "./components/cart/Cart";
 import EmptyCart from "./components/cart/EmptyCart";
 import NotFoundPage from "./components/errors/NotFoundPage";
 import AppBody from "./components/body/AppBody";
+import SingleItemPage from "./components/itemsCards/SingleItemPage";
 
 
 const router = createBrowserRouter([
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <AppBody/>,
+            },
+            {
+                path: "/:id",
+                element: <SingleItemPage/>,
             },
             {
                 path: "cart",

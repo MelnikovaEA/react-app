@@ -12,10 +12,12 @@ import StldItemCardDiv, {
     StldItemName
 } from "../../styled/cards/card/StldItemCardDiv";
 import StldItemCardAddButton from "../../styled/cards/card/StldItemCardAddButton";
+import {useNavigate} from "react-router-dom";
 
 const ItemCard = ({id, image, name, price, types, extraProps}) => {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const prices = {plain: price, magic: 500, clever: 1000, lazy: 99, strange: 350};
 
@@ -39,9 +41,7 @@ const ItemCard = ({id, image, name, price, types, extraProps}) => {
     }, [selectedType, addedProps]);
 
     const onTypeHandleClick = (typeKey) => {
-        {console.log(typeKey)}
         setSelectedType(typeKey);
-        {console.log(selectedType)}
     }
 
     const onPropHandleClick = (propKey, propValue) => {
@@ -77,6 +77,10 @@ const ItemCard = ({id, image, name, price, types, extraProps}) => {
         })
     }
 
+    const showDetailsPage = () => {
+        navigate(`/${id}`)
+    }
+
     const onAddButtonClick = () => {
         const hashId = createCartItemId(id, selectedType, addedProps);
         const addedItem = {
@@ -97,8 +101,8 @@ const ItemCard = ({id, image, name, price, types, extraProps}) => {
 
     return (
         <StldItemCardDiv>
-            <StldItemCardImg src={image} alt="monster"/>
-            <StldItemName>{name}</StldItemName>
+            <StldItemCardImg src={image} alt="monster" onClick={()=>showDetailsPage()}/>
+            <StldItemName onClick={()=>showDetailsPage()}>{name}</StldItemName>
             <StldItemCardSelectorBlock>
                 <ul>
                     {renderTypesItems(types)}

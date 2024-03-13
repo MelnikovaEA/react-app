@@ -8,6 +8,10 @@ const StldHeaderCartDiv = styled.div`
     margin: 5px 0;
   }
 
+  @media (min-width: 481px) and (max-width: 820px) {
+    margin: 0;
+  }
+
   span {
     color: #fff;
     font-weight: 600;
@@ -37,7 +41,6 @@ const StldHeaderCartDiv = styled.div`
     @media(min-width: 320px) and (max-width: 480px){
       padding: 4px 20px;
       min-width: 70px;
-      margin-left: 20px;
     }
   }
 `

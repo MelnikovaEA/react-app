@@ -5,7 +5,11 @@ export const SearchInputWrapper = styled.div`
   padding-left: 30px;
   
   @media(min-width: 320px) and (max-width: 480px){
-    padding-left: 20px;
+   padding-left: 0;
+  }
+
+  @media (min-width: 481px) and (max-width: 820px) {
+    padding-left: 0;
   }
 `
 const SearchInput = styled.input`

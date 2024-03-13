@@ -7,7 +7,7 @@ import StldHeader, {
     StyledHeaderWrapper,
     HeaderLogoDiv,
     HeaderText,
-    HeaderDescription
+    HeaderDescription, HeaderInfoWrapper
 } from "../styled/header/StldHeader";
 import StldHeaderCartDiv, {StldHeaderCartWrapper} from "../styled/header/StldHeaderCartDiv";
 import Search from "./Search";
@@ -18,6 +18,7 @@ const Header = () => {
     const {price, total} = useSelector(selectCart);
 
     const location = useLocation();
+    const isMainPage = useMemo(() => location.pathname === '/', [location]);
     const isCartPage = useMemo(() => location.pathname === '/cart', [location]);
 
     const onLogoClick = () => {
@@ -28,19 +29,19 @@ const Header = () => {
     return (
         <StldHeader>
             <StyledHeaderWrapper>
-                <HeaderLogoDiv>
+                <HeaderLogoDiv id='header-logo'>
                     <Link to="/" style={{display: 'flex', justifyContent: 'center'}}
                           onClick={() => onLogoClick()}
                     >
                         <img width="60" height="60" src="/images/fluffy-monsters-shop-logo.svg" alt="logo"/>
                     </Link>
-                    <div>
+                    <HeaderInfoWrapper>
                         <HeaderText>Fluffy monsters shop</HeaderText>
                         <HeaderDescription>cutest monsters for every taste</HeaderDescription>
-                    </div>
+                    </HeaderInfoWrapper>
                 </HeaderLogoDiv>
-                {!isCartPage && <Search/>}
-                {!isCartPage && <StldHeaderCartWrapper>
+                {isMainPage && <Search id='search-input'/>}
+                {!isCartPage && <StldHeaderCartWrapper id='cart-item'>
                     <StldHeaderCartDiv>
                         <Link to="cart">
                             <span>{price} ₽</span>

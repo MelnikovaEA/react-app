@@ -12,6 +12,21 @@ const StldItemCardDiv = styled.div`
     width: 300px;
     max-width: 300px;
   }
+
+  @media (min-width: 481px) and (max-width: 820px) {
+    width: 320px;
+    max-width: 320px;
+  }
+
+  @media (min-width: 821px) and (max-width: 1024px) {
+    width: 360px;
+    max-width: 360px;
+  }
+
+  @media (min-width: 1025px) and (max-width: 1280px) {
+    width: 380px;
+    max-width: 380px;
+  }
 `
 
 export const StldItemCardImg = styled.img`

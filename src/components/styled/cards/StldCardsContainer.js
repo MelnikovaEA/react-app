@@ -12,6 +12,22 @@ const StldCardsContainer = styled.div`
   @media(min-width: 320px) and (max-width: 480px){
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   }
+
+  @media (min-width: 481px) and (max-width: 820px) {
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  }
+
+  @media (min-width: 821px) and (max-width: 1024px) {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  }
+
+  @media (min-width: 1025px) and (max-width: 1280px) {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  }
+  //
+  //@media (min-width: 1281px) {
+  //  
+  //}
 `
 
 export default StldCardsContainer;

@@ -1,12 +1,14 @@
 import React from 'react';
 import {Link} from "react-router-dom";
+import {Image, Wrapper} from "../styled/errors/StldError404Page";
 
 const Error404Page = () => {
     return (
-        <div>
-           <p>Страница не найдена</p>
-            <Link to='/'>Вернуться на главную</Link>
-        </div>
+        <Wrapper>
+            <Image src="/images/404-icon.svg" alt="img"/>
+            <p>Страница не найдена</p>
+            {/*<Link to='/'>Вернуться на главную</Link>*/}
+        </Wrapper>
     );
 };
 
