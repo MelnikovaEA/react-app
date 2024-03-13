@@ -7,7 +7,7 @@ import CartItemDiv, {
     CartItemInfo,
     CartItemSmallButton,
     CartItemSum
-} from "../styled/cart/StldCartItem";
+} from "../styled/cart/CartItemContainer";
 
 const CartItem = ({hashId, image, name, extProps, type, qty, totPrice}) => {
 

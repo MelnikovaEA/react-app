@@ -4,7 +4,7 @@ import {selectFilter, setCurPageNum} from "../../redux/slices/filterSlice";
 import {selectMain} from "../../redux/slices/mainSlice";
 import onRenderCallback from "../../utils/profilerUtils";
 import {renderPagination} from "../../utils/renderPagination";
-import StldPagination from "../styled/pagination/StldPagination";
+import PaginationContainer from "../styled/pagination/PaginationContainer";
 
 const Pagination = () => {
 
@@ -16,12 +16,12 @@ const Pagination = () => {
 
     return (
         pagesQty && <Profiler id="paginationProfiler" onRender={onRenderCallback}>
-            <StldPagination>
+            <PaginationContainer>
                 <span onClick={() => dispatch(setCurPageNum(curPageNum && curPageNum - 1))}>&larr;</span>
                 <ul>{renderPagination(pagesQty, dispatch, curPageNum, setCurPageNum)}</ul>
                 <span
                     onClick={() => dispatch(setCurPageNum(curPageNum < pagesQty ? curPageNum + 1 : curPageNum))}>&rarr;</span>
-            </StldPagination>
+            </PaginationContainer>
         </Profiler>
     );
 };

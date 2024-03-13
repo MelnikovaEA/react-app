@@ -1,12 +1,19 @@
 import styled from "styled-components";
 
-const StldHeader = styled.header`
+const HeaderContainer = styled.header`
   background-color: #c1f092;
   border-bottom: 1px solid;
-  padding: 20px 20px;
+  padding: 18px 0;
+  position: fixed;
+  min-height: 105px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-sizing: border-box;
 `
 
-export const StyledHeaderWrapper = styled.div`
+export const HeaderWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -75,4 +82,4 @@ export const HeaderDescription = styled.p`
 
 `
 
-export default StldHeader;
+export default HeaderContainer;

@@ -3,13 +3,13 @@ import {useDispatch, useSelector} from "react-redux";
 import {Link, useLocation} from "react-router-dom";
 import {selectCart} from "../../redux/slices/cartSlice";
 import {setActiveCategory, setSelectedType} from "../../redux/slices/filterSlice";
-import StldHeader, {
-    StyledHeaderWrapper,
+import HeaderContainer, {
+    HeaderWrapper,
     HeaderLogoDiv,
     HeaderText,
     HeaderDescription, HeaderInfoWrapper
-} from "../styled/header/StldHeader";
-import StldHeaderCartDiv, {StldHeaderCartWrapper} from "../styled/header/StldHeaderCartDiv";
+} from "../styled/header/HeaderContainer";
+import HeaderCartDiv, {HeaderCartWrapper} from "../styled/header/HeaderCartDiv";
 import Search from "./Search";
 
 const Header = () => {
@@ -27,8 +27,8 @@ const Header = () => {
     }
 
     return (
-        <StldHeader>
-            <StyledHeaderWrapper>
+        <HeaderContainer>
+            <HeaderWrapper>
                 <HeaderLogoDiv id='header-logo'>
                     <Link to="/" style={{display: 'flex', justifyContent: 'center'}}
                           onClick={() => onLogoClick()}
@@ -41,18 +41,18 @@ const Header = () => {
                     </HeaderInfoWrapper>
                 </HeaderLogoDiv>
                 {isMainPage && <Search id='search-input'/>}
-                {!isCartPage && <StldHeaderCartWrapper id='cart-item'>
-                    <StldHeaderCartDiv>
+                {!isCartPage && <HeaderCartWrapper id='cart-item'>
+                    <HeaderCartDiv>
                         <Link to="cart">
                             <span>{price} ₽</span>
                             <div>-</div>
                             <img src="/images/cart/cart-on-button.svg" alt="img"/>
                             <span>{total}</span>
                         </Link>
-                    </StldHeaderCartDiv>
-                </StldHeaderCartWrapper>}
-            </StyledHeaderWrapper>
-        </StldHeader>
+                    </HeaderCartDiv>
+                </HeaderCartWrapper>}
+            </HeaderWrapper>
+        </HeaderContainer>
     );
 }
 

@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-const StldSortArea = styled.div`
+const SortArea = styled.div`
   position: relative;
 `
 
-export const StldSortLabel = styled.div`
+export const SortLabel = styled.div`
   display: flex;
   align-items: center;
   margin-right: 15px;
@@ -29,7 +29,7 @@ export const StldSortLabel = styled.div`
     padding: 10px;
   }
 `
-export const StldSortPopUp = styled.div`
+export const SortPopUp = styled.div`
   position: absolute;
   right: 0;
   margin-top: 15px;
@@ -59,4 +59,4 @@ export const StldSortPopUp = styled.div`
   }
 `
 
-export default StldSortArea;
+export default SortArea;

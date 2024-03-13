@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import EmptyCartContainer, {EmptyCardButton, EmptyCartImg} from "../styled/cart/StldEmptyCart";
+import EmptyCartContainer, {EmptyCardButton, EmptyCartImg} from "../styled/cart/EmptyCartContainer";
 
 const EmptyCart = () => {
     return (

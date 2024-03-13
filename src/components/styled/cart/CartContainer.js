@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const CartDiv = styled.div`
+  margin-top: 105px;
   width: 80%;
 
   @media (min-width: 320px) and (max-width: 480px) {

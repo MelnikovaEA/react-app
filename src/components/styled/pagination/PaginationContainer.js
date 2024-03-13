@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StldPagination = styled.div`
+const PaginationContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,7 +49,6 @@ const StldPagination = styled.div`
       transform: scale(1.1, 1.1);;
     }
   }
-
 `
 
-export default StldPagination;
+export default PaginationContainer;

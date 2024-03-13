@@ -3,17 +3,18 @@ import {useDispatch} from "react-redux";
 import {setPrice, setTotal} from "../../../redux/slices/cartSlice";
 import {addToCart} from "../../../redux/slices/cartSlice";
 import {createCartItemId} from "../../../utils/createCartItemId";
-import StldItemCardSelectorBlock from "../../styled/cards/card/StldItemCardSelectorBlock";
-import StldItemCardDiv, {
-    StldItemCardImg,
-    StldItemCardPriceBlock,
-    StldItemCardPriceAndButtonDiv,
-    StldItemName
-} from "../../styled/cards/card/StldItemCardDiv";
-import StldItemCardAddButton from "../../styled/cards/card/StldItemCardAddButton";
+import ItemCardSelectorBlock from "../../styled/cards/card/ItemCardSelectorBlock";
+import ItemCardDiv, {
+    ItemCardImg,
+    ItemCardPriceBlock,
+    ItemCardPriceAndButtonDiv,
+    ItemName
+} from "../../styled/cards/card/ItemCardDiv";
+import CardAddButton from "../../styled/cards/card/ItemCardAddButton";
 import {useNavigate} from "react-router-dom";
 import TypeSelectorItemCard from "./TypeSelectorItemCard";
 import PropSelectorItemCard from "./PropSelectorItemCard";
+import {v4 as uuidv4} from "uuid";
 
 const ItemCard = ({id, image, name, price, types, extraProps}) => {
 
@@ -60,7 +61,7 @@ const ItemCard = ({id, image, name, price, types, extraProps}) => {
     const renderSelectors = (items, Component, additionalProps) => {
         return items.map((obj) => {
             const [objKey, value] = Object.entries(obj)[0];
-            return <Component objKey={objKey} value={value} {...additionalProps} />;
+            return <Component key={uuidv4()} objKey={objKey} value={value} {...additionalProps} />;
         });
     };
 
@@ -87,24 +88,24 @@ const ItemCard = ({id, image, name, price, types, extraProps}) => {
     }
 
     return (
-        <StldItemCardDiv>
-            <StldItemCardImg src={image} alt="monster" onClick={() => showDetailsPage()}/>
-            <StldItemName onClick={() => showDetailsPage()}>{name}</StldItemName>
-            <StldItemCardSelectorBlock>
+        <ItemCardDiv>
+            <ItemCardImg src={image} alt="monster" onClick={() => showDetailsPage()}/>
+            <ItemName onClick={() => showDetailsPage()}>{name}</ItemName>
+            <ItemCardSelectorBlock>
                 <ul>
                     {renderSelectors(types, TypeSelectorItemCard, {selectedType, onTypeHandleClick})}
                 </ul>
                 <ul>
                     {renderSelectors(extraProps, PropSelectorItemCard, {prices, extraPropsList, onPropHandleClick})}
                 </ul>
-            </StldItemCardSelectorBlock>
-            <StldItemCardPriceAndButtonDiv>
-                <StldItemCardPriceBlock>{totalItemPrice} ₽</StldItemCardPriceBlock>
-                <StldItemCardAddButton onClick={() => onAddButtonClick()}>
+            </ItemCardSelectorBlock>
+            <ItemCardPriceAndButtonDiv>
+                <ItemCardPriceBlock>{totalItemPrice} ₽</ItemCardPriceBlock>
+                <CardAddButton onClick={() => onAddButtonClick()}>
                     <span>В корзину</span>
-                </StldItemCardAddButton>
-            </StldItemCardPriceAndButtonDiv>
-        </StldItemCardDiv>
+                </CardAddButton>
+            </ItemCardPriceAndButtonDiv>
+        </ItemCardDiv>
     );
 }
 

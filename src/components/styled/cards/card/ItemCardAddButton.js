@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StldItemCardAddButton = styled.button`
+const ItemCardAddButton = styled.button`
   display: inline-block;
   background-color: orange;
   border-radius: 30px;
@@ -54,4 +54,4 @@ const StldItemCardAddButton = styled.button`
   }
 `
 
-export default StldItemCardAddButton;
+export default ItemCardAddButton;

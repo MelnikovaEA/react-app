@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StldHeaderCartDiv = styled.div`
+const HeaderCartDiv = styled.div`
   display: flex;
   margin: 10px 10px 10px 30px;
 
@@ -45,10 +45,10 @@ const StldHeaderCartDiv = styled.div`
   }
 `
 
-export const StldHeaderCartWrapper = styled.div`
+export const HeaderCartWrapper = styled.div`
   flex-grow: 1;
   display: flex;
   justify-content: flex-end;
 `
 
-export default StldHeaderCartDiv;
+export default HeaderCartDiv;

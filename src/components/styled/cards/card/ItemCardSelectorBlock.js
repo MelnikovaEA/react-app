@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StldItemCardSelectorBlock = styled.div`
+const ItemCardSelectorBlock = styled.div`
   display: flex;
   background-color: #f3f3f3;
   border-radius: 10px;
@@ -55,7 +55,7 @@ const StldItemCardSelectorBlock = styled.div`
         border: 3px solid white;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
         border-radius: 5px;
-        cursor: auto;
+        cursor: pointer;
       }
     }
 
@@ -72,4 +72,4 @@ const StldItemCardSelectorBlock = styled.div`
   }
 `
 
-export default StldItemCardSelectorBlock;
+export default ItemCardSelectorBlock;

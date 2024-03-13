@@ -4,7 +4,7 @@ import {useSearchParams} from "react-router-dom";
 import {fetchDataAction, selectMain} from "../../redux/slices/mainSlice";
 import {selectFilter, setQueryData} from "../../redux/slices/filterSlice";
 import {renderItems} from "../../utils/renderItems";
-import StldCardsContainer from "../styled/cards/StldCardsContainer";
+import CardsContainer from "../styled/cards/CardsContainer";
 import ItemCardSkeleton from "./card/ItemCardSkeleton";
 
 const ItemsCardsContainer = () => {
@@ -60,9 +60,9 @@ const ItemsCardsContainer = () => {
     }, [activeCategory, selectedType, searchData]);
 
     return (
-        <StldCardsContainer>
+        <CardsContainer>
             {status === 'loading' ? skeletons : renderItems(items)}
-        </StldCardsContainer>
+        </CardsContainer>
     )
 }
 

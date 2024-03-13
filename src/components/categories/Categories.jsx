@@ -6,7 +6,7 @@ import {
     setInputData,
     setLocalInputData
 } from "../../redux/slices/filterSlice";
-import CategoriesUl, {CategoriesLi} from "../styled/categories/StldCategories";
+import CategoriesUl, {CategoriesLi} from "../styled/categories/CategoriesContainer";
 
 const categories = [
     {category: '', text: 'Все'}, {category: 'Огнедышащие', text: 'Огнедышащие'},

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StldItemCardDiv = styled.div`
+const ItemCardDiv = styled.div`
   width: 360px;
   max-width: 360px;
   text-align: center;
@@ -29,15 +29,17 @@ const StldItemCardDiv = styled.div`
   }
 `
 
-export const StldItemCardImg = styled.img`
+export const ItemCardImg = styled.img`
   width: 260px;
+  cursor: pointer;
 
   @media (min-width: 320px) and (max-width: 480px) {
     width: 210px;
   }
 `
 
-export const StldItemName = styled.h4`
+export const ItemName = styled.h4`
+  cursor: pointer;
 
   @media (min-width: 320px) and (max-width: 480px) {
     font-size: 14px;
@@ -45,7 +47,7 @@ export const StldItemName = styled.h4`
   }
 `
 
-export const StldItemCardPriceBlock = styled.div`
+export const ItemCardPriceBlock = styled.div`
   font-weight: bold;
   font-size: 22px;
   line-height: 27px;
@@ -58,11 +60,11 @@ export const StldItemCardPriceBlock = styled.div`
   }
 `
 
-export const StldItemCardPriceAndButtonDiv = styled.div`
+export const ItemCardPriceAndButtonDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
   margin-top: 20px;
 `
 
-export default StldItemCardDiv;
+export default ItemCardDiv;

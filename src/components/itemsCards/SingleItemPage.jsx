@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useParams, useNavigate} from "react-router-dom";
 import ItemCard from "./card/ItemCard";
-import {Button, InfoWrapper, Page, Text} from "../styled/cards/StldSingleItemPage";
+import {Button, InfoWrapper, Page, Text} from "../styled/cards/SingleItemPage";
 import axios from "axios";
 
 const SingleItemPage = () => {
@@ -30,7 +30,6 @@ const SingleItemPage = () => {
     };
 
     return item && <Page>
-        {console.log(item)}
         <ItemCard {...item}/>
         <InfoWrapper>
             <Text>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aperiam illum rem sint velit! Autem

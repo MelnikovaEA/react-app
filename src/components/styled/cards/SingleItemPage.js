@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Page = styled.div`
+  margin-top: 105px;
   padding: 20px;
   display: flex;
   justify-content: center;

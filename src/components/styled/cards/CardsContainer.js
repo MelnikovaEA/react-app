@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StldCardsContainer = styled.div`
+const CardsContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
   grid-column-gap: 15px;
@@ -30,4 +30,4 @@ const StldCardsContainer = styled.div`
   //}
 `
 
-export default StldCardsContainer;
+export default CardsContainer;

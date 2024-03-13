@@ -1,7 +1,7 @@
 import {useRef, useEffect } from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {setCurPageNum, setInputData, setLocalInputData} from "../../redux/slices/filterSlice";
-import SearchInput, {SearchCloseIcon, SearchInputWrapper} from "../styled/header/StldSearch";
+import SearchInput, {SearchCloseIcon, SearchInputWrapper} from "../styled/header/SearchContainer";
 import useDebounce from "../../utils/hooks/useDebounce";
 
 const Search = () => {

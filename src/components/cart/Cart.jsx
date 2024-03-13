@@ -10,7 +10,7 @@ import CartDiv, {
     CartOrderDetails,
     CartTopDiv,
     CartWrapperDiv
-} from "../styled/cart/StldCart";
+} from "../styled/cart/CartContainer";
 import EmptyCart from "./EmptyCart";
 
 const Cart = () => {

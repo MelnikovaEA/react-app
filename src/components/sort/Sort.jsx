@@ -2,7 +2,7 @@ import {useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {setSelectedType, setOrderType, setCurPageNum, selectFilter} from "../../redux/slices/filterSlice";
 import {v4 as uuidv4} from "uuid";
-import StldSortArea, {StldSortLabel, StldSortPopUp} from "../styled/sort/StldSortArea";
+import SortArea, {SortLabel, SortPopUp} from "../styled/sort/SortArea";
 
 const variables = {rating: 'популярности', price: 'цене', name: 'алфавиту'};
 
@@ -47,21 +47,21 @@ const Sort = () => {
     }
 
     return (
-        <StldSortArea ref={sortRef}>
-            <StldSortLabel>
+        <SortArea ref={sortRef}>
+            <SortLabel>
                 <img src="/images/sort_icon.svg" alt="icon" style={{marginRight: "5px"}}/>
                 <b>Сортировка по:</b>
                 <span onClick={() => setVisible(!visible)}>{variables[selectedType]}</span>
                 <span onClick={() => dispatch(setOrderType('asc'))}> ↑</span>
                 <span onClick={() => dispatch(setOrderType('desc'))}> ↓</span>
-            </StldSortLabel>
+            </SortLabel>
             {visible && (
-                <StldSortPopUp>
+                <SortPopUp>
                     <ul>
                         {renderTypes(variables)}
                     </ul>
-                </StldSortPopUp>)}
-        </StldSortArea>
+                </SortPopUp>)}
+        </SortArea>
     );
 }
 

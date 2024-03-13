@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import {Image, Wrapper} from "../styled/errors/StldError404Page";
+import {Image, Wrapper} from "../styled/errors/Error404PageContainer";
 
 const Error404Page = () => {
     return (

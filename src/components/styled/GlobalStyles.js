@@ -3,6 +3,7 @@ import {createGlobalStyle} from "styled-components";
 const GlobalStyles = createGlobalStyle`
   body {
     overflow-y: scroll;
+    cursor:default;
   }
   
   a {
