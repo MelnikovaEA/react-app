@@ -32,7 +32,6 @@ const ItemsCardsContainer = () => {
     useEffect(() => {
         if (searchParams) {
             const params = Object.fromEntries(searchParams.entries());
-            console.log('PARAMS = ', params);
             dispatch(setQueryData({...params}));
             isSearchParams.current = true;
         }

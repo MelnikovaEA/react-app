@@ -9,7 +9,7 @@ import HeaderContainer, {
     HeaderText,
     HeaderDescription, HeaderInfoWrapper
 } from "../styled/header/HeaderContainer";
-import HeaderCartDiv, {HeaderCartWrapper} from "../styled/header/HeaderCartDiv";
+import HeaderCartButton, {HeaderCartWrapper} from "../styled/header/HeaderCartButton";
 import Search from "./Search";
 
 const Header = () => {
@@ -42,14 +42,14 @@ const Header = () => {
                 </HeaderLogoDiv>
                 {isMainPage && <Search id='search-input'/>}
                 {!isCartPage && <HeaderCartWrapper id='cart-item'>
-                    <HeaderCartDiv>
+                    <HeaderCartButton>
                         <Link to="cart">
                             <span>{price} ₽</span>
                             <div>-</div>
                             <img src="/images/cart/cart-on-button.svg" alt="img"/>
                             <span>{total}</span>
                         </Link>
-                    </HeaderCartDiv>
+                    </HeaderCartButton>
                 </HeaderCartWrapper>}
             </HeaderWrapper>
         </HeaderContainer>

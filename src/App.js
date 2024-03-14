@@ -1,24 +1,27 @@
-import {Profiler} from "react";
-import {Outlet} from "react-router-dom";
+import {Profiler, useEffect} from "react";
+import {Outlet, useNavigate} from "react-router-dom";
 
 import onRenderCallback from "./utils/profilerUtils";
 import Header from "./components/header/Header";
 import ErrorBoundary from "./components/errors/ErrorBoundary";
 import {useSelector} from "react-redux";
-import ErrorAppPage from "./components/errors/ErrorAppPage";
-import Error404Page from "./components/errors/Error404Page";
+import {selectMain} from "./redux/slices/mainSlice";
 
 function App() {
-    const status = useSelector((store)=> store.main.status);
-    const error = useSelector((store)=> store.main.errorStatus);
 
-    if (status === 'error' && error !==404) {
-       return  <ErrorAppPage />
-    }
+    const {status} = useSelector(selectMain);
+    const {errorStatus} = useSelector(selectMain);
+    const navigate = useNavigate();
 
-    if(error === 404){
-        return  <Error404Page />
-    }
+    useEffect(() => {
+        if (status === 'error' && errorStatus !== 404) {
+            navigate('/error')
+        }
+
+        if (errorStatus === 404) {
+            navigate('/error404')
+        }
+    }, [status, errorStatus])
 
     return (
         <ErrorBoundary>

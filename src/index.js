@@ -12,6 +12,8 @@ import EmptyCart from "./components/cart/EmptyCart";
 import NotFoundPage from "./components/errors/NotFoundPage";
 import AppBody from "./components/body/AppBody";
 import SingleItemPage from "./components/itemsCards/SingleItemPage";
+import ErrorAppPage from "./components/errors/ErrorAppPage";
+import Error404Page from "./components/errors/Error404Page";
 
 
 const router = createBrowserRouter([
@@ -41,6 +43,14 @@ const router = createBrowserRouter([
                 element: <NotFoundPage/>,
             },
         ]
+    },
+    {
+        path: "error",
+        element: <ErrorAppPage/>
+    },
+    {
+        path: "error404",
+        element: <Error404Page/>
     },
 ]);
 

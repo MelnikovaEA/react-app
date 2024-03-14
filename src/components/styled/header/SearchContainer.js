@@ -34,6 +34,10 @@ const SearchInput = styled.input`
     padding: 10px 20px;
     font-size: 14px;
   }
+
+  @media (min-width: 821px) and (max-width: 1024px) {
+    max-width: 250px;
+  }
 `
 export const SearchCloseIcon = styled.img`
   position: absolute;

@@ -7,7 +7,7 @@ const Error404Page = () => {
         <Wrapper>
             <Image src="/images/404-icon.svg" alt="img"/>
             <p>Страница не найдена</p>
-            {/*<Link to='/'>Вернуться на главную</Link>*/}
+            <Link to='/'>Вернуться на главную</Link>
         </Wrapper>
     );
 };
