@@ -12,8 +12,6 @@ const Pagination = () => {
     const pagesQty = useSelector(selectMain).pagesQty;
     const curPageNum = useSelector(selectFilter).curPageNum;
 
-    console.log(pagesQty, curPageNum);
-
     return (
         pagesQty && <Profiler id="paginationProfiler" onRender={onRenderCallback}>
             <PaginationContainer>
