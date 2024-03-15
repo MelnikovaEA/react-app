@@ -9,6 +9,15 @@ export const Page = styled.div`
   @media(min-width: 320px) and (max-width: 480px){
     flex-direction: column;
     align-items: center;
+    margin-top: 120px;
+  }
+
+  @media (min-width: 481px) and (max-width: 820px) {
+    margin-top: 155px;
+  }
+
+  @media (min-width: 821px) and (max-width: 1024px) {
+    margin-top: 125px;
   }
 `
 

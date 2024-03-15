@@ -14,7 +14,7 @@ const SingleItemPage = () => {
     useEffect(() => {
         const fetchItem = async () => {
             try {
-                const response = await axios.get(`http://localhost:3001/monsters/${id}`);
+                const response = await axios.get(`https://json-server-vercel-omega-three.vercel.app/monsters/${id}`);
                 setItem(response.data);
             } catch (error) {
                 alert('Ошибка при загрузке данных');

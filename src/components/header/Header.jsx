@@ -9,7 +9,7 @@ import HeaderContainer, {
     HeaderText,
     HeaderDescription, HeaderInfoWrapper
 } from "../styled/header/HeaderContainer";
-import HeaderCartButton, {HeaderCartWrapper} from "../styled/header/HeaderCartButton";
+import HeaderCartButton, { HeaderButtonsWrapper, HeaderCheckInButton} from "../styled/header/HeaderButtons.js";
 import Search from "./Search";
 
 const Header = () => {
@@ -41,16 +41,19 @@ const Header = () => {
                     </HeaderInfoWrapper>
                 </HeaderLogoDiv>
                 {isMainPage && <Search id='search-input'/>}
-                {!isCartPage && <HeaderCartWrapper id='cart-item'>
-                    <HeaderCartButton>
-                        <Link to="cart">
-                            <span>{price} ₽</span>
-                            <div>-</div>
-                            <img src="/images/cart/cart-on-button.svg" alt="img"/>
-                            <span>{total}</span>
-                        </Link>
-                    </HeaderCartButton>
-                </HeaderCartWrapper>}
+                {!isCartPage && <HeaderButtonsWrapper id='cart-item'>
+                        <HeaderCartButton>
+                            <Link to="cart">
+                                <span><span>{price}</span> <span>₽</span></span>
+                                <div>-</div>
+                                <img src="/images/cart/cart-on-button.svg" alt="img"/>
+                                <span>{total}</span>
+                            </Link>
+                        </HeaderCartButton>
+                        <HeaderCheckInButton >
+                            Вход / Регистрация
+                        </HeaderCheckInButton>
+                </HeaderButtonsWrapper>}
             </HeaderWrapper>
         </HeaderContainer>
     );

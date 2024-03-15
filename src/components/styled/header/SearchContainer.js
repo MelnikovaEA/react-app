@@ -11,6 +11,10 @@ export const SearchInputWrapper = styled.div`
   @media (min-width: 481px) and (max-width: 820px) {
     padding-left: 0;
   }
+  
+  @media (min-width: 821px) and (max-width: 1024px) {
+    padding-left: 5px;
+  }
 `
 const SearchInput = styled.input`
   width: 300px;
@@ -24,21 +28,26 @@ const SearchInput = styled.input`
   cursor: pointer;
   box-sizing: content-box;
 
-  &:focus {
-    outline-color: darkseagreen;
-  }
-
   @media(min-width: 320px) and (max-width: 480px){
-    max-width: 280px;
+    max-width: 150px;
     max-height: 30px;
     padding: 10px 20px;
     font-size: 14px;
   }
 
   @media (min-width: 821px) and (max-width: 1024px) {
-    max-width: 250px;
+    max-width: 230px;
+  }
+
+  @media (min-width: 1025px) and (max-width: 1280px) {
+    max-width: 200px;
+  }
+
+  &:focus {
+    outline-color: darkseagreen;
   }
 `
+
 export const SearchCloseIcon = styled.img`
   position: absolute;
   right: 20px;

@@ -4,9 +4,19 @@ const EmptyCartContainer = styled.div`
   align-items: center;
   text-align: center;
   padding: 10vh;
+  margin-top: 105px;
 
   @media(min-width: 320px) and (max-width: 480px){
     padding: 20px;
+    margin-top: 120px;
+  }
+
+  @media (min-width: 481px) and (max-width: 820px) {
+    margin-top: 155px;
+  }
+
+  @media (min-width: 821px) and (max-width: 1024px) {
+    margin-top: 125px;
   }
 `
 
