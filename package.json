@@ -27,7 +27,7 @@
     "eject": "vite eject",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "server": "json-server -w src/assets/db.json -p 3001",
+    "server": "json-server -w https://json-server-vercel-omega-three.vercel.app/ -p 3001",
     "runApp": "concurrently \"npm run server\" \"npm start\""
   },
   "eslintConfig": {

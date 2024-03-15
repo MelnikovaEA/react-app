@@ -10,6 +10,7 @@ const CardsContainer = styled.div`
   margin-bottom: 15px;
   
   @media(min-width: 320px) and (max-width: 480px){
+    max-width: 100vw;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   }
 

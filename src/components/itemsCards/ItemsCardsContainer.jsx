@@ -23,7 +23,7 @@ const ItemsCardsContainer = () => {
     const orderParam = `_order=${encodeURIComponent(orderType)}`;
     const searchParam = `name_like=${encodeURIComponent(searchData)}`;
 
-    const url = `http://localhost:3001/monsters?${categoryParam}&${sortParam}&${orderParam}&${searchParam}&_page=${curPageNum}&_limit=8`;
+    const url = `https://json-server-vercel-omega-three.vercel.app/monsters?${categoryParam}&${sortParam}&${orderParam}&${searchParam}&_page=${curPageNum}&_limit=8`;
 
     const skeletons = [...new Array(8)].map((_, index) => {
         return <ItemCardSkeleton key={index}/>
