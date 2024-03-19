@@ -1,4 +1,4 @@
-import CartItem from "../components/cart/CartItem";
+import CartItem from "../components/cart/CartItem.js";
 import {v4 as uuidv4} from 'uuid';
 
 export const renderCart = (items) =>{

@@ -1,6 +1,6 @@
-import ItemCard from "../components/itemsCards/card/ItemCard";
+import ItemCard from "../components/itemsCards/card/ItemCard.js";
 import {v4 as uuidv4} from "uuid";
-import NotFoundPage from "../components/errors/NotFoundPage";
+import NotFoundPage from "../components/errors/NotFoundPage.js";
 
 //чтобы при поиске через окошко search фильтровать статичный массив(а не с бэкенда), после items перед
 // map можно добавить свою фильтрацию: .filter((obj)=>obj.name.toLowerCase().includes(inputData.toLowerCase()))

@@ -9,7 +9,7 @@ import HeaderContainer, {
     HeaderText,
     HeaderDescription, HeaderInfoWrapper
 } from "../styled/header/HeaderContainer";
-import HeaderCartButton, { HeaderButtonsWrapper, HeaderCheckInButton} from "../styled/header/HeaderButtons.js";
+import HeaderCartButton, { HeaderButtonsWrapper, HeaderCheckInButton} from "../styled/header/HeaderButtons";
 import Search from "./Search";
 
 const Header = () => {

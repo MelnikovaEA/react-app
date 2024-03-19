@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {useParams, useNavigate} from "react-router-dom";
-import ItemCard from "./card/ItemCard";
+import ItemCard from "./card/ItemCard.js";
 import {Button, InfoWrapper, Page, Text} from "../styled/cards/SingleItemPage";
 import axios from "axios";
 

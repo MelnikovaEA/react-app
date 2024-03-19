@@ -5,7 +5,7 @@ import {fetchDataAction, selectMain} from "../../redux/slices/mainSlice";
 import {selectFilter, setQueryData} from "../../redux/slices/filterSlice";
 import {renderItems} from "../../utils/renderItems";
 import CardsContainer from "../styled/cards/CardsContainer";
-import ItemCardSkeleton from "./card/ItemCardSkeleton";
+import ItemCardSkeleton from "./card/ItemCardSkeleton.js";
 
 const ItemsCardsContainer = () => {
 

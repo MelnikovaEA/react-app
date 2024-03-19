@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
-import Categories from "./Categories";
+import Categories from "./Categories.js";
 import Sort from "../sort/Sort";
 
 const Wrapper = styled.div`
