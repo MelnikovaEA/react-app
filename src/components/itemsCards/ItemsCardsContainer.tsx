@@ -7,7 +7,7 @@ import {renderItems} from "../../utils/renderItems";
 import CardsContainer from "../styled/cards/CardsContainer";
 import ItemCardSkeleton from "./card/ItemCardSkeleton.js";
 
-const ItemsCardsContainer = () => {
+const ItemsCardsContainer: React.FC = () => {
 
     const dispatch = useDispatch();
     const [searchParams, setSearchParams] = useSearchParams();
@@ -18,14 +18,14 @@ const ItemsCardsContainer = () => {
     const isSearchParams = useRef(false);
     const searchData = inputData ? inputData : '';
 
-    const categoryParam = activeCategory ? `category=${encodeURIComponent(activeCategory)}` : '';
-    const sortParam = `_sort=${encodeURIComponent(selectedType)}`;
-    const orderParam = `_order=${encodeURIComponent(orderType)}`;
-    const searchParam = `name_like=${encodeURIComponent(searchData)}`;
+    const categoryParam: string = activeCategory ? `category=${encodeURIComponent(activeCategory)}` : '';
+    const sortParam: string = `_sort=${encodeURIComponent(selectedType)}`;
+    const orderParam: string = `_order=${encodeURIComponent(orderType)}`;
+    const searchParam: string = `name_like=${encodeURIComponent(searchData)}`;
 
-    const url = `https://json-server-vercel-omega-three.vercel.app/monsters?${categoryParam}&${sortParam}&${orderParam}&${searchParam}&_page=${curPageNum}&_limit=8`;
+    const url: string = `https://json-server-vercel-omega-three.vercel.app/monsters?${categoryParam}&${sortParam}&${orderParam}&${searchParam}&_page=${curPageNum}&_limit=8`;
 
-    const skeletons = [...new Array(8)].map((_, index) => {
+    const skeletons: React.JSX.Element[] = [...new Array(8)].map((_, index) => {
         return <ItemCardSkeleton key={index}/>
     });
 

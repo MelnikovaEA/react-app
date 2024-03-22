@@ -15,7 +15,6 @@ import SingleItemPage from "./components/itemsCards/SingleItemPage";
 import ErrorAppPage from "./components/errors/ErrorAppPage";
 import Error404Page from "./components/errors/Error404Page";
 
-
 const router = createBrowserRouter([
     {
         path: "/",

@@ -1,15 +1,16 @@
-import {useEffect, useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {setSelectedType, setOrderType, setCurPageNum, selectFilter} from "../../redux/slices/filterSlice";
 import {v4 as uuidv4} from "uuid";
 import SortArea, {SortLabel, SortPopUp} from "../styled/sort/SortArea";
 
-const variables = {rating: 'популярности', price: 'цене', name: 'алфавиту'};
+type VariablesKeys = 'rating' | 'price' | 'name';
+const variables: { [K in VariablesKeys]: string } = {rating: 'популярности', price: 'цене', name: 'алфавиту'};
 
-const Sort = () => {
+const Sort: React.FC = () => {
 
     const dispatch = useDispatch();
-    const sortRef = useRef(null);
+    const sortRef = useRef<HTMLDivElement>(null);
 
     const { curPageNum, selectedType } = useSelector(selectFilter);
     const [visible, setVisible] = useState(false);
@@ -26,20 +27,20 @@ const Sort = () => {
         return () => document.body.removeEventListener('click', handleOutsideClick)
     }, []);
 
-    const onVariableClick = (data) => {
+    const onVariableClick = (data: string) => {
         dispatch(setSelectedType(data));
         dispatch(setCurPageNum(curPageNum));
         setVisible(false);
     }
 
-    const renderTypes = (obj) => {
-        let items = [];
-        for (let key in obj) {
+    const renderTypes = (obj: { [K in VariablesKeys]: string } ) => {
+        const items = [];
+        for (const key in obj) {
             items.push(
                 <li onClick={() => onVariableClick(key)}
-                    className={key === selectedType ? 'active' : null}
+                    className={key === selectedType ? 'active' : undefined}
                     key={uuidv4()}>
-                    {obj[key]}
+                    {obj[key as VariablesKeys]}
                 </li>
             );
         }
@@ -51,7 +52,7 @@ const Sort = () => {
             <SortLabel>
                 <img src="/images/sort_icon.svg" alt="icon" style={{marginRight: "5px"}}/>
                 <b>Сортировка по:</b>
-                <span onClick={() => setVisible(!visible)}>{variables[selectedType]}</span>
+                <span onClick={() => setVisible(!visible)}>{variables[selectedType as VariablesKeys]}</span>
                 <span onClick={() => dispatch(setOrderType('asc'))}> ↑</span>
                 <span onClick={() => dispatch(setOrderType('desc'))}> ↓</span>
             </SortLabel>

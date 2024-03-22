@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   justify-content: space-between;
 `
 
-const CategoriesSortContainer = () => {
+const CategoriesSortContainer: React.FC = () => {
     return (
         <Wrapper>
             <Categories />

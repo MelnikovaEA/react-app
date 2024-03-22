@@ -1,41 +1,49 @@
-import {useRef, useEffect } from "react";
+import React, {useRef, useEffect } from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {setCurPageNum, setInputData, setLocalInputData} from "../../redux/slices/filterSlice";
 import SearchInput, {SearchCloseIcon, SearchInputWrapper} from "../styled/header/SearchContainer";
 import useDebounce from "../../utils/hooks/useDebounce";
 
-const Search = () => {
+const Search: React.FC = () => {
 
     const dispatch = useDispatch();
-    const inputRef = useRef(null);
+    const inputRef = useRef<HTMLInputElement>(null);
 
     const localInputData = useSelector(store => store.filter.localInputData);
     const debouncedInputData = useDebounce(localInputData, 500);
 
     useEffect(() => {
-        dispatch(setInputData(debouncedInputData));
-        dispatch(setCurPageNum(1));
+      dispatch(setInputData(debouncedInputData));
+      dispatch(setCurPageNum(1));
     }, [debouncedInputData]);
 
     const onInputChange = (e) => {
-        dispatch(setLocalInputData(e.target.value));
-    }
+      dispatch(setLocalInputData(e.target.value));
+    };
 
     const onCloseIconClick = () => {
-        dispatch(setLocalInputData(''));
-        inputRef.current.focus();
-    }
+      dispatch(setLocalInputData(""));
+      if(inputRef.current) {
+          inputRef.current.focus();
+      }
+    };
 
     return (
-        <SearchInputWrapper>
-            <SearchInput type="text"
-                         ref={inputRef}
-                         value={localInputData}
-                         onChange={(event) => onInputChange(event)}
-                         placeholder='search ...'/>
-            {debouncedInputData && <SearchCloseIcon onClick={onCloseIconClick}
-                                                    src="/images/close_icon.svg"/>}
-        </SearchInputWrapper>
+      <SearchInputWrapper>
+        <SearchInput
+          type="text"
+          ref={inputRef}
+          value={localInputData}
+          onChange={(event) => onInputChange(event)}
+          placeholder="search ..."
+        />
+        {debouncedInputData && (
+          <SearchCloseIcon
+            onClick={onCloseIconClick}
+            src="/images/close_icon.svg"
+          />
+        )}
+      </SearchInputWrapper>
     );
 }
 

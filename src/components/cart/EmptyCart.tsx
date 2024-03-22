@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import EmptyCartContainer, {EmptyCardButton, EmptyCartImg} from "../styled/cart/EmptyCartContainer";
 
-const EmptyCart = () => {
+const EmptyCart: React.FC = () => {
     return (
         <EmptyCartContainer>
             <h2>В корзине ничего нет</h2>

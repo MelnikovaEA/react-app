@@ -1,4 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
+import { PayloadAction } from '@reduxjs/toolkit';
+import { EmptyPayload } from "../../appTypes/appTypes";
 
 const initialState = {
     order: [],

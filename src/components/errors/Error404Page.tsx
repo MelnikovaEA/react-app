@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import {Image, Wrapper} from "../styled/errors/Error404PageContainer";
 
-const Error404Page = () => {
+const Error404Page: React.FC = () => {
     return (
         <Wrapper>
             <Image src="/images/404-icon.svg" alt="img"/>

@@ -12,7 +12,7 @@ import HeaderContainer, {
 import HeaderCartButton, { HeaderButtonsWrapper, HeaderCheckInButton} from "../styled/header/HeaderButtons";
 import Search from "./Search";
 
-const Header = () => {
+const Header: React.FC = () => {
 
     const dispatch = useDispatch();
     const {price, total} = useSelector(selectCart);

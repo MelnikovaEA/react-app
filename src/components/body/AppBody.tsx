@@ -1,4 +1,3 @@
-import React from 'react';
 import CategoriesSortContainer from "../categories/CategoriesSortContainer";
 import ItemsCardsContainer from "../itemsCards/ItemsCardsContainer";
 import Pagination from "../pagination/Pagination";

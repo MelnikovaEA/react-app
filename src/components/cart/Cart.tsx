@@ -13,7 +13,7 @@ import CartDiv, {
 } from "../styled/cart/CartContainer";
 import EmptyCart from "./EmptyCart";
 
-const Cart = () => {
+const Cart: React.FC = () => {
     const dispatch = useDispatch();
     const {order, total, price} = useSelector(selectCart);
 

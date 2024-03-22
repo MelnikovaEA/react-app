@@ -1,6 +1,14 @@
 import React from 'react';
+import {Types} from "./ItemCard.tsx";
 
-const TypeSelectorItemCard = ({objKey, value, selectedType, onTypeHandleClick}) => {
+type TypeSelectorItemCardProps = {
+    objKey: Types,
+    value: string,
+    selectedType: string,
+    onTypeHandleClick: (k: Types) => void
+}
+
+const TypeSelectorItemCard: React.FC<TypeSelectorItemCardProps> = ({objKey, value, selectedType, onTypeHandleClick}) => {
     return (
         <li className={selectedType === objKey ? 'active select' : 'select'}
             onClick={() => onTypeHandleClick(objKey)}>

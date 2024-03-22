@@ -1,5 +1,8 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import axios from "axios";
+import { Item } from "../../appTypes/appTypes";
+
+export type Items = Item[];
 
 const initialState = {
     items: [],
@@ -9,7 +12,7 @@ const initialState = {
     errorStatus: ''
 }
 
-export const fetchDataAction = createAsyncThunk('main/fetchDataFromDB', async (x, {rejectWithValue}) => {
+export const fetchDataAction = createAsyncThunk('main/fetchDataFromDB', async (x: string, {rejectWithValue}) => {
     try {
         const res = await axios.get(x);
         const data = res.data;

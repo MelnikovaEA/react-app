@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {setPrice, setTotal, removeFromCart, incrementQty, decrementQty} from "../../redux/slices/cartSlice";
+import {setPrice, setTotal, removeFromCart, incrementQty, decrementQty, selectCart} from "../../redux/slices/cartSlice";
 import CartItemDiv, {
     CartItemCount,
     CartItemImg,
@@ -8,11 +8,12 @@ import CartItemDiv, {
     CartItemSmallButton,
     CartItemSum
 } from "../styled/cart/CartItemContainer";
+import {ItemOfCart} from "../../appTypes/appTypes";
 
-const CartItem = ({hashId, image, name, extProps, type, qty, totPrice}) => {
+const CartItem: React.FC<ItemOfCart> = ({hashId, image, name, extProps, type, qty, totPrice}) => {
 
     const dispatch = useDispatch();
-    const order = useSelector(store => store.cart.order);
+    const { order } = useSelector(selectCart);
 
     useEffect(() => {
         dispatch(setPrice());
