@@ -1,16 +1,16 @@
-import {Profiler} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import React, {Profiler} from "react";
+import {useAppDispatch, useAppSelector} from "../../hooks.ts";
 import {selectFilter, setCurPageNum} from "../../redux/slices/filterSlice";
 import {selectMain} from "../../redux/slices/mainSlice";
 import onRenderCallback from "../../utils/profilerUtils";
 import {renderPagination} from "../../utils/renderPagination";
 import PaginationContainer from "../styled/pagination/PaginationContainer";
 
-const Pagination = () => {
+const Pagination: React.FC = () => {
 
-    const dispatch = useDispatch();
-    const pagesQty = useSelector(selectMain).pagesQty;
-    const curPageNum = useSelector(selectFilter).curPageNum;
+    const dispatch = useAppDispatch();
+    const pagesQty = useAppSelector(selectMain).pagesQty;
+    const curPageNum = useAppSelector(selectFilter).curPageNum;
 
     return (
         pagesQty && <Profiler id="paginationProfiler" onRender={onRenderCallback}>

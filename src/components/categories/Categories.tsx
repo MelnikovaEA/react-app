@@ -1,5 +1,5 @@
 import React from "react";
-import {useSelector, useDispatch} from "react-redux";
+import { useAppDispatch, useAppSelector} from "../../hooks.ts";
 import {
     selectFilter,
     setActiveCategory,
@@ -19,9 +19,9 @@ const categories: Categories = [
 
 const Categories: React.FC = () => {
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
-    const activeCategory = useSelector(selectFilter).activeCategory;
+    const activeCategory = useAppSelector(selectFilter).activeCategory;
     const onCategoryClick = (value: string) => {
         dispatch(setActiveCategory(value));
         dispatch(setCurPageNum(1));

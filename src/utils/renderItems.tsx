@@ -6,7 +6,7 @@ import { Item } from "../appTypes/appTypes.ts";
 //чтобы при поиске через окошко search фильтровать статичный массив(а не с бэкенда), после items перед
 // map можно добавить свою фильтрацию: .filter((obj)=>obj.name.toLowerCase().includes(inputData.toLowerCase()))
 
-export const renderItems = (items) => {
+export const renderItems = (items: Item[]) => {
     if (items.length>0) {
         return items.map((item: Item) => (
             <ItemCard key={uuidv4()}

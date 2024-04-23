@@ -1,5 +1,11 @@
 export type EmptyPayload = void;
 
+
+export type ItemTypes = 'plain' | 'magic';
+export type ItemType = {[K in ItemTypes]: string};
+export type ItemExtraProp = {[key: string]: string};
+
+
 export type Item = {
     id: number,
     image: string,
@@ -11,15 +17,13 @@ export type Item = {
     rating: number
     }
 
-export type ItemType = {[key: string]: string};
-export type ItemExtraProp = {[key: string]: string};
 export type ItemOfCart = {
     hashId: string,
     id: number,
     image: string,
     name: string,
     type: string,
-    extProps: string[],
+    extProps: string[] | string,
     price: number,
     qty: number,
     totPrice: number

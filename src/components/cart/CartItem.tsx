@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {useDispatch, useSelector} from "react-redux";
+import { useAppDispatch, useAppSelector } from "../../hooks.ts";
 import {setPrice, setTotal, removeFromCart, incrementQty, decrementQty, selectCart} from "../../redux/slices/cartSlice";
 import CartItemDiv, {
     CartItemCount,
@@ -12,8 +12,8 @@ import {ItemOfCart} from "../../appTypes/appTypes";
 
 const CartItem: React.FC<ItemOfCart> = ({hashId, image, name, extProps, type, qty, totPrice}) => {
 
-    const dispatch = useDispatch();
-    const { order } = useSelector(selectCart);
+    const dispatch = useAppDispatch();
+    const { order } = useAppSelector(selectCart);
 
     useEffect(() => {
         dispatch(setPrice());

@@ -1,5 +1,5 @@
 import React, {useMemo} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import {useAppDispatch, useAppSelector} from "../../hooks.ts";
 import {Link, useLocation} from "react-router-dom";
 import {selectCart} from "../../redux/slices/cartSlice";
 import {setActiveCategory, setSelectedType} from "../../redux/slices/filterSlice";
@@ -14,8 +14,8 @@ import Search from "./Search";
 
 const Header: React.FC = () => {
 
-    const dispatch = useDispatch();
-    const {price, total} = useSelector(selectCart);
+    const dispatch = useAppDispatch();
+    const {price, total} = useAppSelector(selectCart);
 
     const location = useLocation();
     const isMainPage = useMemo(() => location.pathname === '/', [location]);
@@ -40,7 +40,7 @@ const Header: React.FC = () => {
                         <HeaderDescription>cutest monsters for every taste</HeaderDescription>
                     </HeaderInfoWrapper>
                 </HeaderLogoDiv>
-                {isMainPage && <Search id='search-input'/>}
+                {isMainPage && <Search />}
                 {!isCartPage && <HeaderButtonsWrapper id='cart-item'>
                         <HeaderCartButton>
                             <Link to="cart">
@@ -59,4 +59,5 @@ const Header: React.FC = () => {
     );
 }
 
-export default React.memo(Header);
+const MemoizedHeader = React.memo(Header);
+export default MemoizedHeader;

@@ -1,15 +1,16 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, MouseEventHandler} from 'react';
 import {useParams, useNavigate} from "react-router-dom";
+import {Item} from "../../appTypes/appTypes.ts";
 import ItemCard from "./card/ItemCard.js";
 import {Button, InfoWrapper, Page, Text} from "../styled/cards/SingleItemPage";
 import axios from "axios";
 
-const SingleItemPage = () => {
+const SingleItemPage: React.FC = () => {
 
     const navigate = useNavigate();
 
-    const {id} = useParams();
-    const [item, setItem] = useState(null);
+    const {id}: {id?: string } = useParams();
+    const [item, setItem] = useState<Item | null>(null);
 
     useEffect(() => {
         const fetchItem = async () => {
@@ -25,7 +26,7 @@ const SingleItemPage = () => {
         fetchItem();
     }, [id]);
 
-    const handleClick = () => {
+    const handleClick: MouseEventHandler<HTMLButtonElement> = () => {
         navigate(-1);
     };
 

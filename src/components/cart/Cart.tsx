@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {Link} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
+import { useAppDispatch, useAppSelector } from "../../hooks.ts";
 import {clearCart, selectCart} from "../../redux/slices/cartSlice";
 import {renderCart} from "../../utils/renderCart";
 import CartDiv, {
@@ -14,8 +14,8 @@ import CartDiv, {
 import EmptyCart from "./EmptyCart";
 
 const Cart: React.FC = () => {
-    const dispatch = useDispatch();
-    const {order, total, price} = useSelector(selectCart);
+    const dispatch = useAppDispatch();
+    const {order, total, price} = useAppSelector(selectCart);
 
     useEffect(() => {
         renderCart(order);

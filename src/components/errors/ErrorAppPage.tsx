@@ -1,13 +1,13 @@
 import React from 'react';
-import {useSelector} from "react-redux";
+import {useAppSelector} from "../../hooks.ts";
 import {selectMain} from "../../redux/slices/mainSlice";
 
 const ErrorAppPage: React.FC = () => {
-    const {message} = useSelector(selectMain);
+    const {error} = useAppSelector(selectMain);
 
     return (
         <div>
-            {message}
+            {error}
         </div>
     );
 };

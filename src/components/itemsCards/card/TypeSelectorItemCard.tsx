@@ -1,11 +1,11 @@
 import React from 'react';
-import {Types} from "./ItemCard.tsx";
+import {ItemTypes} from "../../../appTypes/appTypes.ts";
 
-type TypeSelectorItemCardProps = {
-    objKey: Types,
+export type TypeSelectorItemCardProps = {
+    objKey: ItemTypes,
     value: string,
     selectedType: string,
-    onTypeHandleClick: (k: Types) => void
+    onTypeHandleClick: (k: ItemTypes) => void
 }
 
 const TypeSelectorItemCard: React.FC<TypeSelectorItemCardProps> = ({objKey, value, selectedType, onTypeHandleClick}) => {

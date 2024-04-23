@@ -1,15 +1,15 @@
-import React, {useRef, useEffect } from "react";
-import {useDispatch, useSelector} from "react-redux";
+import React, {useRef, useEffect, ChangeEvent} from "react";
+import {useAppDispatch, useAppSelector} from "../../hooks.ts";
 import {setCurPageNum, setInputData, setLocalInputData} from "../../redux/slices/filterSlice";
 import SearchInput, {SearchCloseIcon, SearchInputWrapper} from "../styled/header/SearchContainer";
 import useDebounce from "../../utils/hooks/useDebounce";
 
 const Search: React.FC = () => {
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const inputRef = useRef<HTMLInputElement>(null);
 
-    const localInputData = useSelector(store => store.filter.localInputData);
+    const localInputData = useAppSelector(store => store.filter.localInputData);
     const debouncedInputData = useDebounce(localInputData, 500);
 
     useEffect(() => {
@@ -17,7 +17,7 @@ const Search: React.FC = () => {
       dispatch(setCurPageNum(1));
     }, [debouncedInputData]);
 
-    const onInputChange = (e) => {
+    const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
       dispatch(setLocalInputData(e.target.value));
     };
 
@@ -29,7 +29,7 @@ const Search: React.FC = () => {
     };
 
     return (
-      <SearchInputWrapper>
+      <SearchInputWrapper id="search-input">
         <SearchInput
           type="text"
           ref={inputRef}

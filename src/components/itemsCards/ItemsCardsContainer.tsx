@@ -1,5 +1,5 @@
 import React, {useEffect, useRef} from 'react';
-import {useDispatch, useSelector} from "react-redux";
+import {useAppDispatch, useAppSelector} from "../../hooks.ts";
 import {useSearchParams} from "react-router-dom";
 import {fetchDataAction, selectMain} from "../../redux/slices/mainSlice";
 import {selectFilter, setQueryData} from "../../redux/slices/filterSlice";
@@ -9,11 +9,11 @@ import ItemCardSkeleton from "./card/ItemCardSkeleton.js";
 
 const ItemsCardsContainer: React.FC = () => {
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const [searchParams, setSearchParams] = useSearchParams();
 
-    const {items, status} = useSelector(selectMain);
-    const {activeCategory, selectedType, orderType, curPageNum, inputData} = useSelector(selectFilter);
+    const {items, status} = useAppSelector(selectMain);
+    const {activeCategory, selectedType, orderType, curPageNum, inputData} = useAppSelector(selectFilter);
 
     const isSearchParams = useRef(false);
     const searchData = inputData ? inputData : '';

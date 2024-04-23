@@ -1,7 +1,7 @@
 import React from 'react';
 import {Prices} from "../../../appTypes/appTypes.ts";
 
-type PropSelectorItemCardProps = {
+export type PropSelectorItemCardProps = {
     objKey: string, 
     value: string,
     prices: Prices,

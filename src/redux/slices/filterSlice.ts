@@ -1,6 +1,17 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import { RootState } from "../store.ts";
+import { VariablesKeys } from "../../components/sort/Sort.tsx";
 
-const initialState = {
+type FilterState = {
+    selectedType: VariablesKeys,
+    orderType: "asc" | "desc",
+    activeCategory: string,
+    curPageNum: number,
+    inputData: string,
+    localInputData: string
+}
+
+const initialState: FilterState = {
     selectedType: "rating",
     orderType: "asc",
     activeCategory: '',
@@ -13,22 +24,22 @@ const filterSlice = createSlice({
     name: 'filter',
     initialState,
     reducers: {
-        setSelectedType: (state, action) => {
+        setSelectedType: (state, action: PayloadAction<VariablesKeys>) => {
             state.selectedType = action.payload
         },
-        setOrderType: (state, action) => {
+        setOrderType: (state, action: PayloadAction<"asc" | "desc">) => {
             state.orderType = action.payload
         },
-        setActiveCategory: (state, action) => {
+        setActiveCategory: (state, action: PayloadAction<string>) => {
             state.activeCategory = action.payload;
         },
-        setCurPageNum: (state, action) => {
+        setCurPageNum: (state, action: PayloadAction<number>) => {
             state.curPageNum = action.payload;
         },
-        setInputData: (state, action) => {
+        setInputData: (state, action: PayloadAction<string>) => {
             state.inputData = action.payload;
         },
-        setLocalInputData: (state, action) => {
+        setLocalInputData: (state, action: PayloadAction<string>) => {
             state.localInputData = action.payload;
         },
         setQueryData: (state, action) => {
@@ -39,7 +50,7 @@ const filterSlice = createSlice({
     }
 });
 
-export const selectFilter = (store) => store.filter;
+export const selectFilter = (store: RootState) => store.filter;
 
 export default filterSlice.reducer;
 export const { setActiveCategory, setSelectedType, setOrderType, setCurPageNum, setInputData, setLocalInputData, setQueryData  } = filterSlice.actions;

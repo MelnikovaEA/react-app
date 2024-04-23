@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {useDispatch} from "react-redux";
+import {useAppDispatch} from "../../../hooks.ts";
 import {useNavigate} from "react-router-dom";
 import {setPrice, setTotal} from "../../../redux/slices/cartSlice";
 import {addToCart} from "../../../redux/slices/cartSlice";
@@ -12,10 +12,11 @@ import ItemCardDiv, {
     ItemName,
 } from "../../styled/cards/card/ItemCardDiv";
 import CardAddButton from "../../styled/cards/card/ItemCardAddButton";
-import TypeSelectorItemCard from "./TypeSelectorItemCard";
-import PropSelectorItemCard from "./PropSelectorItemCard";
+import TypeSelectorItemCard, {TypeSelectorItemCardProps} from "./TypeSelectorItemCard";
+import PropSelectorItemCard, {PropSelectorItemCardProps} from "./PropSelectorItemCard";
 import {v4 as uuidv4} from "uuid";
 import {
+    ItemTypes,
     ItemType,
     ItemExtraProp,
     ItemOfCart,
@@ -31,16 +32,16 @@ type ItemCardProps = {
     extraProps: ItemExtraProp[];
 };
 
-export type Types = 'plain' | 'magic';
+
 type AddedPropsKeys = 'clever' | 'lazy' | 'strange';
 
 type ExtraPropsType = string[];
 
 const ItemCard: React.FC<ItemCardProps> = ({id, image, name, price, types, extraProps}) => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
-    const prices: Prices  = {
+    const prices: Prices = {
         plain: price,
         magic: 500,
         clever: 1000,
@@ -52,14 +53,14 @@ const ItemCard: React.FC<ItemCardProps> = ({id, image, name, price, types, extra
         clever: false,
         lazy: false,
         strange: false,
-    } );
+    });
     const [extraPropsList, setExtraPropsList] = useState<ExtraPropsType>([]);
-    const [selectedType, setSelectedType] = useState<Types>("plain");
+    const [selectedType, setSelectedType] = useState<ItemTypes>("plain");
     const [totalItemPrice, setTotalItemPrice] = useState(price);
 
     // вычисляет общую сумму товара со всеми выбранными свойствами
     const getTotalItemPrice = () => {
-        let totalPrice: number = price + (selectedType === "magic" ? prices.magic : null);
+        let totalPrice: number = selectedType === "magic" ? price + prices.magic : price;
         for (const key in addedProps) {
             if (addedProps[key as AddedPropsKeys]) {
                 totalPrice += prices[key as keyof Prices];
@@ -72,7 +73,7 @@ const ItemCard: React.FC<ItemCardProps> = ({id, image, name, price, types, extra
         getTotalItemPrice();
     }, [selectedType, addedProps]);
 
-    const onTypeHandleClick = (typeKey: Types) => {
+    const onTypeHandleClick = (typeKey: ItemTypes) => {
         setSelectedType(typeKey);
     };
 
@@ -87,7 +88,12 @@ const ItemCard: React.FC<ItemCardProps> = ({id, image, name, price, types, extra
             : setExtraPropsList([...extraPropsList, item]);
     };
 
-    const renderSelectors = (items: ItemType[], Component: React.FC, additionalProps: any) => {
+    const renderSelectors = <
+        T extends ItemType[] | ItemExtraProp[],
+        C extends TypeSelectorItemCardProps | PropSelectorItemCardProps,
+        A extends Record<any, any>
+    >
+    (items: T, Component: React.ComponentType<C>, additionalProps: A) => {
         return items.map((obj) => {
             const [objKey, value] = Object.entries(obj)[0];
             return (
