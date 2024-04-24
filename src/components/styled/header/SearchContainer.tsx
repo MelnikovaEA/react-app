@@ -10,6 +10,7 @@ export const SearchInputWrapper = styled.div`
 
   @media (min-width: 481px) and (max-width: 820px) {
     padding-left: 0;
+    
   }
   
   @media (min-width: 821px) and (max-width: 1024px) {

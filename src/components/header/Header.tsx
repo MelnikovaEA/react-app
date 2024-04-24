@@ -45,7 +45,7 @@ const Header: React.FC = () => {
                         <HeaderCartButton>
                             <Link to="cart">
                                 <span><span>{price}</span> <span>₽</span></span>
-                                <div>-</div>
+                                <div>|</div>
                                 <img src="/images/cart/cart-on-button.svg" alt="img"/>
                                 <span>{total}</span>
                             </Link>

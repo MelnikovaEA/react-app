@@ -12,16 +12,18 @@ const Pagination: React.FC = () => {
     const pagesQty = useAppSelector(selectMain).pagesQty;
     const curPageNum = useAppSelector(selectFilter).curPageNum;
 
-    return (
-        pagesQty && <Profiler id="paginationProfiler" onRender={onRenderCallback}>
-            <PaginationContainer>
-                <span onClick={() => dispatch(setCurPageNum(curPageNum && curPageNum - 1))}>&larr;</span>
-                <ul>{renderPagination(pagesQty, dispatch, curPageNum, setCurPageNum)}</ul>
-                <span
-                    onClick={() => dispatch(setCurPageNum(curPageNum < pagesQty ? curPageNum + 1 : curPageNum))}>&rarr;</span>
-            </PaginationContainer>
-        </Profiler>
-    );
+    if(pagesQty){
+        return (
+            <Profiler id="paginationProfiler" onRender={onRenderCallback}>
+                <PaginationContainer>
+                    <span onClick={() => dispatch(setCurPageNum(curPageNum && curPageNum - 1))}>&larr;</span>
+                    <ul>{renderPagination(pagesQty, dispatch, curPageNum, setCurPageNum)}</ul>
+                    <span
+                        onClick={() => dispatch(setCurPageNum(curPageNum < pagesQty ? curPageNum + 1 : curPageNum))}>&rarr;</span>
+                </PaginationContainer>
+            </Profiler>
+        );
+    }
 };
 
 export default Pagination;

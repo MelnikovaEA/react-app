@@ -4,7 +4,7 @@ import {useSearchParams} from "react-router-dom";
 import {fetchDataAction, selectMain} from "../../redux/slices/mainSlice";
 import {selectFilter, setQueryData} from "../../redux/slices/filterSlice";
 import {renderItems} from "../../utils/renderItems";
-import CardsContainer from "../styled/cards/CardsContainer";
+import CardsContainer from "../styled/cards/CardsContainer.tsx";
 import ItemCardSkeleton from "./card/ItemCardSkeleton.js";
 
 const ItemsCardsContainer: React.FC = () => {

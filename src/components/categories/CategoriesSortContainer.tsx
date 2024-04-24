@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
-import Categories from "./Categories.js";
-import Sort from "../sort/Sort";
+import MemoizedCategories from "./Categories.js";
+import MemoizedSort from "../sort/Sort";
 
 const Wrapper = styled.div`
   display: flex;
@@ -12,8 +12,8 @@ const Wrapper = styled.div`
 const CategoriesSortContainer: React.FC = () => {
     return (
         <Wrapper>
-            <Categories />
-            <Sort />
+            <MemoizedCategories />
+            <MemoizedSort />
         </Wrapper>
     );
 };

@@ -38,6 +38,7 @@ type AddedPropsKeys = 'clever' | 'lazy' | 'strange';
 type ExtraPropsType = string[];
 
 const ItemCard: React.FC<ItemCardProps> = ({id, image, name, price, types, extraProps}) => {
+
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 

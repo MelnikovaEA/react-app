@@ -66,4 +66,5 @@ const Sort: React.FC = () => {
     );
 }
 
-export default Sort;
+const MemoizedSort = React.memo(Sort)
+export default MemoizedSort;
