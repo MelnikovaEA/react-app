@@ -2,7 +2,7 @@ import React, {useState, useEffect, MouseEventHandler} from 'react';
 import {useParams, useNavigate} from "react-router-dom";
 import {Item} from "../../appTypes/appTypes.ts";
 import ItemCard from "./card/ItemCard.js";
-import {Button, InfoWrapper, Page, Text} from "../styled/cards/SingleItemPage";
+import {Button, InfoWrapper, CardWrapper, Page, Text} from "../styled/cards/SingleItemPage";
 import axios from "axios";
 
 const SingleItemPage: React.FC = () => {
@@ -31,7 +31,9 @@ const SingleItemPage: React.FC = () => {
     };
 
     return item && <Page>
-        <ItemCard {...item}/>
+        <CardWrapper>
+            <ItemCard {...item}/>
+        </CardWrapper>
         <InfoWrapper>
             <Text>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aperiam illum rem sint velit! Autem
                 commodi

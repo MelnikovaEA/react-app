@@ -21,6 +21,22 @@ export const Page = styled.div`
   }
 `
 
+export const CardWrapper = styled.div`
+  width: 25vw;
+  
+  @media (max-width: 570px) {
+    width: 100vw;
+  }
+
+  @media (min-width: 571px) and (max-width: 820px) {
+    width: 48vw;
+  }
+
+  @media (min-width: 821px) and (max-width: 1024px) {
+    width: 48vw;
+  }
+`
+
 export const InfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
