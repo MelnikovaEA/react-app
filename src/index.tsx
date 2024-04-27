@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import ReactDOM from 'react-dom/client';
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import store, {persistor} from "./redux/store";
@@ -8,7 +8,7 @@ import './index.css';
 import App from './App';
 import GlobalStyles from "./components/styled/GlobalStyles";
 import ErrorRoutePage from "./components/errors/ErrorRoutePage";
-import Cart from "./components/cart/Cart";
+import {CartLazy} from "./components/lazyComponents.tsx";
 import EmptyCart from "./components/cart/EmptyCart";
 import NotFoundPage from "./components/errors/NotFoundPage";
 import AppBody from "./components/body/AppBody";
@@ -32,7 +32,9 @@ const router = createBrowserRouter([
             },
             {
                 path: "cart",
-                element: <Cart/>,
+                element: <Suspense fallback={<div>'Загрузка...'</div>}>
+                    <CartLazy/>
+                </Suspense>
             },
             {
                 path: "empty-cart",
